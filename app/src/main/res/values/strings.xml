@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidTutorial</string>
+    <string name="trang1">Trang 1</string>
+    <string name="trang2">Trang 2</string>
 </resources>

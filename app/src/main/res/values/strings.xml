@@ -2,4 +2,20 @@
     <string name="app_name">AndroidTutorial</string>
     <string name="trang1">Trang 1</string>
     <string name="trang2">Trang 2</string>
+    <string name="dialog">Dialog</string>
+    <string name="customDialog">Custom Dialog</string>
+    <string name="bottomSheetDialog">Bottom Sheet Dialog</string>
+    <string name="activityDialog">Activity Dialog</string>
+    <string name="editText">Nhập thông tin để truyền dữ liệu sang</string>
+    <string name="takephoto">Hình ảnh</string>
+    <string name="transfer">Web</string>
+    <string name="camera">Chụp ảnh</string>
+    <string name="dialogFragment">Dialog Fragment</string>
+    <string name="alertdialog">Thông tin cần lưu ý</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+
+
+
+
 </resources>

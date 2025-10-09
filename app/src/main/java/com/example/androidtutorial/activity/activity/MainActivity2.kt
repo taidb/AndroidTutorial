@@ -1,23 +1,22 @@
-package com.example.androidtutorial.activity
+package com.example.androidtutorial.activity.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.R
+import com.example.androidtutorial.activity.Student
+import com.example.androidtutorial.databinding.ActivityMain2Binding
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var button: Button
-    private val tag = "LifecycleDemo"
+class MainActivity2 : AppCompatActivity() {
+    private lateinit var binding: ActivityMain2Binding
+    private val tag = "LifecycleDemo2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        Log.d(tag, "============ onCreate() ============")
+        binding = ActivityMain2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.btnClick.setOnClickListener {
+            finish()
+        }
         // Kiểm tra và khôi phục trạng thái ở đây
         if (savedInstanceState != null) {
             val savedValue = savedInstanceState.getString("my_state")
@@ -25,11 +24,16 @@ class MainActivity : AppCompatActivity() {
         } else {
             Log.d(tag, "onCreate(): No saved state found.")
         }
-        button = findViewById(R.id.btn_click)
-        button.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
-        }
+
+        //nhận dữ liệu :kiểu string,int, array tương tự:
+        val intent1 = intent
+        val data = intent1.getStringExtra("data")
+        binding.txtReceiveData.text=data
+
+        //nhận dữ liệu kiểu đối tượng
+        val intent2 = intent
+        val student = intent2.getSerializableExtra("data1") as Student
+        binding.txtReceiveData.text = "${student.name} - ${student.age} - ${student.address}"
     }
 
     override fun onStart() {

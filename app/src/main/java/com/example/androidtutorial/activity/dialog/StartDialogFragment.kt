@@ -1,4 +1,4 @@
-package com.example.androidtutorial.activity
+package com.example.androidtutorial.activity.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog

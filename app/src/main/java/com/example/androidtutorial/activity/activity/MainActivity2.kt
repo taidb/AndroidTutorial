@@ -1,22 +1,33 @@
 package com.example.androidtutorial.activity.activity
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.activity.Student
+import com.example.androidtutorial.R
+import com.example.androidtutorial.activity.model.Student
 import com.example.androidtutorial.databinding.ActivityMain2Binding
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
     private val tag = "LifecycleDemo2"
-
+    private val extra = "EXTRA_DATA"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val imageUri=intent.data
+        binding.imageView.setImageURI(imageUri)
+
         binding.btnClick.setOnClickListener {
+            val data = Intent()
+            data.putExtra(extra,"Quay lại trang 1")
+            setResult(RESULT_OK,data)
             finish()
         }
+
         // Kiểm tra và khôi phục trạng thái ở đây
         if (savedInstanceState != null) {
             val savedValue = savedInstanceState.getString("my_state")
@@ -26,14 +37,23 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         //nhận dữ liệu :kiểu string,int, array tương tự:
-        val intent1 = intent
-        val data = intent1.getStringExtra("data")
-        binding.txtReceiveData.text=data
+        when {
+            intent.hasExtra("data") -> {
+                val data = intent.getStringExtra("data")
+                binding.txtReceiveData.text = data
+            }
+            intent.hasExtra("data1") -> {
+                val student = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra("data1", Student::class.java)
+                } else {
+                    TODO("VERSION.SDK_INT < TIRAMISU")
+                }
+                val formattedText = getString(R.string.student_info, student?.name, student?.age, student?.address)
+                binding.txtReceiveData.text = formattedText
 
-        //nhận dữ liệu kiểu đối tượng
-        val intent2 = intent
-        val student = intent2.getSerializableExtra("data1") as Student
-        binding.txtReceiveData.text = "${student.name} - ${student.age} - ${student.address}"
+            }
+        }
+
     }
 
     override fun onStart() {

@@ -4,15 +4,14 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--    quyền chụp ảnh và lưu trữ ảnh trong bộ nhớ trong-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- quyền chụp ảnh và lưu trữ ảnh trong bộ nhớ trong -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28"
-        />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"  />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -25,11 +24,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
-        <!--            nhận dữ liêu từ app khác truyền vào-->
+        <activity
+            android:name=".activity.activity.ListStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.activity.TestIntent"
+            android:exported="false" /> <!-- nhận dữ liêu từ app khác truyền vào -->
         <activity
             android:name=".activity.activity.MainActivity2"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.activity.MainActivity"
@@ -38,12 +48,14 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

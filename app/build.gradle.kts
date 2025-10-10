@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id ("kotlin-kapt")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -56,4 +57,6 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 }

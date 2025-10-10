@@ -5,19 +5,81 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/dimen_20"
     tools:context=".activity.activity.MainActivity">
 
+
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_text_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_50"
-        android:hint="@string/editText"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:hint="@string/editText1"
         android:importantForAutofill="no"
         android:inputType="text"
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_20"
-        app:layout_constraintBottom_toTopOf="@+id/btn_click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_receive_data"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/edit_text_age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:hint="@string/editText2"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/edit_text_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:hint="@string/editText3"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_age"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/tv_receive_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:text="@string/trang1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_30"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_back_data"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txt_back_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/back_data"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,136 +87,200 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageUser"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/editText"
+        android:id="@+id/image_user"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:contentDescription="@string/editText1"
         android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@id/edit_text_address"
+        app:layout_constraintWidth_percent="0.25" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/dimen_150"
-        android:layout_height="@dimen/dimen_150"
+        android:id="@+id/image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/dimen_30"
         android:contentDescription="@string/takephoto"
         android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@+id/btnimage"
+        app:layout_constraintBottom_toTopOf="@+id/btn_image"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageUser" />
+        app:layout_constraintTop_toBottomOf="@+id/image_user"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.1" />
 
     <Button
         android:id="@+id/btn_click"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_10"
-        android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/trang1"
         android:textSize="@dimen/dimen_20"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-
+        app:layout_constraintEnd_toStartOf="@id/btn_alert_dialog"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintWidth_percent="0.3" />
+
 
     <Button
-        android:id="@+id/btn_alertDialog"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_alert_dialog"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_20"
         android:text="@string/dialog"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintStart_toEndOf="@+id/btnDialogActivity"
-        app:layout_constraintTop_toBottomOf="@+id/btnBottomSheetDialog"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintStart_toEndOf="@id/btn_click" />
 
     <Button
-        android:id="@+id/btnCustomDialog"
+        android:id="@+id/btn_list_student"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_30"
+        android:text="@string/dialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_click" />
+
+    <Button
+        android:id="@+id/btn_custom_dialog"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/customDialog"
         app:layout_constraintBottom_toTopOf="@+id/btn_click"
-        app:layout_constraintEnd_toStartOf="@+id/btnBottomSheetDialog"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_bottom_sheet_dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.45" />
 
     <Button
-        android:id="@+id/btnBottomSheetDialog"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_bottom_sheet_dialog"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
         android:layout_marginBottom="@dimen/dimen_20"
+        android:lines="1"
         android:text="@string/bottomSheetDialog"
-        app:layout_constraintBottom_toTopOf="@+id/btnDialogActivity"
+        app:layout_constraintBottom_toTopOf="@+id/btn_list_student"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintStart_toEndOf="@+id/btn_custom_dialog"
+        app:layout_constraintWidth_percent="0.45" />
 
     <Button
-        android:id="@+id/btnDialogActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_20"
-        android:layout_marginBottom="16dp"
-        android:text="@string/activityDialog"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_alertDialog"
-        app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toEndOf="@+id/btn_click"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/btnimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="@string/takephoto"
-        app:layout_constraintBottom_toBottomOf="@+id/btnDialogFragment"
-        app:layout_constraintEnd_toStartOf="@+id/btnweb"
-        app:layout_constraintHorizontal_bias="0.57"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnweb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/transfer"
-        app:layout_constraintBottom_toTopOf="@+id/btnDialogFragment"
-        app:layout_constraintEnd_toStartOf="@+id/btncamera" />
-
-    <Button
-        android:id="@+id/btncamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_20"
-        android:text="@string/camera"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnDialogFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnDialogFragment"
+        android:id="@+id/btn_dialog_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/dialogFragment"
-        app:layout_constraintBottom_toTopOf="@+id/btnCustomDialog"
+        app:layout_constraintBottom_toTopOf="@+id/btn_custom_dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_dialog_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:text="@string/activityDialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_bottom_sheet_dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_dialog_fragment" />
+
+    <Button
+        android:id="@+id/btn_dialog_time_picker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:text="@string/date_time_picker"
+        app:layout_constraintBottom_toTopOf="@+id/btn_dialog_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/btn_date_picker_dialog"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_date_picker_dialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:text="@string/date_picker_dialog"
+        app:layout_constraintBottom_toTopOf="@+id/btn_dialog_fragment"
+        app:layout_constraintEnd_toStartOf="@id/btn_dialog_time_picker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/takephoto"
+        app:layout_constraintBottom_toTopOf="@+id/btn_date_picker_dialog"
+        app:layout_constraintEnd_toStartOf="@id/btn_web"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
+
+    <Button
+        android:id="@+id/btn_web"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:text="@string/transfer"
+        app:layout_constraintBottom_toTopOf="@+id/btn_date_picker_dialog"
+        app:layout_constraintStart_toEndOf="@id/btn_image"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/camera"
+        app:layout_constraintBottom_toTopOf="@+id/btn_date_picker_dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_web"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_click2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:text="@string/trang3"
+        android:textSize="@dimen/dimen_20"
+        app:layout_constraintBottom_toTopOf="@+id/btn_camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_view"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_click3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:text="@string/trang4"
+        android:textSize="@dimen/dimen_20"
+        app:layout_constraintBottom_toTopOf="@+id/btn_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_view"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

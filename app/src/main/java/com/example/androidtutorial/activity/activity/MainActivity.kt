@@ -1,29 +1,61 @@
 package com.example.androidtutorial.activity.activity
 
-import android.app.Activity
+import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.ActivityNotFoundException
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.Intent.ACTION_PICK
 import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidtutorial.R
-import com.example.androidtutorial.activity.Student
+import com.example.androidtutorial.activity.model.Student
 import com.example.androidtutorial.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import androidx.core.net.toUri
-import com.example.androidtutorial.activity.StartDialogFragment
+import com.example.androidtutorial.activity.dialog.StartDialogFragment
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
+//Intent Là thông điệp (message) – gửi đi để yêu cầu một hành động nào đó (mở Activity, chọn ảnh, gửi dữ liệu, v.v.)
+//Intent Filter	Là bộ lọc (filter) – khai báo trong AndroidManifest.xml để nói với hệ thống rằng: nó có thể nhận và xử lý loại Intent nào đó.
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
+    private val takePictureLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val imageBitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                result.data?.extras?.getParcelable("data", Bitmap::class.java)
+            } else {
+                TODO("VERSION.SDK_INT < TIRAMISU")
+            }
+            binding.imageView.setImageBitmap(imageBitmap)
+        }
+    }
+    private val txtdataback = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == RESULT_OK) {
+            val data = it.data?.getStringExtra("EXTRA_DATA")
+            binding.txtBackData.text = data
+        }
+    }
+
     private val tag = "LifecycleDemo"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         //Sự dụng databinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         Log.d(tag, "============ onCreate() ============")
         // Kiểm tra và khôi phục trạng thái ở đây
@@ -42,40 +75,65 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Explicit intent
+        //truyền dữ liệu:
         binding.btnClick.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
+            intent.putExtra("data", binding.editTextName.text.toString())
+            txtdataback.launch(intent)
         }
+
+        //dùng bundle : để nhận nhiều dữ liệu
+        binding.btnClick2.setOnClickListener {
+            val intent = Intent(this, TestIntent::class.java)
+            if (validateInput()) {
+                val bundle = Bundle()
+                bundle.putString("data", binding.editTextName.text.toString())
+                bundle.putInt("data1", binding.editTextAge.text.toString().toInt())
+                bundle.putString("data2", binding.editTextAddress.text.toString())
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_LONG).show()
+            }
+
+        }
+
+//        binding.btnNavigate.setOnClickListener {
+//            val intent = Intent(this, MainActivity2::class.java).apply {
+//                // Xóa stack hiện tại và tạo stack mới
+//                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//            }
+//            startActivity(intent)
+//        }
 
         //Implicit Intent
         //gửi thông báo đến trang khác
         binding.imageUser.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_TEXT, binding.editText.text.toString())
+            intent.putExtra(Intent.EXTRA_TEXT, binding.editTextName.text.toString())
             startActivity(intent)
         }
 
-        val selectImageActivityResult =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    val intent = result.data
-                    val imageUri = intent?.data
-                    binding.imageView.setImageURI(imageUri)
-                }
-
-            }
+//        val selectImageActivityResult =
+//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//                if (result.resultCode == Activity.RESULT_OK) {
+//                    val intent = result.data
+//                    val imageUri = intent?.data
+//                    binding.imageView.setImageURI(imageUri)
+//                }
+//            }
 
         //chuyển sang trang sang bộ sưu tập
-        binding.btnimage.setOnClickListener {
+        binding.btnImage.setOnClickListener {
             val intent = Intent(ACTION_PICK)
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             intent.type = "image/*"
-            selectImageActivityResult.launch(intent)
+            takePictureLauncher.launch(intent)
         }
 
         // chuyển sang trang web
-        binding.btnweb.setOnClickListener {
+        binding.btnWeb.setOnClickListener {
             val url = "http://www.google.com"
             val i = Intent(Intent.ACTION_VIEW)
             i.setData(url.toUri())
@@ -83,23 +141,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         //chuyển sang trang chụp ảnh:
-        binding.btncamera.setOnClickListener {
-            val takePictureActivityResult = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            try {
-                startActivityForResult(takePictureActivityResult, REQUEST_IMAGE_CAPTURE)
-            } catch (e: ActivityNotFoundException) {
-                Log.e(tag, e.message.toString())
-            }
+        binding.btnCamera.setOnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            takePictureLauncher.launch(intent)
 
         }
 
         // AlertDialog
         binding.btnAlertDialog.setOnClickListener {
+            val dialogView = LayoutInflater.from(this)
+                .inflate(R.layout.alertdialog, binding.root as ViewGroup, false)
+            val username = dialogView.findViewById<EditText>(R.id.username)
+            val password = dialogView.findViewById<EditText>(R.id.password)
+
+
             AlertDialog.Builder(this)
                 .setTitle("Xác nhận")
                 .setMessage("Đây là AlertDialog thông thường")
+                .setView(dialogView)
                 .setPositiveButton("OK") { _, _ ->
                     // Do something.
+                    Toast.makeText(
+                        this,
+                        "Username: ${username.text}\nPassword: ${password.text}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 .setNegativeButton("Cancel") { _, _ ->
                     // Do something else.
@@ -116,7 +182,7 @@ class MainActivity : AppCompatActivity() {
 //                ) { _, _ ->
 //                    // hiện thị mục có chỉ có 1 lựa chọn
 //                }
-                //.setView(R.layout.alertdialog)
+                //
                 .show()
         }
 
@@ -137,7 +203,10 @@ class MainActivity : AppCompatActivity() {
 
         //DialogActivity
         binding.btnDialogActivity.setOnClickListener {
-            startActivity(Intent(this, MainActivity2::class.java))
+            val intent = Intent(this, MainActivity2::class.java)
+            val student = Student("Nguyen Van A", 2021, "Ha Noi")
+            intent.putExtra("data1", student)
+            startActivity(intent)
         }
 
         //DialogFragment
@@ -146,74 +215,99 @@ class MainActivity : AppCompatActivity() {
             dialogFragment.show(supportFragmentManager, "StartDialogFragment")
         }
 
-        //truyền dữ liệu:
-        binding.btnClick.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            intent.putExtra("data", binding.editText.text.toString())
+        binding.btnDialogTimePicker.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    val selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                    binding.tvReceiveData.text = selectedDate
+                },
+                year,
+                month,
+                day
+            )
+            datePickerDialog.show()
+
+        }
+
+        binding.btnDatePickerDialog.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val timeSetListener =
+                TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                    calendar.set(hour, selectedHour)
+                    calendar.set(minute, selectedMinute)
+                    binding.tvReceiveData.text = SimpleDateFormat(
+                        "HH:mm",
+                        Locale.getDefault()
+                    ).format(calendar.time)
+                }
+            TimePickerDialog(
+                this,
+                timeSetListener,
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                true
+            ).show()
+        }
+
+        //Sự dụng viewmodel
+        binding.btnClick3.setOnClickListener {
+            val intent = Intent(this, ListStudentActivity::class.java)
             startActivity(intent)
+
+        }
+    }
+
+//    companion object {
+//        private const val REQUEST_IMAGE_CAPTURE = 1
+//    }
+
+        private fun validateInput(): Boolean {
+            return binding.editTextName.text.toString().isNotEmpty() && binding.editTextAge.text
+                .isNotEmpty() && binding.editTextAddress.text.toString().isNotEmpty()
         }
 
-        binding.btnClick.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            val student = Student("Nguyen Van A", 2021, "Ha Noi")
-            intent.putExtra("data1", student)
-            startActivity(intent)
+        override fun onStart() {
+            super.onStart()
+            Log.d(tag, "============ onStart() ============")
         }
 
-
-    }
-
-    companion object {
-        const val REQUEST_IMAGE_CAPTURE = 1
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_IMAGE_CAPTURE) {
-            if (resultCode == RESULT_OK) {
-                val imageBitmap = data?.extras?.get("data") as Bitmap
-                binding.imageView.setImageBitmap(imageBitmap)
-
-            }
+        override fun onResume() {
+            super.onResume()
+            Log.d(tag, "============ onResume() ============")
         }
 
-    }
+        override fun onPause() {
+            super.onPause()
+            Log.d(tag, "============ onPause() ============")
+        }
 
+        override fun onStop() {
+            super.onStop()
+            Log.d(tag, "============ onStop() ============")
+        }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(tag, "============ onStart() ============")
-    }
+        override fun onDestroy() {
+            super.onDestroy()
+            Log.d(tag, "============ onDestroy() ============")
+        }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d(tag, "============ onResume() ============")
-    }
+        override fun onRestart() {
+            super.onRestart()
+            Log.d(tag, "============ onRestart() ============")
+        }
 
-    override fun onPause() {
-        super.onPause()
-        Log.d(tag, "============ onPause() ============")
+        // Lưu trạng thái trước khi Activity có thể bị hủy bởi hệ thống
+        override fun onSaveInstanceState(outState: Bundle) {
+            Log.d(tag, "============ onSaveInstanceState() ============")
+            outState.putString("my_state", "Hello from saved state!")
+            super.onSaveInstanceState(outState)
+        }
     }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(tag, "============ onStop() ============")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(tag, "============ onDestroy() ============")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(tag, "============ onRestart() ============")
-    }
-
-    // Lưu trạng thái trước khi Activity có thể bị hủy bởi hệ thống
-    override fun onSaveInstanceState(outState: Bundle) {
-        Log.d(tag, "============ onSaveInstanceState() ============")
-        outState.putString("my_state", "Hello from saved state!")
-        super.onSaveInstanceState(outState)
-    }
-}

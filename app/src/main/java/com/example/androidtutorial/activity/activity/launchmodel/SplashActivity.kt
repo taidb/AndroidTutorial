@@ -12,6 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash)
+
         //hoạt động trong các task riêng biệt, không share task với các activity khác
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

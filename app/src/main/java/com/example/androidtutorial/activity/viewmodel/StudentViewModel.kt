@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlin.math.log
 
+//ViewModel giúp tách biệt logic xử lý dữ liệu khỏi giao diện người dùng, tránh mất dữ liệu khi xoay màn hình hoặc khi Activity/Fragment bị hủy và tạo lại.
 class StudentViewModel : ViewModel() {
     private val _students = MutableStateFlow<Resource<List<Student>>>(Resource.Unspecified())
     val students = _students.asStateFlow()

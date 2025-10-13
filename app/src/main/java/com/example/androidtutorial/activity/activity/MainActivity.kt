@@ -96,15 +96,6 @@ class MainActivity : AppCompatActivity() {
         //gửi thông báo đến trang khác
         setupImplicitIntent()
 
-//        val selectImageActivityResult =
-//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//                if (result.resultCode == Activity.RESULT_OK) {
-//                    val intent = result.data
-//                    val imageUri = intent?.data
-//                    binding.imageView.setImageURI(imageUri)
-//                }
-//            }
-
         //chuyển sang trang sang bộ sưu tập
         setupPickImage()
 
@@ -141,11 +132,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun validateInput(): Boolean {
-        return binding.editTextName.text.toString().isNotEmpty() && binding.editTextAge.text
-            .isNotEmpty() && binding.editTextAddress.text.toString().isNotEmpty()
-    }
-
     private fun navigationPage(activityClass: Class<out Activity>) {
         val intent = Intent(this, activityClass)
         startActivity(intent)
@@ -163,17 +149,14 @@ class MainActivity : AppCompatActivity() {
     private fun setupIntentBundle() {
         binding.btnClick2.setOnClickListener {
             val intent = Intent(this, TestIntent::class.java)
-            if (validateInput()) {
-                val bundle = Bundle().apply {
-                    putString("data", binding.editTextName.text.toString())
-                    putInt("data1", binding.editTextAge.text.toString().toInt())
-                    putString("data2", binding.editTextAddress.text.toString())
-                }
-                intent.putExtras(bundle)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_LONG).show()
+            val bundle = Bundle().apply {
+                putString("data3", "Hello ")
+                putInt("data4", 10)
+                putString("data5", "Hello")
             }
+            intent.putExtras(bundle)
+            startActivity(intent)
+
         }
     }
 

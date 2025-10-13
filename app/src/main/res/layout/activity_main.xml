@@ -19,43 +19,12 @@
         android:inputType="text"
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_20"
+        app:layout_constraintBottom_toTopOf="@+id/image_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_receive_data"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/edit_text_age"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_30"
-        android:hint="@string/editText2"
-        android:importantForAutofill="no"
-        android:inputType="numberDecimal"
-        android:textColor="@color/black"
-        android:textSize="@dimen/dimen_20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_name"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/edit_text_address"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_30"
-        android:hint="@string/editText3"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/dimen_20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_age"
-        app:layout_constraintVertical_bias="0.0" />
+   />
 
 
     <TextView
@@ -66,7 +35,7 @@
         android:text="@string/trang1"
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_30"
-        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +49,7 @@
         android:text="@string/back_data"
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_30"
+        app:layout_constraintBottom_toTopOf="@+id/tv_receive_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,20 +63,20 @@
         android:layout_marginTop="@dimen/dimen_20"
         android:contentDescription="@string/editText1"
         android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/image_view"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_address"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_name"
         app:layout_constraintWidth_percent="0.25" />
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dimen_30"
         android:contentDescription="@string/takephoto"
         android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@+id/btn_image"
+        app:layout_constraintBottom_toTopOf="@+id/btn_click3"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +99,7 @@
         app:layout_constraintEnd_toStartOf="@id/btn_alert_dialog"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
         app:layout_constraintWidth_percent="0.3" />
 
 
@@ -139,16 +110,9 @@
         android:layout_marginStart="@dimen/dimen_20"
         android:text="@string/dialog"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_click" />
+        app:layout_constraintStart_toEndOf="@id/btn_click"
+        app:layout_constraintTop_toTopOf="@+id/btn_click" />
 
-    <Button
-        android:id="@+id/btn_list_student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_30"
-        android:text="@string/dialog"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_click" />
 
     <Button
         android:id="@+id/btn_custom_dialog"
@@ -159,6 +123,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_click"
         app:layout_constraintEnd_toStartOf="@+id/btn_bottom_sheet_dialog"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
         app:layout_constraintWidth_percent="0.45" />
 
     <Button
@@ -168,21 +133,23 @@
         android:layout_marginBottom="@dimen/dimen_20"
         android:lines="1"
         android:text="@string/bottomSheetDialog"
-        app:layout_constraintBottom_toTopOf="@+id/btn_list_student"
+        app:layout_constraintBottom_toTopOf="@+id/btn_alert_dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_custom_dialog"
+        app:layout_constraintTop_toTopOf="@+id/btn_custom_dialog"
         app:layout_constraintWidth_percent="0.45" />
 
     <Button
         android:id="@+id/btn_dialog_fragment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/dialogFragment"
         app:layout_constraintBottom_toTopOf="@+id/btn_custom_dialog"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_dialog_activity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop" />
 
     <Button
         android:id="@+id/btn_dialog_activity"
@@ -190,10 +157,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/activityDialog"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/btn_bottom_sheet_dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_dialog_fragment" />
+        app:layout_constraintStart_toEndOf="@+id/btn_dialog_fragment"
+        app:layout_constraintTop_toTopOf="@+id/btn_dialog_fragment" />
 
     <Button
         android:id="@+id/btn_dialog_time_picker"
@@ -205,7 +172,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toEndOf="@id/btn_date_picker_dialog"
-        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintTop_toTopOf="@+id/btn_date_picker_dialog"
         app:layout_constraintWidth_percent="0.3" />
 
     <Button
@@ -242,8 +209,9 @@
         android:text="@string/transfer"
         app:layout_constraintBottom_toTopOf="@+id/btn_date_picker_dialog"
         app:layout_constraintStart_toEndOf="@id/btn_image"
-        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintTop_toTopOf="@+id/btn_image"
         app:layout_constraintWidth_percent="0.3" />
+
 
     <Button
         android:id="@+id/btn_camera"
@@ -253,7 +221,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_date_picker_dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_web"
-        app:layout_constraintTop_toBottomOf="@id/guidelineTop"
+        app:layout_constraintTop_toTopOf="@+id/btn_image"
         app:layout_constraintWidth_percent="0.3" />
 
     <Button
@@ -263,10 +231,8 @@
         android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/trang3"
         android:textSize="@dimen/dimen_20"
-        app:layout_constraintBottom_toTopOf="@+id/btn_camera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_view"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        app:layout_constraintTop_toTopOf="@+id/btn_click3"
         app:layout_constraintWidth_percent="0.3" />
 
     <Button
@@ -277,24 +243,25 @@
         android:text="@string/trang4"
         android:textSize="@dimen/dimen_20"
         app:layout_constraintBottom_toTopOf="@+id/btn_image"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/image_view"
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintWidth_percent="0.3" />
 
     <Button
         android:id="@+id/btn_click4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_20"
         android:text="@string/trang5"
         android:textSize="@dimen/dimen_20"
-        app:layout_constraintBottom_toTopOf="@+id/btn_click3"
-        app:layout_constraintEnd_toStartOf="@+id/image_view"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.842"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_click3"
+        app:layout_constraintEnd_toStartOf="@+id/btn_click2"
+        app:layout_constraintTop_toTopOf="@+id/btn_click3"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintWidth_percent="0.3" />
 
 

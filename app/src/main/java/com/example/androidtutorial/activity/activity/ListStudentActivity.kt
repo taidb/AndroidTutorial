@@ -22,7 +22,7 @@ class ListStudentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListStudentBinding
     private val viewModel by viewModels<StudentViewModel>()
     private val studentAdapter by lazy { StudentAdapter(students, this) }
-
+    private val tag = "LifecycleDemo"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListStudentBinding.inflate(layoutInflater)
@@ -70,8 +70,35 @@ class ListStudentActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.d(tag, "============ onStart() ============")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(tag, "============ onResume() ============")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(tag, "============ onPause() ============")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(tag, "============ onStop() ============")
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("LifecycleDemo", "Activity onDestroy()")
+        Log.d(tag, "============ onDestroy() ============")
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(tag, "============ onRestart() ============")
+    }
+
+
 }

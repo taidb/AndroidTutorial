@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/txtReceiveData"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_50"
+        android:layout_height="wrap_content"
         android:text="@string/trang2"
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_30"

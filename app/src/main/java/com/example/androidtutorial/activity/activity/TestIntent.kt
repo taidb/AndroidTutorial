@@ -31,12 +31,12 @@ class TestIntent : AppCompatActivity() {
         //nhận bundle từ activity khác
         val receivedBundle: Bundle? = intent.extras
         if (receivedBundle != null) {
-            val data = receivedBundle.getString("data")
-            val data1 = receivedBundle.getInt("data1")
-            val data2 = receivedBundle.getString("data2")
-            Log.d("TestIntent", "data: $data")
-            Log.d("TestIntent", "data1: $data1")
-            Log.d("TestIntent", "data2: $data2")
+            val data = receivedBundle.getString("data3")
+            val data1 = receivedBundle.getInt("data4")
+            val data2 = receivedBundle.getString("data5")
+            Log.d("TestIntent", "data3: $data")
+            Log.d("TestIntent", "data4: $data1")
+            Log.d("TestIntent", "data5: $data2")
 
         }
     }

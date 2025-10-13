@@ -46,7 +46,8 @@ class MainActivity2 : AppCompatActivity() {
                 val student = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     intent.getParcelableExtra("data1", Student::class.java)
                 } else {
-                    TODO("VERSION.SDK_INT < TIRAMISU")
+                    @Suppress("DEPRECATION")
+                    intent.getParcelableExtra<Student>("data1")
                 }
                 val formattedText = getString(R.string.student_info, student?.name, student?.age, student?.address)
                 binding.txtReceiveData.text = formattedText

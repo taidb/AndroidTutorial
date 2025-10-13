@@ -10,6 +10,11 @@ import com.example.androidtutorial.R
 import com.example.androidtutorial.activity.model.Student
 import com.example.androidtutorial.databinding.ItemStudentBinding
 
+//adapter là 1 lớp trung gian giữa dữ liệu và giao diện hiện thị thường có : ListView ,RecyclerView ,ViewPager ,Spinner
+// chuển đổi dữ liệu thành các view để hiện thị lên màn hình
+//ListView: hiện thị 1 danh sách dữ liệu theo chiều dọc
+//RecyclerView: hiện thị 1 danh sách dữ liệu theo chiều dọc và ngang có thể tái sự dụng View để tối ưu hiệu năng khi cuộn lên xuống
+//ViewPager2: Hieenj thị các trang hoặc hình ảnh mà người dùng có thể vuốt sang trái/ phải hoặc tự động
 class StudentAdapter(
     private var students: List<Student>,
     private val context: Context

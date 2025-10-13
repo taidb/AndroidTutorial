@@ -203,8 +203,6 @@ class MainActivity : AppCompatActivity() {
                 .inflate(R.layout.alertdialog, binding.root as ViewGroup, false)
             val username = dialogView.findViewById<EditText>(R.id.username)
             val password = dialogView.findViewById<EditText>(R.id.password)
-
-
             AlertDialog.Builder(this)
                 .setTitle("Xác nhận")
                 .setMessage("Đây là AlertDialog thông thường")

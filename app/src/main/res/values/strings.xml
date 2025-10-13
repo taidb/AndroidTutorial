@@ -2,7 +2,7 @@
     <string name="app_name">AndroidTutorial</string>
     <string name="trang1">Trang 1</string>
     <string name="trang3">Trang 3</string>
-    <string name="trang4">Trang 4</string>
+    <string name="trang4">Viewmodel</string>
     <string name="trang5">Permission</string>
     <string name="trang2">Trang 2</string>
     <string name="dialog">Dialog AlertDialog</string>

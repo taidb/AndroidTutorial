@@ -37,8 +37,7 @@ class ListStudentActivity : AppCompatActivity() {
 
                         is Resource.Success -> {
                             binding.progressbarStudent.visibility = View.INVISIBLE
-                            val list = it.data ?: emptyList()
-                            studentAdapter.differ.submitList(list)
+                            it.data?.let { students -> studentAdapter.differ.submitList(students) }
                         }
 
                         is Resource.Error -> {

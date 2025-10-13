@@ -53,4 +53,5 @@ class StudentAdapter(
         )
         holder.binding.txtStudent.text = formattedText
     }
+
 }

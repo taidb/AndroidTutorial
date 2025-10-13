@@ -23,6 +23,7 @@ import com.example.androidtutorial.activity.model.Student
 import com.example.androidtutorial.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import androidx.core.net.toUri
+import com.example.androidtutorial.activity.activity.permission.PermissionActivity
 import com.example.androidtutorial.activity.dialog.StartDialogFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             binding.imageView.setImageBitmap(imageBitmap)
         }
     }
+
     private val txtdataback = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
@@ -63,7 +65,6 @@ class MainActivity : AppCompatActivity() {
         //Sự dụng databinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         Log.d(tag, "============ onCreate() ============")
         // Kiểm tra và khôi phục trạng thái ở đây
@@ -100,7 +101,8 @@ class MainActivity : AppCompatActivity() {
 
 //        binding.btnNavigate.setOnClickListener {
 //            val intent = Intent(this, MainActivity2::class.java).apply {
-//                // Xóa stack hiện tại và tạo stack mới
+//               Xóa stack hiện tại và tạo stack mới thường sự dụng Khi login xong, muốn xóa màn Login khỏi stack
+//            Khi quay về trang chủ, muốn clear hết stack: FLAG_ACTIVITY_CLEAR_TOP
 //                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 //            }
 //            startActivity(intent)
@@ -261,53 +263,53 @@ class MainActivity : AppCompatActivity() {
         binding.btnClick3.setOnClickListener {
             val intent = Intent(this, ListStudentActivity::class.java)
             startActivity(intent)
+        }
 
+        binding.btnClick4.setOnClickListener {
+            val intent = Intent(this, PermissionActivity::class.java)
+            startActivity(intent)
         }
     }
 
-//    companion object {
-//        private const val REQUEST_IMAGE_CAPTURE = 1
-//    }
-
-        private fun validateInput(): Boolean {
-            return binding.editTextName.text.toString().isNotEmpty() && binding.editTextAge.text
-                .isNotEmpty() && binding.editTextAddress.text.toString().isNotEmpty()
-        }
-
-        override fun onStart() {
-            super.onStart()
-            Log.d(tag, "============ onStart() ============")
-        }
-
-        override fun onResume() {
-            super.onResume()
-            Log.d(tag, "============ onResume() ============")
-        }
-
-        override fun onPause() {
-            super.onPause()
-            Log.d(tag, "============ onPause() ============")
-        }
-
-        override fun onStop() {
-            super.onStop()
-            Log.d(tag, "============ onStop() ============")
-        }
-
-        override fun onDestroy() {
-            super.onDestroy()
-            Log.d(tag, "============ onDestroy() ============")
-        }
-
-        override fun onRestart() {
-            super.onRestart()
-            Log.d(tag, "============ onRestart() ============")
-        }
-
-        // Lưu trạng thái trước khi Activity có thể bị hủy bởi hệ thống
-        override fun onSaveInstanceState(outState: Bundle) {
-            Log.d(tag, "============ onSaveInstanceState() ============")
-            outState.putString("my_state", "Hello from saved state!")
-            super.onSaveInstanceState(outState)
-        }
+    private fun validateInput(): Boolean {
+        return binding.editTextName.text.toString().isNotEmpty() && binding.editTextAge.text
+            .isNotEmpty() && binding.editTextAddress.text.toString().isNotEmpty()
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(tag, "============ onStart() ============")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(tag, "============ onResume() ============")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(tag, "============ onPause() ============")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(tag, "============ onStop() ============")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(tag, "============ onDestroy() ============")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(tag, "============ onRestart() ============")
+    }
+
+    // Lưu trạng thái trước khi Activity có thể bị hủy bởi hệ thống
+    override fun onSaveInstanceState(outState: Bundle) {
+        Log.d(tag, "============ onSaveInstanceState() ============")
+        outState.putString("my_state", "Hello from saved state!")
+        super.onSaveInstanceState(outState)
+    }
+}

@@ -20,7 +20,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/dimen_20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_receive_data"
         app:layout_constraintVertical_bias="0.0" />
@@ -280,6 +280,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/image_view"
         app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/btn_click4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:text="@string/trang5"
+        android:textSize="@dimen/dimen_20"
+        app:layout_constraintBottom_toTopOf="@+id/btn_click3"
+        app:layout_constraintEnd_toStartOf="@+id/image_view"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
+        app:layout_constraintVertical_bias="0.842"
         app:layout_constraintWidth_percent="0.3" />
 
 

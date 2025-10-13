@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <!-- Xin quyền thông thường -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- quyền chụp ảnh và lưu trữ ảnh trong bộ nhớ trong -->
@@ -11,8 +11,14 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"  />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +30,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.activity.permission.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.utils.PermissionManager"
+            android:exported="false" />
+        <activity
+            android:name=".activity.activity.launchmodel.HomeActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.activity.launchmodel.SplashActivity"
+            android:exported="false"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".activity.activity.launchmodel.SearchActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.activity.launchmodel.ProductDetailActivity"
+            android:exported="false"
+            android:launchMode="standard" />
         <activity
             android:name=".activity.activity.ListStudentActivity"
             android:exported="false" />

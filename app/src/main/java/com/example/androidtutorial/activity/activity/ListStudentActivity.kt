@@ -1,6 +1,7 @@
 package com.example.androidtutorial.activity.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -27,6 +28,7 @@ class ListStudentActivity : AppCompatActivity() {
         binding = ActivityListStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpRecyclerView()
+        Log.d("LifecycleDemo", "activity được tạo")
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.students.collect {
@@ -66,5 +68,10 @@ class ListStudentActivity : AppCompatActivity() {
                 LinearLayoutManager(this@ListStudentActivity, RecyclerView.VERTICAL, false)
             adapter = studentAdapter
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("LifecycleDemo", "Activity onDestroy()")
     }
 }

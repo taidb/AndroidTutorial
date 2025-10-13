@@ -1,5 +1,6 @@
 package com.example.androidtutorial.activity.activity
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             val imageBitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                result.data?.extras?.getParcelable("data", Bitmap::class.java)
+                result.data?.extras?.getParcelable("data2", Bitmap::class.java)
             } else {
                 TODO("VERSION.SDK_INT < TIRAMISU")
             }
@@ -77,27 +78,10 @@ class MainActivity : AppCompatActivity() {
 
         //Explicit intent
         //truyền dữ liệu:
-        binding.btnClick.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            intent.putExtra("data", binding.editTextName.text.toString())
-            txtdataback.launch(intent)
-        }
+        setupIntentBasic()
 
         //dùng bundle : để nhận nhiều dữ liệu
-        binding.btnClick2.setOnClickListener {
-            val intent = Intent(this, TestIntent::class.java)
-            if (validateInput()) {
-                val bundle = Bundle()
-                bundle.putString("data", binding.editTextName.text.toString())
-                bundle.putInt("data1", binding.editTextAge.text.toString().toInt())
-                bundle.putString("data2", binding.editTextAddress.text.toString())
-                intent.putExtras(bundle)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_LONG).show()
-            }
-
-        }
+        setupIntentBundle()
 
 //        binding.btnNavigate.setOnClickListener {
 //            val intent = Intent(this, MainActivity2::class.java).apply {
@@ -110,12 +94,7 @@ class MainActivity : AppCompatActivity() {
 
         //Implicit Intent
         //gửi thông báo đến trang khác
-        binding.imageUser.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_TEXT, binding.editTextName.text.toString())
-            startActivity(intent)
-        }
+        setupImplicitIntent()
 
 //        val selectImageActivityResult =
 //            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -127,29 +106,115 @@ class MainActivity : AppCompatActivity() {
 //            }
 
         //chuyển sang trang sang bộ sưu tập
-        binding.btnImage.setOnClickListener {
-            val intent = Intent(ACTION_PICK)
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-            intent.type = "image/*"
-            takePictureLauncher.launch(intent)
-        }
+        setupPickImage()
 
         // chuyển sang trang web
-        binding.btnWeb.setOnClickListener {
-            val url = "http://www.google.com"
-            val i = Intent(Intent.ACTION_VIEW)
-            i.setData(url.toUri())
-            startActivity(i)
-        }
+        setupOpenWeb()
 
         //chuyển sang trang chụp ảnh:
+        setupCamera()
+
+        // AlertDialog
+        setupAlertDialog()
+
+        // Custom Dialog
+        setupCustomDialog()
+
+        // BottomSheetDialog
+        setupBottomSheetDialog()
+
+        //DialogActivity
+        setupDialogActivity()
+
+        //DialogFragment
+        setupDialogFragment()
+
+        //date & time
+        setupDatePickerDialog()
+        setupTimePickerDialog()
+
+        //viewmodel
+        setupViewModelNavigation()
+
+        //permission
+        setupPermissionActivity()
+
+    }
+
+    private fun validateInput(): Boolean {
+        return binding.editTextName.text.toString().isNotEmpty() && binding.editTextAge.text
+            .isNotEmpty() && binding.editTextAddress.text.toString().isNotEmpty()
+    }
+
+    private fun navigationPage(activityClass: Class<out Activity>) {
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
+    }
+
+    //Intent
+    private fun setupIntentBasic() {
+        binding.btnClick.setOnClickListener {
+            val intent = Intent(this, MainActivity2::class.java)
+            intent.putExtra("data", binding.editTextName.text.toString())
+            txtdataback.launch(intent)
+        }
+    }
+
+    private fun setupIntentBundle() {
+        binding.btnClick2.setOnClickListener {
+            val intent = Intent(this, TestIntent::class.java)
+            if (validateInput()) {
+                val bundle = Bundle().apply {
+                    putString("data", binding.editTextName.text.toString())
+                    putInt("data1", binding.editTextAge.text.toString().toInt())
+                    putString("data2", binding.editTextAddress.text.toString())
+                }
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun setupImplicitIntent() {
+        binding.imageUser.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, binding.editTextName.text.toString())
+            }
+            startActivity(intent)
+        }
+    }
+
+    private fun setupPickImage() {
+        binding.btnImage.setOnClickListener {
+            val intent = Intent(ACTION_PICK).apply {
+                putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+                type = "image/*"
+            }
+            takePictureLauncher.launch(intent)
+        }
+    }
+
+    //Intent web, camera
+    private fun setupOpenWeb() {
+        binding.btnWeb.setOnClickListener {
+            val url = "http://www.google.com"
+            val i = Intent(Intent.ACTION_VIEW, url.toUri())
+            startActivity(i)
+        }
+    }
+
+    private fun setupCamera() {
         binding.btnCamera.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             takePictureLauncher.launch(intent)
-
         }
+    }
 
-        // AlertDialog
+    //Dialog
+    private fun setupAlertDialog() {
         binding.btnAlertDialog.setOnClickListener {
             val dialogView = LayoutInflater.from(this)
                 .inflate(R.layout.alertdialog, binding.root as ViewGroup, false)
@@ -188,35 +253,43 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
-        // Custom Dialog
+    }
+
+    private fun setupCustomDialog() {
         binding.btnCustomDialog.setOnClickListener {
             val dialog = Dialog(this)
             dialog.setContentView(R.layout.dialog_custom)
             dialog.setCancelable(true)
             dialog.show()
         }
+    }
 
-        // BottomSheetDialog
+    private fun setupBottomSheetDialog() {
         binding.btnBottomSheetDialog.setOnClickListener {
             val bottomSheet = BottomSheetDialog(this)
             bottomSheet.setContentView(R.layout.layout_bottom_sheet)
             bottomSheet.show()
         }
+    }
 
-        //DialogActivity
+    private fun setupDialogActivity() {
         binding.btnDialogActivity.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             val student = Student("Nguyen Van A", 2021, "Ha Noi")
             intent.putExtra("data1", student)
             startActivity(intent)
         }
+    }
 
-        //DialogFragment
+    private fun setupDialogFragment() {
         binding.btnDialogFragment.setOnClickListener {
             val dialogFragment = StartDialogFragment()
             dialogFragment.show(supportFragmentManager, "StartDialogFragment")
         }
+    }
 
+    // DATE & TIME PICKER
+    private fun setupDatePickerDialog() {
         binding.btnDialogTimePicker.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -229,26 +302,21 @@ class MainActivity : AppCompatActivity() {
                     val selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
                     binding.tvReceiveData.text = selectedDate
                 },
-                year,
-                month,
-                day
+                year, month, day
             )
             datePickerDialog.show()
-
         }
+    }
 
+    private fun setupTimePickerDialog() {
         binding.btnDatePickerDialog.setOnClickListener {
             val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
             val timeSetListener =
                 TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                    calendar.set(hour, selectedHour)
-                    calendar.set(minute, selectedMinute)
-                    binding.tvReceiveData.text = SimpleDateFormat(
-                        "HH:mm",
-                        Locale.getDefault()
-                    ).format(calendar.time)
+                    calendar.set(Calendar.HOUR_OF_DAY, selectedHour)
+                    calendar.set(Calendar.MINUTE, selectedMinute)
+                    binding.tvReceiveData.text =
+                        SimpleDateFormat("HH:mm", Locale.getDefault()).format(calendar.time)
                 }
             TimePickerDialog(
                 this,
@@ -258,23 +326,21 @@ class MainActivity : AppCompatActivity() {
                 true
             ).show()
         }
+    }
 
-        //Sự dụng viewmodel
+    //VIEWMODEL & PERMISSION
+    private fun setupViewModelNavigation() {
         binding.btnClick3.setOnClickListener {
-            val intent = Intent(this, ListStudentActivity::class.java)
-            startActivity(intent)
+            navigationPage(ListStudentActivity::class.java)
         }
+    }
 
+    private fun setupPermissionActivity() {
         binding.btnClick4.setOnClickListener {
-            val intent = Intent(this, PermissionActivity::class.java)
-            startActivity(intent)
+            navigationPage(PermissionActivity::class.java)
         }
     }
 
-    private fun validateInput(): Boolean {
-        return binding.editTextName.text.toString().isNotEmpty() && binding.editTextAge.text
-            .isNotEmpty() && binding.editTextAddress.text.toString().isNotEmpty()
-    }
 
     override fun onStart() {
         super.onStart()

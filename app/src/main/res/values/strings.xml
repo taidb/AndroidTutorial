@@ -24,6 +24,15 @@
     <string name="back_data">Dữ liệu từ trang sau</string>
     <string name="student_info">%1$s - %2$d - %3$s</string>
     <string name="student_list">Tên: %1$s, Tuổi: %2$d, Địa chỉ: %3$s</string>
-
+    <string name="from">Từ</string>
+    <string name="ecomobile">Eco Mobile</string>
+    <string name="ipatitle">Bứt phá phong cách</string>
+    <string name="selection1">PRO</string>
+    <string name="selection2">CƠ BẢN</string>
+    <string name="tablecell1">Truy cập tất cả các chủ đề</string>
+    <string name="tablecell2">Mở khóa tính năng D.T.Y</string>
+    <string name="tablecell3">Xóa quảng cáo</string>
+    <string name="tablecell4">1000+ Biểu tượng,Tiện ích</string>
+    <string name="limit">Giới hạn</string>
 
 </resources>

@@ -5,7 +5,6 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
@@ -39,9 +38,15 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".activity.activity.permission.PermissionActivity"
+            android:name=".activity.layout.AdvertisementActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".activity.layout.TestLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.activity.permission.PermissionActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.activity.launchmodel.HomeActivity"
             android:exported="false"
@@ -76,7 +81,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.activity.MainActivity"
+            android:name=".activity.layout.LayoutFirstActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

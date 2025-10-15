@@ -46,5 +46,7 @@
     <string name="security"><![CDATA[Chính sách bảo mật]]></string>
     <string name="text">Tất cả ghi chú</string>
     <string name="text1">Tạo ghi chú</string>
+    <string name="Tiêu_đề_ví_dụ">Tiêu đề ví dụ</string>
+    <string name="mo_ta">Mô tả</string>
 
 </resources>

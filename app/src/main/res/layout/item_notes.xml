@@ -2,73 +2,68 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
-    <LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_8"
+    android:background="@drawable/tab_pro_bg"
+    android:clipToOutline="true"
+    android:elevation="2dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:padding="@dimen/dimen_12">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/tab_pro_bg"
-        android:clipToOutline="true"
-        android:elevation="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="Tiêu đề ví dụ"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_14"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imgDot"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8"
-            android:layout_gravity="start"
-            android:text="ádasdádssfsdff"
-            android:textSize="@dimen/dimen_15"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:maxLines="1"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8"
-            android:layout_gravity="start"
-            android:text="ádfdsfdgfdgfđfg"
-            android:textSize="@dimen/dimen_12"
-            android:textColor="@color/black"
-            android:maxLines="1"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dimen_15"
-            >
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="11:58"
-                android:layout_weight="1"
-                android:textSize="@dimen/dimen_15"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:maxLines="1"
-                />
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/dimen_16"
-                android:layout_height="@dimen/dimen_16"
-                android:src="@drawable/dot"
-                android:background="@color/black"
-                android:layout_gravity="end"
-                android:tint="@null"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:ellipsize="end"
+        android:maxLines="10"
+        android:text="Mô tả ngắn gọn"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_12"
+        app:layout_constraintBottom_toTopOf="@id/tvTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
+    <!-- Thời gian -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginBottom="@dimen/dimen_3"
+        android:text="11:58"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
 
-    </LinearLayout>
-
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgDot"
+        android:layout_width="@dimen/dimen_8"
+        android:layout_height="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_3"
+        android:layout_marginEnd="@dimen/dimen_3"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/dot"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

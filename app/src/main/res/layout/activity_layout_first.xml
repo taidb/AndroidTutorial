@@ -8,12 +8,12 @@
     android:background="@drawable/bg_gradient"
     tools:context=".activity.layout.LayoutFirstActivity">
 
-<!--    <include-->
-<!--        layout="@layout/item_card"-->
-<!--        app:layout_constraintDimensionRatio="200:9"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <include
+        layout="@layout/item_card"
+        app:layout_constraintDimensionRatio="200:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/seekBarProgress"

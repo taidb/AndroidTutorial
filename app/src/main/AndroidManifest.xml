@@ -37,12 +37,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
-        <activity
-            android:name=".activity.layout.S2NotesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.layout.LayoutFirstActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".activity.activity.permission.PermissionActivity"
@@ -81,7 +76,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.layout.AdvertisementActivity"
+            android:name=".activity.layout.S2NotesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -49,6 +49,7 @@ class MainActivity2 : AppCompatActivity() {
                     @Suppress("DEPRECATION")
                     intent.getParcelableExtra<Student>("data1")
                 }
+
                 val formattedText = getString(R.string.student_info, student?.name, student?.age, student?.address)
                 binding.txtReceiveData.text = formattedText
 

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AndroidTutorial</string>
+    <string name="name_app">S2Note</string>
     <string name="trang1">Trang 1</string>
     <string name="trang3">Trang 3</string>
     <string name="trang4">Viewmodel</string>
@@ -34,5 +35,16 @@
     <string name="tablecell3">Xóa quảng cáo</string>
     <string name="tablecell4">1000+ Biểu tượng,Tiện ích</string>
     <string name="limit">Giới hạn</string>
+    <string name="start">Bắt đầu dùng thử</string>
+    <string name="isIAP">Chưa tính phí</string>
+
+    <string name="introduce">Dùng thử 3 ngày mễn phí, sau đó tự động gia hạn với giá 9.900 đ/tuần.Hủy bất kì lúc nào</string>
+    <string name="introduce1">• Thanh toán sẽ được tính vào tài khoản Google Play của bạn sau khi xác nhận mư hoặc khi kết thức giai đoạn dùng thử</string>
+    <string name="introduce2">• Gói đăng kí sẽ tự động gia hạn theo kế hoạch bạn chọn trừ khi bạn hủy trước 24 giwof trước khi kết thức chu kỳ hiện tại hoặc giai đoạn dùng thử</string>
+    <string name="introduce3">• Người dùng không đăng ký vẫn có thể sự dụng ứng dụng nhưng một số tinh năng trả phí có thể bị giới hạn</string>
+    <string name="introduce4">• Bạn có thể quản lí hoặc hủy bất kỳ lúc nào tại Đăng ký trong Google Play</string>
+    <string name="security"><![CDATA[Chính sách bảo mật]]></string>
+    <string name="text">Tất cả ghi chú</string>
+    <string name="text1">Tạo ghi chú</string>
 
 </resources>

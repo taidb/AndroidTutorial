@@ -60,4 +60,5 @@ dependencies {
 
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
     implementation ("androidx.viewpager2:viewpager2:1.0.0-alpha01")
+    implementation ("com.airbnb.android:lottie:6.0.0")
 }

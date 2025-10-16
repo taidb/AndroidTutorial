@@ -31,6 +31,7 @@ class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val differ = AsyncListDiffer(this, diffCallback)
 
     var onAddNoteClick: ((Note) -> Unit)? = null
+
     private var isGrifLayout = true
 
     fun setGridLayout(isGrid: Boolean) {

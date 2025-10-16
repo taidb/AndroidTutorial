@@ -10,19 +10,37 @@
     android:foreground="?attr/selectableItemBackground"
     android:padding="@dimen/_12sdp">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="Tiêu đề ví dụ"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_14sdp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imgDot"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/Tiêu_đề_ví_dụ"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgDot"
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="@dimen/_14sdp"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/dot" />
+
+    </LinearLayout>
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -32,38 +50,26 @@
         android:layout_marginTop="@dimen/_8sdp"
         android:ellipsize="end"
         android:maxLines="10"
-        android:text="Mô tả ngắn gọn"
+        android:text="@string/mo_ta"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toTopOf="@id/tvTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
-    <!-- Thời gian -->
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_3sdp"
-        android:text="11:58"
+        android:text="@string/thoi_gian"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgDot"
-        android:layout_width="@dimen/_8sdp"
-        android:layout_height="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_3sdp"
-        android:layout_marginEnd="@dimen/_3sdp"
-        android:backgroundTint="@color/black"
-        android:src="@drawable/dot"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">AndroidTutorial</string>
+    <string name="Icon">Icon</string>
+    <string name="changer">Changer</string>
+
     <string name="name_app">S2Note</string>
     <string name="trang1">Trang 1</string>
     <string name="trang3">Trang 3</string>
@@ -48,5 +51,9 @@
     <string name="text1">Tạo ghi chú</string>
     <string name="Tiêu_đề_ví_dụ">Tiêu đề ví dụ</string>
     <string name="mo_ta">Mô tả</string>
+    <string name="thoi_gian">Thời gian</string>
+    <string name="score">50</string>
+    <string name="Pro">Pro</string>
+
 
 </resources>

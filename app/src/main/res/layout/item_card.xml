@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:columnCount="2"
-            android:padding="@dimen/_15sdp"
+            android:padding="@dimen/_13sdp"
             android:rowCount="2">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -32,7 +32,7 @@
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="@dimen/_5sdp"
+                android:layout_margin="@dimen/_3sdp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/calendar_468054" />
@@ -42,7 +42,7 @@
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="@dimen/_5sdp"
+                android:layout_margin="@dimen/_3sdp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/calendar_468054" />
@@ -52,7 +52,7 @@
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="@dimen/_5sdp"
+                android:layout_margin="@dimen/_3sdp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/calendar_468054" />
@@ -62,7 +62,7 @@
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_margin="@dimen/_5sdp"
+                android:layout_margin="@dimen/_3sdp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/calendar_468054" />

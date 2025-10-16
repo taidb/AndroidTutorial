@@ -41,6 +41,8 @@
         <activity
             android:name=".activity.layout.S2NotesActivity"
             android:exported="false" />
+        <activity android:name=".activity.layout.IconChanger"
+            android:exported="false" />
         <activity
             android:name=".activity.layout.AdvertisementActivity"
             android:exported="false" />
@@ -81,7 +83,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.layout.IconChanger"
+            android:name=".activity.layout.LayoutFirstActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

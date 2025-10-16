@@ -15,8 +15,8 @@
             android:id="@+id/btnClose"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dimen_27"
-            android:layout_marginEnd="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
             android:background="@android:color/transparent"
             android:contentDescription="Đóng"
             android:scaleType="centerInside"
@@ -38,13 +38,13 @@
                 android:id="@+id/constraintLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dimen_10">
+                android:padding="@dimen/_10sdp">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/lottieAnimation"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     app:layout_constraintDimensionRatio="3:2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -68,11 +68,11 @@
                         android:id="@+id/tvTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dimen_10"
+                        android:layout_marginLeft="@dimen/_7sdp"
                         android:maxLines="1"
                         android:text="@string/ipatitle"
                         android:textColor="@color/brown_F85248"
-                        android:textSize="@dimen/dimen_35"
+                        android:textSize="@dimen/_30sdp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -82,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/pink_ffc6c6"
-                        android:paddingTop="@dimen/dimen_10"
+                        android:paddingTop="@dimen/_8sdp"
                         app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
                         <androidx.cardview.widget.CardView
@@ -90,8 +90,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
 
-                            app:cardCornerRadius="@dimen/dimen_15"
-                            app:cardElevation="@dimen/dimen_6"
+                            app:cardCornerRadius="@dimen/_15sdp"
+                            app:cardElevation="@dimen/_2sdp"
                             app:cardUseCompatPadding="true"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -106,8 +106,8 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
-                                    android:paddingTop="@dimen/dimen_16"
-                                    android:paddingBottom="@dimen/dimen_16"
+                                    android:paddingTop="@dimen/_12sdp"
+                                    android:paddingBottom="@dimen/_12sdp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent">
@@ -121,7 +121,7 @@
                                         android:text="@string/selection1"
                                         android:textAllCaps="true"
                                         android:textColor="@color/brown_7B4F54"
-                                        android:textSize="@dimen/dimen_16"
+                                        android:textSize="@dimen/_12sdp"
                                         android:textStyle="bold"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toStartOf="@+id/tab_basic"
@@ -136,7 +136,7 @@
                                         android:text="@string/selection2"
                                         android:textAllCaps="true"
                                         android:textColor="@color/grey_BDA9AA"
-                                        android:textSize="@dimen/dimen_16"
+                                        android:textSize="@dimen/_12sdp"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toEndOf="@id/guideline_tab2"
@@ -148,6 +148,7 @@
                                         android:layout_height="wrap_content"
                                         android:orientation="vertical"
                                         app:layout_constraintGuide_percent="0.6" />
+
                                     <androidx.constraintlayout.widget.Guideline
                                         android:id="@+id/guideline_tab2"
                                         android:layout_width="wrap_content"
@@ -160,7 +161,7 @@
                                 <View
                                     android:id="@+id/divider"
                                     android:layout_width="0dp"
-                                    android:layout_height="@dimen/dimen_1"
+                                    android:layout_height="@dimen/_1sdp"
                                     android:background="@color/grey_F0E8E9"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -179,8 +180,8 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:background="@color/pink_FFF5F8FB"
-                                        android:paddingTop="@dimen/dimen_12"
-                                        android:paddingBottom="@dimen/dimen_12"
+                                        android:paddingTop="@dimen/_12sdp"
+                                        android:paddingBottom="@dimen/_12sdp"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent">
@@ -192,7 +193,7 @@
                                             android:gravity="center"
                                             android:text="@string/tablecell1"
                                             android:textColor="@color/brown_6B4F51"
-                                            android:textSize="@dimen/dimen_14"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_1"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -205,7 +206,7 @@
                                             android:gravity="center"
                                             android:text="∞"
                                             android:textColor="@color/brown_8C4F52"
-                                            android:textSize="@dimen/dimen_16"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_2"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_1"
@@ -218,7 +219,7 @@
                                             android:gravity="center"
                                             android:text="@string/limit"
                                             android:textColor="@color/grey_B3A0A1"
-                                            android:textSize="@dimen/dimen_12"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_2"
@@ -243,7 +244,7 @@
                                     <View
                                         android:id="@+id/divider_1"
                                         android:layout_width="0dp"
-                                        android:layout_height="@dimen/dimen_1"
+                                        android:layout_height="@dimen/_1sdp"
                                         android:background="@color/grey_F0E8E9"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
@@ -253,8 +254,8 @@
                                         android:id="@+id/feature_2_layout"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:paddingTop="@dimen/dimen_12"
-                                        android:paddingBottom="@dimen/dimen_12"
+                                        android:paddingTop="@dimen/_12sdp"
+                                        android:paddingBottom="@dimen/_12sdp"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toBottomOf="@id/divider_1">
@@ -266,7 +267,7 @@
                                             android:gravity="center"
                                             android:text="@string/tablecell2"
                                             android:textColor="@color/brown_6B4F51"
-                                            android:textSize="@dimen/dimen_14"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_3"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -279,7 +280,7 @@
                                             android:gravity="center"
                                             android:text="∞"
                                             android:textColor="@color/brown_8C4F52"
-                                            android:textSize="@dimen/dimen_16"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_4"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_3"
@@ -292,7 +293,7 @@
                                             android:gravity="center"
                                             android:text="@string/limit"
                                             android:textColor="@color/grey_B3A0A1"
-                                            android:textSize="@dimen/dimen_12"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_4"
@@ -317,7 +318,7 @@
                                     <View
                                         android:id="@+id/divider_2"
                                         android:layout_width="0dp"
-                                        android:layout_height="@dimen/dimen_1"
+                                        android:layout_height="@dimen/_1sdp"
                                         android:background="@color/grey_F0E8E9"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
@@ -328,8 +329,8 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:background="@color/pink_FFF5F8FB"
-                                        android:paddingTop="@dimen/dimen_12"
-                                        android:paddingBottom="@dimen/dimen_12"
+                                        android:paddingTop="@dimen/_12sdp"
+                                        android:paddingBottom="@dimen/_12sdp"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toBottomOf="@id/divider_2">
@@ -341,7 +342,7 @@
                                             android:gravity="center"
                                             android:text="@string/tablecell3"
                                             android:textColor="@color/brown_6B4F51"
-                                            android:textSize="@dimen/dimen_14"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_5"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -354,7 +355,7 @@
                                             android:gravity="center"
                                             android:text="✓"
                                             android:textColor="@color/brown_8C4F52"
-                                            android:textSize="@dimen/dimen_16"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_6"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_5"
@@ -367,7 +368,7 @@
                                             android:gravity="center"
                                             android:text="@string/limit"
                                             android:textColor="@color/grey_B3A0A1"
-                                            android:textSize="@dimen/dimen_12"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_6"
@@ -392,7 +393,7 @@
                                     <View
                                         android:id="@+id/divider_3"
                                         android:layout_width="0dp"
-                                        android:layout_height="@dimen/dimen_1"
+                                        android:layout_height="@dimen/_1sdp"
                                         android:background="@color/grey_F0E8E9"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
@@ -402,8 +403,8 @@
                                         android:id="@+id/feature_4_layout"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:paddingTop="@dimen/dimen_12"
-                                        android:paddingBottom="@dimen/dimen_12"
+                                        android:paddingTop="@dimen/_12sdp"
+                                        android:paddingBottom="@dimen/_12sdp"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toBottomOf="@id/divider_3">
@@ -415,7 +416,7 @@
                                             android:gravity="center"
                                             android:text="@string/tablecell4"
                                             android:textColor="@color/brown_6B4F51"
-                                            android:textSize="@dimen/dimen_14"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_7"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -428,7 +429,7 @@
                                             android:gravity="center"
                                             android:text="✓"
                                             android:textColor="@color/brown_8C4F52"
-                                            android:textSize="@dimen/dimen_16"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toStartOf="@id/guideline_feature_8"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_7"
@@ -441,7 +442,7 @@
                                             android:gravity="center"
                                             android:text="@string/limit"
                                             android:textColor="@color/grey_B3A0A1"
-                                            android:textSize="@dimen/dimen_12"
+                                            android:textSize="@dimen/_12sdp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toEndOf="@id/guideline_feature_8"
@@ -476,35 +477,35 @@
                         android:id="@+id/feeStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginStart="@dimen/_12sdp"
                         android:background="@drawable/rounded_corners"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="10dp"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="@dimen/_4sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/root">
 
                         <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
+                            android:layout_width="@dimen/_12sdp"
+                            android:layout_height="@dimen/_12sdp"
                             android:src="@drawable/shield" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/_6sdp"
                             android:text="@string/isIAP"
                             android:textColor="#2ECC71"
-                            android:textSize="14sp" />
+                            android:textSize="@dimen/_10sdp" />
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtIntro"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dimen_13"
+                        android:layout_margin="@dimen/_13sdp"
 
                         android:ellipsize="end"
                         android:gravity="center"
@@ -512,7 +513,7 @@
                         android:text="@string/introduce"
                         android:textAlignment="center"
                         android:textColor="@color/grey_BDA9AA"
-                        android:textSize="@dimen/dimen_15"
+                        android:textSize="@dimen/_13sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/feeStatus" />
@@ -521,14 +522,14 @@
                         android:id="@+id/btnTrial"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_10"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/gradient_button"
                         android:elevation="4dp"
-                        android:paddingHorizontal="@dimen/dimen_30"
-                        android:paddingVertical="@dimen/dimen_12"
+                        android:paddingHorizontal="@dimen/_27sdp"
+                        android:paddingVertical="@dimen/_10sdp"
                         android:text="@string/start"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/dimen_20"
+                        android:textSize="@dimen/_16sdp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -541,8 +542,7 @@
                     android:id="@+id/learnLayout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/dimen_10"
-                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -556,10 +556,10 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:paddingTop="@dimen/dimen_3"
+                        android:paddingTop="@dimen/_3sdp"
                         android:text="@string/introduce1"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/dimen_10" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtIntro2"
@@ -567,10 +567,10 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:paddingTop="@dimen/dimen_3"
+                        android:paddingTop="@dimen/_3sdp"
                         android:text="@string/introduce2"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/dimen_10" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtIntro3"
@@ -578,10 +578,10 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:paddingTop="@dimen/dimen_3"
+                        android:paddingTop="@dimen/_3sdp"
                         android:text="@string/introduce3"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/dimen_10" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtIntro4"
@@ -589,23 +589,23 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:paddingTop="@dimen/dimen_3"
+                        android:paddingTop="@dimen/_3sdp"
                         android:text="@string/introduce4"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/dimen_10" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtSecurity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_10"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:paddingTop="@dimen/dimen_3"
+                        android:paddingTop="@dimen/_3sdp"
                         android:text="@string/security"
                         android:textAlignment="center"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/dimen_10" />
+                        android:textSize="@dimen/_10sdp" />
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

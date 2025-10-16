@@ -2,6 +2,7 @@ package com.example.androidtutorial.activity.layout
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.androidtutorial.activity.adater.NoteAdapter
 import com.example.androidtutorial.activity.model.Note
@@ -11,20 +12,31 @@ class S2NotesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityS2NotesBinding
     private val noteAdapter = NoteAdapter()
     private val notes = mutableListOf<Note>()
+    private var isGridLayout = true
+    private lateinit var gridLayoutManager: StaggeredGridLayoutManager
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityS2NotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setupLayoutManagers()
         setupRecyclerView()
         loadData()
         setupClickListeners()
     }
 
+    private fun setupLayoutManagers() {
+        gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
+        linearLayoutManager = LinearLayoutManager(this)
+
+    }
+
     private fun setupRecyclerView() {
         binding.recyclerViewNotes.apply {
             // Sử dụng StaggeredGridLayoutManager với 2 cột
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager = gridLayoutManager
 
             adapter = noteAdapter
         }
@@ -82,6 +94,9 @@ class S2NotesActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
+        binding.menuBar.setOnClickListener {
+            toggleLayout()
+        }
         noteAdapter.onAddNoteClick = { newNote ->
             // Thêm note mới vào đầu danh sách
             notes.add(0, newNote)
@@ -89,6 +104,18 @@ class S2NotesActivity : AppCompatActivity() {
             // Cập nhật RecyclerView
             noteAdapter.differ.submitList(notes.toList())
         }
+    }
+
+    private fun toggleLayout() {
+        isGridLayout = !isGridLayout
+        if (isGridLayout) {
+            binding.recyclerViewNotes.layoutManager = gridLayoutManager
+        } else {
+            binding.recyclerViewNotes.layoutManager = linearLayoutManager
+        }
+        noteAdapter.setGridLayout(isGridLayout)
+        noteAdapter.notifyDataSetChanged()
+
     }
 
 }

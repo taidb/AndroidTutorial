@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressbarStudent"
-        android:layout_marginBottom="@dimen/dimen_50"
+        android:layout_marginBottom="@dimen/_50sdp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

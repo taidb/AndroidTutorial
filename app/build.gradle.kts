@@ -51,14 +51,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    val room_version = "2.6.1"
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-runtime:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
+
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
     implementation ("androidx.viewpager2:viewpager2:1.0.0-alpha01")
     implementation ("com.airbnb.android:lottie:6.0.0")
+    implementation ("com.intuit.sdp:sdp-android:1.1.0")
 }

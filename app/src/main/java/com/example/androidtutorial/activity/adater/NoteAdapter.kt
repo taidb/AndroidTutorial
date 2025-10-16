@@ -31,8 +31,14 @@ class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val differ = AsyncListDiffer(this, diffCallback)
 
     var onAddNoteClick: ((Note) -> Unit)? = null
+    private var isGrifLayout = true
 
-    inner class AddNoteViewHolder(val binding: ItemAddBinding) :
+    fun setGridLayout(isGrid: Boolean) {
+        isGrifLayout = isGrid
+        notifyDataSetChanged()
+    }
+
+    inner class AddNoteViewHolder(private var binding: ItemAddBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.viewRoot.setOnClickListener {
@@ -72,15 +78,20 @@ class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
 
             is NoteViewHolder -> {
-                val note = differ.currentList[position - 1] // trừ đi item add note
+                val note = differ.currentList[position - 1]
                 holder.binding.apply {
                     tvTitle.text = note.title
                     tvSubtitle.text = note.content
                     tvTime.text = note.time
 
-                    imgDot.visibility = if (note.isFixed) android.view.View.VISIBLE else android.view.View.GONE
+                    imgDot.visibility =
+                        if (note.isFixed) android.view.View.VISIBLE else android.view.View.GONE
 
-                    tvSubtitle.maxLines = 10
+                    if (isGrifLayout) {
+                        tvSubtitle.maxLines = 4
+                    } else {
+                        tvSubtitle.maxLines = 10
+                    }
                 }
             }
         }

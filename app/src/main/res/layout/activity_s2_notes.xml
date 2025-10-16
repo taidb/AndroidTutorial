@@ -6,15 +6,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/dimen_12"
-    android:paddingEnd="@dimen/dimen_12"
+    android:paddingStart="@dimen/_11sdp"
+    android:paddingEnd="@dimen/_11sdp"
     tools:context=".activity.layout.S2NotesActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen_10"
+        android:padding="@dimen/_9sdp"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -33,7 +33,7 @@
             android:id="@+id/note"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginStart="@dimen/_9sdp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/tool"
             app:layout_constraintStart_toEndOf="@id/menu"
@@ -46,10 +46,10 @@
             android:id="@+id/name_app"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_8"
+            android:layout_marginStart="@dimen/_8sdp"
             android:text="@string/name_app"
             android:textColor="@color/black"
-            android:textSize="@dimen/dimen_25"
+            android:textSize="@dimen/_22sdp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/note"
             app:layout_constraintTop_toTopOf="@id/note"
@@ -61,7 +61,7 @@
             android:id="@+id/search"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/search"
             app:layout_constraintEnd_toStartOf="@id/save"
@@ -74,7 +74,7 @@
             android:id="@+id/save"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/file"
             app:layout_constraintEnd_toStartOf="@id/buyPackage"
@@ -102,17 +102,17 @@
         android:id="@+id/headerNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/_8sdp"
         app:layout_constraintTop_toBottomOf="@id/topBar">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_8"
+            android:padding="@dimen/_7sdp"
             android:text="@string/text"
             android:textColor="@color/black"
-            android:textSize="@dimen/dimen_15"
+            android:textSize="@dimen/_15sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,7 +120,7 @@
             android:id="@+id/menuBar"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_name"
             android:src="@drawable/menu_bar"
@@ -136,7 +136,7 @@
         android:id="@+id/recyclerViewNotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/_8sdp"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/headerNote"
         app:layout_constraintBottom_toBottomOf="parent"

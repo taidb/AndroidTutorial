@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/trang2"
         android:textColor="@color/black"
-        android:textSize="@dimen/dimen_30"
+        android:textSize="@dimen/_30sdp"
         app:layout_constraintBottom_toTopOf="@+id/btnClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,9 +22,9 @@
         app:layout_constraintVertical_bias="0.0" />
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/dimen_150"
-        android:layout_height="@dimen/dimen_150"
-        android:layout_marginTop="@dimen/dimen_30"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:contentDescription="@string/takephoto"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toTopOf="@+id/btnClick"

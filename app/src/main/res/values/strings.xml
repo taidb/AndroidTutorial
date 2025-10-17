@@ -54,6 +54,25 @@
     <string name="thoi_gian">Thời gian</string>
     <string name="score">50</string>
     <string name="Pro">Pro</string>
+    <string name="Optimize_Storage_Get_Space">Optimize Storage, Get Space</string>
+    <string name="price_off">$8.99/week</string>
+    <string name="price">$3.99</string>
+    <string name="week">/week</string>
+    <string name="discount">OFF 50%</string>
+
+    <string name="claim_offer">CLAIM OFFER</string>
+
+    <string name="by_continuing_you_agree_to_our_terms_and_privacy_policies">
+    By continuing, you agree to our Terms and Privacy Policy.\n
+    \u2022 Subscription gives you access to V9Compress\'s premium features and removes all ads.\n
+    \u2022 Plans auto-renew and can be canceled anytime via Google Play Subscriptions.\n
+    \u2022 You will not be charged if you cancel before the trial period ends.\n
+    \u2022 A subscription is not required to use V9Compress.
+</string>
+
+
+    <string name="Billed_weekly_cancel_anytime.">$3.99 for first week then $8.99 next week.
+    \nBilled weekly, cancel anytime.</string>
 
 
 </resources>

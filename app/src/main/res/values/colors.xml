@@ -21,5 +21,9 @@
     <color name="green_63ED68">#A4FAA8</color>
     <color name="green_185F1B">#036F09</color>
     <color name="pink_FB1764">#FB1764</color>
+    <color name="purple">#190E2B</color>
+    <color name="SUPER_LIGHT">#EAF5F8</color>
+    <color name="dark">#0F1E47</color>
+    <color name="blue_5B5FF6">#5B5FF6</color>
 
 </resources>

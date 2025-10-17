@@ -83,7 +83,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.layout.LayoutFirstActivity"
+            android:name=".activity.designlayout.LayoutPaywallActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

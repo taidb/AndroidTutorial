@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black_80000000">#80000000</color>
     <color name="grey_F8CFCF">#EDD1D1</color>
     <color name="grey">#acacac</color>
+    <color name="grey_990F1E47">#990F1E47
+    </color>
     <color name="grey_BDA9AA">#BDA9AA</color>
     <color name="grey_F0E8E9">#F0E8E9</color>
     <color name="grey_B3A0A1">#B3A0A1</color>
@@ -25,5 +28,12 @@
     <color name="SUPER_LIGHT">#EAF5F8</color>
     <color name="dark">#0F1E47</color>
     <color name="blue_5B5FF6">#5B5FF6</color>
+    <color name="blue_6477FF">#6477FF</color>
+    <color name="white_F3F3FC">#F3F3FC</color>
+    <color name="white_EAF5F8">#EAF5F8</color>
+    <color name="red_F12F19">#F12F19</color>
+    <color name="red_6B1504">#6B1504</color>
+
+
 
 </resources>

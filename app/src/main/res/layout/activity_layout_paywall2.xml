@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80000000"
+    tools:context=".activity.designlayout.LayoutPaywallActivity2">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/idImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_72sdp"
+        android:src="@drawable/background"
+        app:layout_constraintDimensionRatio="320:380"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_38sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/idImage"
+                app:layout_constraintEnd_toEndOf="@+id/idImage"
+                app:layout_constraintStart_toStartOf="@+id/idImage"
+                app:layout_constraintTop_toTopOf="@+id/idImage">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/txtLogo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo_vecto"
+                    app:layout_constraintDimensionRatio="300:32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAdditional"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:gravity="center"
+                    android:text="@string/faster_compress_made_simple"
+                    android:textColor="@color/white_EAF5F8"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLogo" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_27sdp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAdditional">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtPercent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/funnelsansextrabold"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.02"
+                        android:shadowColor="#80000000"
+                        android:shadowDx="0"
+                        android:shadowDy="4"
+                        android:shadowRadius="6"
+                        android:text="@string/percent"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_80sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtOff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/funnelsansextrabold"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.03"
+                        android:shadowColor="#80000000"
+                        android:shadowDx="0"
+                        android:shadowDy="4"
+                        android:shadowRadius="6"
+                        android:text="@string/off"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="@dimen/_48sdp" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/back_ground_button"
+            android:paddingHorizontal="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@+id/idImage">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtFreeAnnouncement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:fontFamily="@font/funnelsanssemibold"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="@string/try_3_day_for_free"
+                android:textAlignment="center"
+                android:textColor="@color/white_EAF5F8"
+                android:textSize="@dimen/_13sdp" />
+        </FrameLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_ClaimOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/button_vector_purple"
+            android:fontFamily="@font/funnelsansextrabold"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_15sdp"
+            android:text="@string/claim_offer"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtPrivacyPolicies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="20dp"
+            android:alpha="0.9"
+            android:fontFamily="@font/funnelsansregular"
+            android:gravity="center"
+            android:lineHeight="@dimen/_12sdp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_6sdp"
+            android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
+            android:textColor="@color/white_EAF5F8"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_ClaimOffer" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

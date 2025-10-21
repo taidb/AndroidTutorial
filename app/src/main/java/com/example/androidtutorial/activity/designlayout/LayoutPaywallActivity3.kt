@@ -2,6 +2,9 @@ package com.example.androidtutorial.activity.designlayout
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
@@ -25,10 +28,27 @@ class LayoutPaywallActivity3 : AppCompatActivity() {
         binding.idWeekly.setOnClickListener {
             selectTextView(binding.idWeekly, binding.idYearly)
         }
-        binding.root.setOnApplyWindowInsetsListener { view, insets ->
-            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            view.setPadding(0, statusBarHeight, 0, 0)
-            insets
+        binding.customSwitch.apply {
+            thumbDrawable.setTintList(null)
+            trackDrawable.setTintList(null)
+
+        }
+
+        binding.btnTryForFree.setOnClickListener {
+            binding.btnTryForFree.text = ""
+            binding.btnTryForFree.isEnabled = false
+            binding.txtAutoRenew.visibility = View.VISIBLE
+
+            // Đổi màu nền khi loading
+            binding.btnTryForFree.setBackgroundColor(ContextCompat.getColor(this, R.color.color_5F5F5F))
+
+            binding.progress.visibility = View.VISIBLE
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.progress.visibility = View.GONE
+                binding.btnTryForFree.visibility = View.VISIBLE
+                // binding.btnTryForFree.setBackgroundResource(R.drawable.button_gradient_red)
+            }, 3000)
         }
 
 

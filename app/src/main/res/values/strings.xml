@@ -57,6 +57,8 @@
     <string name="Optimize_Storage_Get_Space">Optimize Storage, Get Space</string>
     <string name="price_off">$8.99/week</string>
     <string name="price">$3.99</string>
+    <string name="we_couldnt_load_the_infomation">We couldn’t load the infomation</string>
+    <string name="try_again">Try again</string>
     <string name="week">/week</string>
     <string name="discount">OFF 50%</string>
     <string name="percent">30%</string>
@@ -66,11 +68,18 @@
     <string name="claim_offer">CLAIM OFFER</string>
 
     <string name="by_continuing_you_agree_to_our_terms_and_privacy_policies">
-    By continuing, you agree to our Terms and Privacy Policy.\n
-      \u2022  Subscription gives you access to V9Compress\'s premium features and removes all ads.\n
-    \u2022 Plans auto-renew and can be canceled anytime via Google Play Subscriptions.\n
-    \u2022 You will not be charged if you cancel before the trial period ends.\n
-    \u2022 Subscription is not required to use V9Compress.
+    By continuing, you agree to our <u>Terms</u> and <u>Privacy policies</u>.\n
+    • Subscription gives you access to V9Compress\'s premium features, all ads will be removed.\n
+    • Subscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\n
+    • You will not be charged if subscription is canceled before trial period ends.\n
+    • Subscription is not required to use V9Compress
+</string>
+    <string name="by_continuing_you_agree_to_our_terms_and_privacy_policies2">
+    By continuing, you agree to our <u>Terms</u> and <u>Privacy policies</u>.\n
+    Subscription gives you access to V9Compress\'s premium features, all ads will be removed.\n
+    Subscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\n
+    You will not be charged if subscription is canceled before trial period ends.\n
+    Subscription is not required to use V9Compress
 </string>
 
 
@@ -84,6 +93,14 @@
     <string name="after_free_trial_ends">$14.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
     <string name="free_trial_enabled">Free trial enabled</string>
     <string name="try_for_free">TRY FOR FREE</string>
+    <string name="high_quality_compression">high-quality\ncompression</string>
+    <string name="smarter_storage_made_affordable">SMARTER STORAGE MADE\nAFFORDABLE</string>
+    <string name="saved">Saved 92%</string>
+    <string name="yearly_plan">Yearly Plan</string>
+    <string name="weekly_plan">Weekly Plan</string>
+    <string name="only_0_412_per_week">Only $0.412 per week</string>
+    <string name="money_plan">$19.99/year</string>
+    <string name="free_trial_ends_in">3-day free trial enabled</string>
 
 
 </resources>

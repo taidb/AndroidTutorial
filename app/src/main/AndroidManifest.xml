@@ -38,13 +38,27 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".activity.designlayout.LayoutPaywallActivity2"
+            android:name=".activity.designlayout.DialogBottomSheetActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".activity.designlayout.DialogBottomSheetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.designlayout.LayoutPaywallActivity"
             android:exported="false" />
         <activity
             android:name=".activity.designlayout.LayoutPaywallActivity1"
             android:exported="false" />
         <activity
-            android:name=".activity.designlayout.LayoutPaywallActivity"
+            android:name=".activity.designlayout.LayoutPaywallActivity2"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.designlayout.LayoutPaywallActivity3"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.designlayout.LayoutPaywallActivity4"
             android:exported="false" />
         <activity
             android:name=".activity.layout.S2NotesActivity"
@@ -92,7 +106,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.designlayout.LayoutPaywallActivity3"
+            android:name=".activity.designlayout.StudyLayoutPaywallActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

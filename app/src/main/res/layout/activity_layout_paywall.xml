@@ -37,8 +37,8 @@
         <LinearLayout
             android:id="@+id/bottomSheet"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_radius_24"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_radius_12_color"
             android:orientation="vertical"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -138,6 +138,56 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginVertical="@dimen/_16sdp"
+                        android:background="@drawable/bg_radius_10"
+                        android:visibility="gone"
+                        app:layout_constraintDimensionRatio="320:110"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/include_activity"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtNoInformation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:fontFamily="@font/funnelsanssemibold"
+                            android:gravity="center"
+                            android:text="@string/we_couldnt_load_the_infomation"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:fontFamily="@font/funnelsansregular"
+                            android:text="@string/try_again"
+                            android:textAlignment="center"
+                            android:textColor="@color/color_CCFFF8F8"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnClaim"
                         android:layout_width="match_parent"
@@ -146,6 +196,7 @@
                         android:background="@drawable/button_corners_16"
                         android:fontFamily="@font/funnelsansextrabold"
                         android:gravity="center"
+                        android:visibility="visible"
                         android:paddingVertical="@dimen/_13sdp"
                         android:text="@string/claim_offer"
                         android:textColor="@color/white"
@@ -153,6 +204,19 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/linearLayout1" />
+
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/btnClaim"
+                        app:layout_constraintEnd_toEndOf="@id/btnClaim"
+                        app:layout_constraintStart_toStartOf="@id/btnClaim"
+                        app:layout_constraintTop_toTopOf="@id/btnClaim" />
+
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtDescription"
@@ -169,22 +233,15 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnClaim" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txtPrivacyPolicies"
+                    <include
+                        android:id="@+id/include_activity"
+                        layout="@layout/activity_include"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_9sdp"
-                        android:fontFamily="@font/funnelsanslight"
-                        android:gravity="center"
-                        android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
-                        android:textAlignment="center"
-                        android:textColor="@color/SUPER_LIGHT"
-                        android:textSize="@dimen/_8sdp"
-                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>

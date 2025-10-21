@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.designlayout.StudyLayoutPaywallActivity"
+    android:padding="@dimen/_16sdp"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 1"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 2"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage3"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 3"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage4"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 4"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage5"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 5"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage6"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 6"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage7"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Trang 7"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

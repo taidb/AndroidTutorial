@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SwitchNoTint" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:colorAccent">@null</item>
+        <item name="colorControlActivated">@null</item>
+        <item name="colorControlHighlight">@null</item>
+        <item name="colorSwitchThumbNormal">@null</item>
+        <item name="android:colorControlActivated">@null</item>
+        <item name="android:colorControlHighlight">@null</item>
+    </style>
+
+
+
+</resources>

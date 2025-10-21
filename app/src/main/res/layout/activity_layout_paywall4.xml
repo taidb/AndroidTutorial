@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="@dimen/_12sdp"
+    android:layout_height="match_parent"
+>
+    <com.example.androidtutorial.activity.widget.StatusBarView
+        android:id="@+id/statusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+      <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/idHighQuality"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/high_quality_compression"
+          android:textAllCaps="true"
+          android:fontFamily="@font/bebasneue_regular"
+          android:layout_marginTop="@dimen/_12sdp"
+          android:textSize="@dimen/_50sdp"
+          android:textColor="@color/black_0E111B"
+          app:layout_constraintTop_toBottomOf="@+id/statusBarView"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/idImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/hero_banner_2"
+        app:layout_constraintDimensionRatio="328:306"
+        app:layout_constraintTop_toBottomOf="@+id/idHighQuality"
+        android:layout_marginTop="@dimen/_9sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idImage">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/readexpro_regular"
+            android:gravity="center"
+            android:text="@string/after_free_trial_ends"
+            android:textColor="@color/dark"
+            android:textSize="@dimen/_13sdp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_radius_12"
+            android:backgroundTint="@color/black_0E111B"
+            android:fontFamily="@font/readexpro_bold"
+            android:paddingVertical="@dimen/_15sdp"
+            android:text="@string/try_for_free"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:alpha="0.9"
+            android:gravity="center"
+            android:lineHeight="@dimen/_12sdp"
+            android:textSize="@dimen/_9sdp"
+            android:fontFamily="@font/readexpro_regular"
+            android:paddingHorizontal="@dimen/_19sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:textColor="@color/black_4D5A68"
+            android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

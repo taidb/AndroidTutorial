@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidTutorial</string>
+    <string name="app_name">tai</string>
     <string name="Icon">Icon</string>
     <string name="changer">Changer</string>
 
@@ -90,7 +90,11 @@
     <string name="yearly">Yearly</string>
     <string name="weekly">Weekly</string>
     <string name="shrink_size_keep_quality">SHRINK SIZE\nKEEP QUALITY</string>
-    <string name="after_free_trial_ends">$14.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
+    <string name="after_free_trial_ends_yearly">$14.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
+    <string name="after_free_trial_ends_yearly_max">$19.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
+    <string name="after_free_trial_ends_weekly">$4.99/weekly after free trial ends.\nAuto renew, Cancel anytime</string>
+    <string name="year_enable">$14.99/year.\nAuto renew, Cancel anytime</string>
+    <string name="weekly_enable">$4.99/weekly.\nAuto renew, Cancel anytime</string>
     <string name="auto_renew_cancel_anytime">Auto renew, Cancel anytime</string>
     <string name="free_trial_enabled">Free trial enabled</string>
     <string name="enable_free_trial">Enabled free trial </string>

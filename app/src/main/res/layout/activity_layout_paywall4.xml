@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/readexpro_regular"
             android:gravity="center"
-            android:text="@string/after_free_trial_ends"
+            android:text="@string/after_free_trial_ends_yearly"
             android:textColor="@color/dark"
             android:textSize="@dimen/_13sdp" />
 
@@ -134,7 +134,6 @@
             android:lineHeight="@dimen/_12sdp"
             android:textSize="@dimen/_9sdp"
             android:fontFamily="@font/readexpro_regular"
-            android:paddingHorizontal="@dimen/_19sdp"
             android:paddingVertical="@dimen/_7sdp"
             android:textColor="@color/black_4D5A68"
             android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2" />

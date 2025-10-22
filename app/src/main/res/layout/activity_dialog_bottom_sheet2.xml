@@ -23,28 +23,29 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        
+
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idClose"
             android:layout_width="@dimen/_9sdp"
             android:layout_height="@dimen/_9sdp"
-            android:src="@drawable/ic_cancel"
-            app:layout_constraintTop_toTopOf="@+id/idImage"
-            app:layout_constraintEnd_toEndOf="@+id/idImage"
             android:layout_marginTop="@dimen/_14sdp"
             android:layout_marginEnd="@dimen/_18sdp"
-            />
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintEnd_toEndOf="@+id/idImage"
+            app:layout_constraintTop_toTopOf="@+id/idImage" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contentLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-30dp"
             android:background="@drawable/bg_radius_25"
             android:padding="@dimen/_16sdp"
             android:paddingHorizontal="@dimen/_12sdp"
-            android:translationY="-30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idImage">
+            app:layout_constraintTop_toBottomOf="@id/idImage"
+         >
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -167,13 +168,13 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_26sdp"
                     android:indeterminate="true"
                     android:indeterminateTint="@color/white"
-                    app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                    android:layout_marginEnd="@dimen/_26sdp"
-                    android:visibility="gone" />
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -252,18 +253,19 @@
                         app:autoSizeTextType="uniform" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
                 <ProgressBar
                     android:id="@+id/progress1"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_26sdp"
                     android:indeterminate="true"
                     android:indeterminateTint="@color/white"
-                    app:layout_constraintTop_toTopOf="@+id/linearLayout1"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/linearLayout1"
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
-                    android:layout_marginEnd="@dimen/_26sdp"
-                    android:visibility="gone" />
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout1" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -284,7 +286,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:text="@string/auto_renew_cancel_anytime"
+                    android:text="@string/after_free_trial_ends_yearly_max"
                     android:textColor="@color/dark"
                     android:textSize="@dimen/_13sdp" />
 
@@ -376,11 +378,11 @@
                     android:layout_marginTop="@dimen/_12sdp"
                     android:drawableStart="@drawable/security"
                     android:drawablePadding="@dimen/_6sdp"
-                    android:visibility="gone"
                     android:fontFamily="@font/readexpro_regular"
                     android:text="@string/cacel_anytime"
                     android:textColor="#00A073"
                     android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -390,9 +392,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:alpha="0.9"
-                    android:lineHeight="@dimen/_12sdp"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
+                    android:lineHeight="@dimen/_12sdp"
                     android:paddingVertical="@dimen/_7sdp"
                     android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"
                     android:textColor="@color/black_4D5A68"

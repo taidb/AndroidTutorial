@@ -63,6 +63,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idClose"
                 android:layout_width="@dimen/_16sdp"
                 android:layout_height="@dimen/_16sdp"
                 android:layout_gravity="end"
@@ -109,8 +110,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="320:308"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageMiddle">
+                app:layout_constraintTop_toBottomOf="@+id/imageMiddle"
+                app:layout_constraintVertical_bias="0.0">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtAutoRenew"
@@ -118,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:text="@string/after_free_trial_ends"
+                    android:text="@string/after_free_trial_ends_yearly"
                     android:textColor="@color/dark"
                     android:textSize="@dimen/_14sdp" />
 
@@ -126,29 +129,30 @@
                     android:id="@+id/linearLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:background="@drawable/bg_radius_12"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/_8sdp">
+                    android:padding="@dimen/_8sdp"
+                    android:visibility="visible">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtFreeTrial"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:visibility="gone"
                         android:fontFamily="@font/readexpro_regular"
                         android:text="@string/free_trial_enabled"
                         android:textColor="@color/dark"
-                        android:textSize="@dimen/_13sdp" />
+                        android:textSize="@dimen/_13sdp"
+                        android:visibility="visible" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtEnable"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:visibility="gone"
                         android:fontFamily="@font/readexpro_regular"
                         android:text="@string/enable_free_trial"
                         android:textColor="@color/dark"
@@ -159,7 +163,7 @@
                         android:id="@+id/customSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="false"
+                        android:checked="true"
                         android:showText="false"
                         android:theme="@style/SwitchNoTint"
                         android:thumb="@drawable/switch_thumb"
@@ -172,8 +176,8 @@
                     android:id="@+id/frameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
-                    android:layout_marginTop="@dimen/_10sdp">
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="visible">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/btnTryForFree"
@@ -205,8 +209,8 @@
                     android:id="@+id/frameLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="@dimen/_10sdp">
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/btnContinue"
@@ -237,13 +241,16 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:alpha="0.9"
+                    android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
                     android:lineHeight="@dimen/_12sdp"
-                    android:paddingHorizontal="@dimen/_16sdp"
+                    android:paddingHorizontal="@dimen/_14sdp"
                     android:paddingVertical="@dimen/_7sdp"
-                    android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2" />
+                    android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"
+                    android:textColor="@color/black_4D5A68"
+                    android:textSize="@dimen/_9sdp" />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>

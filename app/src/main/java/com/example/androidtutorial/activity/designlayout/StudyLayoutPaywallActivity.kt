@@ -1,13 +1,13 @@
 package com.example.androidtutorial.activity.designlayout
 
+import PaywallBottomSheetDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.androidtutorial.R
+
 import com.example.androidtutorial.databinding.ActivityStudyLayoutPaywallBinding
+
 
 
 class StudyLayoutPaywallActivity : AppCompatActivity() {
@@ -20,16 +20,22 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
         binding = ActivityStudyLayoutPaywallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnPage1.setOnClickListener {
             startActivity(Intent(this, LayoutPaywallActivity::class.java))
         }
 
         binding.btnPage2.setOnClickListener {
-            startActivity(Intent(this, LayoutPaywallActivity1::class.java))
+            val paywallDialog = LayoutPaywallActivity1(this)
+            paywallDialog.show()
+
+         //   startActivity(Intent(this, LayoutPaywallActivity1::class.java))
         }
 
         binding.btnPage3.setOnClickListener {
-            startActivity(Intent(this, LayoutPaywallActivity2::class.java))
+            val paywallDialog = LayoutPaywallActivity2(this)
+            paywallDialog.show()
+           // startActivity(Intent(this, LayoutPaywallActivity2::class.java))
         }
 
         binding.btnPage4.setOnClickListener {
@@ -40,8 +46,10 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
             startActivity(Intent(this, LayoutPaywallActivity4::class.java))
         }
 
+        // Trong Activity/Fragment của bạn
         binding.btnPage6.setOnClickListener {
-            startActivity(Intent(this, DialogBottomSheetActivity::class.java))
+            val bottomSheet = PaywallBottomSheetDialog()
+            bottomSheet.show(supportFragmentManager, "PaywallBottomSheet")
         }
 
         binding.btnPage7.setOnClickListener {

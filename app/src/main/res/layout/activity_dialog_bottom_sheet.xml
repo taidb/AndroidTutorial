@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".activity.designlayout.DialogBottomSheetActivity">
+  >
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -36,6 +36,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idClose"
                 android:layout_width="@dimen/_13sdp"
                 android:layout_height="@dimen/_13sdp"
                 android:src="@drawable/ic_cancel"
@@ -278,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:text="@string/auto_renew_cancel_anytime"
+                    android:text="@string/after_free_trial_ends_yearly_max"
                     android:textColor="@color/dark"
                     android:textSize="@dimen/_13sdp" />
 

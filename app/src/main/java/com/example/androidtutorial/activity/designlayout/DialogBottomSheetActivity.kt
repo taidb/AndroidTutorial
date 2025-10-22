@@ -5,119 +5,175 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.ProgressBar
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.androidtutorial.R
 import com.example.androidtutorial.databinding.ActivityDialogBottomSheetBinding
 
 class DialogBottomSheetActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDialogBottomSheetBinding
-    private var selectedPlan=1
+
+    private var binding: ActivityDialogBottomSheetBinding? = null
+    private var selectedPlan = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDialogBottomSheetBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
+
+        setupInitialState()
+        setupClickListeners()
+    }
+
+    private fun setupInitialState() {
         showTryForFreeLayout()
-        binding.btnIap1.setOnClickListener {
-            selectedPlan = 1
-            binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
-            binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
-            binding.tvMostPopular.backgroundTintList =
-                ContextCompat.getColorStateList(this, R.color.color_8147FF)
-        }
-        binding.btnIap2.setOnClickListener {
-            selectedPlan = 2
-            binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_no_pw_4_unselected)
-            binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
-            binding.tvMostPopular.backgroundTintList =
-                ContextCompat.getColorStateList(this, R.color.color_908DAC)
+    }
 
-        }
+    private fun setupClickListeners() {
+        binding?.idClose?.setOnClickListener { finish() }
 
-        binding.btnTryForFree.setOnClickListener {
-            if (selectedPlan == 1) {
-                // Ẩn layout và hiển thị progress
-                binding.linearLayout.visibility = View.INVISIBLE
-                binding.linearLayout1.visibility = View.INVISIBLE
-                binding.progress.visibility = View.VISIBLE
-                binding.progress.indeterminateTintList = ColorStateList.valueOf(
-                    ContextCompat.getColor(this, R.color.color_0F1E47C)
-                )
-                binding.progress1.visibility = View.VISIBLE
-                binding.progress1.indeterminateTintList = ColorStateList.valueOf(
-                    ContextCompat.getColor(this, R.color.color_0F1E47C)
-                )
+        binding?.btnIap1?.setOnClickListener { selectPlan(1) }
+        binding?.btnIap2?.setOnClickListener { selectPlan(2) }
 
-                handleButtonLoading(
-                    binding.btnTryForFree,
-                    binding.progress2,
-                    selectedPlan // Thêm tham số để biết plan nào đang được chọn
-                )
-            } else {
-                handleButtonLoading(binding.btnTryForFree, binding.progress2, selectedPlan)
-            }
+        binding?.btnTryForFree?.setOnClickListener {
+            handleTryForFreeClick()
         }
     }
 
-        private fun handleButtonLoading(
-            button: AppCompatTextView,
-            progress: View,
-            plan: Int = -1
-        ) {
-            button.text = ""
-            button.isEnabled = false
-            binding.txtAutoRenew.visibility = View.INVISIBLE
-            binding.txtNoPayment.visibility = View.INVISIBLE
-            binding.txtCancel.visibility = View.INVISIBLE
+    private fun selectPlan(plan: Int) {
+        selectedPlan = plan
 
-            button.backgroundTintList = ContextCompat.getColorStateList(this, R.color.color_5F5F5F)
-            progress.visibility = View.VISIBLE
+        when (plan) {
+            1 -> applyPlan1UI()
+            2 -> applyPlan2UI()
+        }
+    }
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                progress.visibility = View.GONE
+    private fun applyPlan1UI() {
+        binding?.apply {
+            btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
+            btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
+            tvMostPopular.backgroundTintList =
+                ContextCompat.getColorStateList(this@DialogBottomSheetActivity, R.color.color_8147FF)
+            txtAutoRenew.setText(getString(R.string.after_free_trial_ends_yearly_max))
+        }
+    }
 
-                if (plan == 1) {
-                    binding.linearLayout.visibility = View.VISIBLE
-                    binding.linearLayout1.visibility = View.VISIBLE
-                    binding.progress.visibility = View.GONE
-                    binding.progress1.visibility = View.GONE
-                }
+    private fun applyPlan2UI() {
+        binding?.apply {
+            btnIap2.setBackgroundResource(R.drawable.bg_btn_no_pw_4_unselected)
+            btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
+            tvMostPopular.backgroundTintList =
+                ContextCompat.getColorStateList(this@DialogBottomSheetActivity, R.color.color_908DAC)
+            txtAutoRenew.setText(getString(R.string.after_free_trial_ends_weekly))
+        }
+    }
 
-                button.isEnabled = true
-                button.text = getString(
-                    if (button.id == R.id.btnTryForFree) {
-                        R.string.try_for_free
-                    } else {
-                        R.string.continue1
-                    }
-                )
-                button.backgroundTintList =
-                    ContextCompat.getColorStateList(this, R.color.color_8147FF)
-
-                binding.txtAutoRenew.visibility = View.VISIBLE
-                binding.txtNoPayment.visibility = View.VISIBLE
-                binding.txtCancel.visibility = View.GONE
-            }, 2000)
+    private fun handleTryForFreeClick() {
+        if (selectedPlan == 1) {
+            showMainProgress(true)
         }
 
-    private fun showTryForFreeLayout() {
-        binding.frameLayout.visibility = View.VISIBLE
-        binding.frameLayout2.visibility = View.GONE
+        binding?.let {
+            handleButtonLoading(it.btnTryForFree, it.progress2, selectedPlan)
+        }
+    }
 
-        binding.txtNoPayment.visibility = View.VISIBLE
-        binding.txtCancel.visibility = View.GONE
+    private fun handleButtonLoading(
+        button: AppCompatTextView,
+        progress: View,
+        plan: Int
+    ) {
+        prepareButtonForLoading(button, progress)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            resetButtonAfterLoading(button, progress, plan)
+        }, 2000)
+    }
+
+    private fun prepareButtonForLoading(button: AppCompatTextView, progress: View) {
+        button.text = ""
+        button.isEnabled = false
+        button.backgroundTintList =
+            ContextCompat.getColorStateList(this, R.color.color_5F5F5F)
+        progress.visibility = View.VISIBLE
+
+        setTextGroupVisibility(false)
+    }
+
+    private fun resetButtonAfterLoading(
+        button: AppCompatTextView,
+        progress: View,
+        plan: Int
+    ) {
+        progress.visibility = View.GONE
+
+        if (plan == 1) showMainProgress(false)
+
+        button.apply {
+            isEnabled = true
+            text = getString(R.string.try_for_free)
+            backgroundTintList =
+                ContextCompat.getColorStateList(this@DialogBottomSheetActivity, R.color.color_8147FF)
+        }
+
+        setTextGroupVisibility(true)
+    }
+
+    private fun showMainProgress(show: Boolean) {
+        binding?.apply {
+            val visibilityMain = if (show) View.INVISIBLE else View.VISIBLE
+            val visibilityProgress = if (show) View.VISIBLE else View.GONE
+
+            linearLayout.visibility = visibilityMain
+            linearLayout1.visibility = visibilityMain
+
+            progress.visibility = visibilityProgress
+            progress1.visibility = visibilityProgress
+
+            val color = ContextCompat.getColor(this@DialogBottomSheetActivity, R.color.color_0F1E47C)
+            progress.indeterminateTintList = ColorStateList.valueOf(color)
+            progress1.indeterminateTintList = ColorStateList.valueOf(color)
+        }
+    }
+
+    private fun setTextGroupVisibility(show: Boolean) {
+        binding?.apply {
+            txtAutoRenew.visibility = if (show) View.VISIBLE else View.INVISIBLE
+            txtNoPayment.visibility = if (show) View.VISIBLE else View.INVISIBLE
+            txtCancel.visibility = if (show) View.GONE else View.INVISIBLE
+        }
+    }
+
+    private fun showTryForFreeLayout() {
+        binding?.apply {
+            frameLayout.visibility = View.VISIBLE
+            frameLayout2.visibility = View.GONE
+            txtNoPayment.visibility = View.VISIBLE
+            txtCancel.visibility = View.GONE
+        }
     }
 
     private fun showContinueLayout() {
-        binding.frameLayout.visibility = View.GONE
-        binding.frameLayout2.visibility = View.VISIBLE
+        binding?.apply {
+            frameLayout.visibility = View.GONE
+            frameLayout2.visibility = View.VISIBLE
+            txtNoPayment.visibility = View.GONE
+            txtCancel.visibility = View.VISIBLE
+        }
+    }
 
-        binding.txtNoPayment.visibility = View.GONE
-        binding.txtCancel.visibility = View.VISIBLE
+    // Public method để reset
+    fun resetToInitialState() {
+        selectedPlan = 1
+        showTryForFreeLayout()
+        selectPlan(1)
+        setTextGroupVisibility(true)
+        showMainProgress(false)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }

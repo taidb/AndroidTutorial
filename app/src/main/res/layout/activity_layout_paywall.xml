@@ -12,6 +12,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idClose"
                 android:layout_width="@dimen/_23sdp"
                 android:layout_height="@dimen/_23sdp"
                 android:layout_marginHorizontal="@dimen/_14sdp"
@@ -157,7 +158,7 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone"
-                        app:layout_constraintBottom_toTopOf="@+id/include_activity"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPrivacyPolicies"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtTitle">
@@ -235,15 +236,27 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnClaim" />
 
-                    <include
-                        android:id="@+id/include_activity"
-                        layout="@layout/activity_include"
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtPrivacyPolicies"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:alpha="0.9"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/funnelsansregular"
+                        android:gravity="center"
+                        android:lineHeight="@dimen/_12sdp"
+                        android:paddingVertical="@dimen/_4sdp"
+                        android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_9sdp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>

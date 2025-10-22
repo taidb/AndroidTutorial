@@ -51,7 +51,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_18sdp"
-                    android:layout_marginTop="@dimen/_17sdp"
                     android:layout_marginRight="@dimen/_17sdp"
                     app:layout_constraintWidth_percent="0.9">
 
@@ -59,7 +58,7 @@
                         android:id="@+id/txtTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="48dp"
+                        android:layout_marginTop="@dimen/_20sdp"
                         android:fontFamily="@font/funnelsanssemibold"
                         android:text="@string/Optimize_Storage_Get_Space"
                         android:textAlignment="center"

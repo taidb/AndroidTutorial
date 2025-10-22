@@ -4,6 +4,7 @@
     import android.os.Handler
     import android.os.Looper
     import android.view.View
+    import android.view.WindowManager
     import android.widget.Toast
     import androidx.appcompat.app.AppCompatActivity
     import com.example.androidtutorial.activity.util.SpannableHelper
@@ -17,7 +18,6 @@
             super.onCreate(savedInstanceState)
             binding = ActivityLayoutPaywallBinding.inflate(layoutInflater)
             setContentView(binding.root)
-
             binding.txtPriceOff.paintFlags = android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
             binding.txtTryAgain.paintFlags=android.graphics.Paint.UNDERLINE_TEXT_FLAG
 

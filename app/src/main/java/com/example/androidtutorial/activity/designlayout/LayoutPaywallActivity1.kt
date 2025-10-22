@@ -20,7 +20,7 @@ class LayoutPaywallActivity1 : AppCompatActivity() {
 
         SpannableHelper.setupTermsAndPrivacyText(
             this,
-            binding.includeActivity.txtPrivacyPolicies,
+            binding.txtPrivacyPolicies,
             onTermsClick = {
                 println("TERMS CLICKED IN ACTIVITY")
                 Toast.makeText(this, "Điều khoản dịch vụ", Toast.LENGTH_SHORT).show()
@@ -39,7 +39,7 @@ class LayoutPaywallActivity1 : AppCompatActivity() {
 
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.progress.visibility = View.GONE
-                binding.btnClaimOffer.visibility = View.GONE
+                binding.btnClaimOffer.visibility = View.INVISIBLE
                 binding.linearLayout2.visibility = View.VISIBLE
 
             }, 3000)

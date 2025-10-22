@@ -106,38 +106,36 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtFreeAnnouncement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginHorizontal="@dimen/_14sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@+id/idImage">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtFreeAnnouncement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_8sdp"
-            android:background="@drawable/bg_radius_8"
-            android:fontFamily="@font/funnelsanssemibold"
-            android:paddingHorizontal="@dimen/_15sdp"
-            android:paddingVertical="@dimen/_4sdp"
-            android:text="@string/try_3_day_for_free"
-            android:textAlignment="center"
-            android:textColor="@color/white_EAF5F8"
-            android:textSize="@dimen/_13sdp" />
-    </FrameLayout>
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/bg_radius_8"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fontFamily="@font/funnelsanssemibold"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_4sdp"
+        android:text="@string/try_3_day_for_free"
+        android:textAlignment="center"
+        android:textColor="@color/white_EAF5F8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idImage"
+        android:textSize="@dimen/_13sdp" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginVertical="@dimen/_16sdp"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/includeActivity"
+        app:layout_constraintBottom_toTopOf="@+id/txtPrivacyPolicies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idImage">
@@ -174,7 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_14sdp"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/button_gradient_purple"
         android:fontFamily="@font/funnelsansextrabold"
         android:gravity="center"
@@ -184,7 +182,7 @@
         android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFreeAnnouncement" />
 
     <ProgressBar
         android:id="@+id/progress"
@@ -198,15 +196,30 @@
         app:layout_constraintStart_toStartOf="@id/btnClaimOffer"
         app:layout_constraintTop_toTopOf="@id/btnClaimOffer" />
 
-    <include
-        android:id="@+id/includeActivity"
-        layout="@layout/activity_include"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtPrivacyPolicies"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:alpha="0.9"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/funnelsansregular"
+        android:gravity="center"
+        android:lineHeight="@dimen/_12sdp"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingVertical="@dimen/_4sdp"
+        android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnClaimOffer" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnClaimOffer"
+
+       />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

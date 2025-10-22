@@ -15,7 +15,6 @@
             android:id="@+id/idImage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:background="@color/color_FFF6E7"
             android:scaleType="centerCrop"
             android:src="@drawable/image_end"
@@ -98,7 +97,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvMostPopular">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvPrice1"
+                        android:id="@+id/txtPrice1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_bold"
@@ -109,7 +108,7 @@
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvDesPrice1"
+                        android:id="@+id/txtDesPrice1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_regular"
@@ -133,7 +132,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tvMostPopular">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvTime1"
+                        android:id="@+id/txtTime1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -147,7 +146,7 @@
                         app:autoSizeTextType="uniform" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvTime2"
+                        android:id="@+id/txtTime2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
@@ -190,7 +189,7 @@
                 app:layout_constraintTop_toBottomOf="@id/btnIap1">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvTime3"
+                    android:id="@+id/txtTime3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_12sdp"
@@ -220,11 +219,11 @@
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tvTime3"
+                    app:layout_constraintStart_toEndOf="@id/txtTime3"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvPrice"
+                        android:id="@+id/txtPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -238,7 +237,7 @@
                         app:autoSizeTextType="uniform" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvTime4"
+                        android:id="@+id/txtTime4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
@@ -358,7 +357,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:drawableStart="@drawable/security"
                     android:drawablePadding="@dimen/_6sdp"
                     android:fontFamily="@font/readexpro_regular"
@@ -374,7 +373,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:drawableStart="@drawable/security"
                     android:drawablePadding="@dimen/_6sdp"
                     android:visibility="gone"
@@ -389,7 +388,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:alpha="0.9"
                     android:lineHeight="@dimen/_12sdp"
                     android:fontFamily="@font/readexpro_regular"

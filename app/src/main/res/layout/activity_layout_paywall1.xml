@@ -121,23 +121,16 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_26sdp"
-            android:layout_marginBottom="@dimen/_26sdp"
             android:gravity="center"
             android:orientation="vertical"
+            android:layout_marginVertical="@dimen/_16sdp"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/includeActivity"
+            app:layout_constraintBottom_toTopOf="@+id/txtPrivacyPolicies"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idImage">
@@ -174,8 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_26sdp"
-            android:layout_marginBottom="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:background="@drawable/button_gradient_red"
             android:fontFamily="@font/funnelsansextrabold"
             android:gravity="center"
@@ -183,7 +175,6 @@
             android:text="@string/claim_offer"
             android:textColor="@color/white"
             android:textSize="@dimen/_15sdp"
-            app:layout_constraintBottom_toTopOf="@+id/includeActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idImage" />
@@ -200,15 +191,30 @@
             app:layout_constraintStart_toStartOf="@id/btnClaimOffer"
             app:layout_constraintTop_toTopOf="@id/btnClaimOffer" />
 
-        <include
-            android:id="@+id/includeActivity"
-            layout="@layout/activity_include"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtPrivacyPolicies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:alpha="0.9"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/funnelsansregular"
+            android:gravity="center"
+            android:lineHeight="@dimen/_12sdp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btnClaimOffer"
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-

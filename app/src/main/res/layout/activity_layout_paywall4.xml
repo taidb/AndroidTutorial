@@ -52,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idImage">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtAutoRenew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/readexpro_regular"
@@ -60,8 +61,15 @@
             android:textColor="@color/dark"
             android:textSize="@dimen/_13sdp" />
 
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            >
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnTryFree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
@@ -69,12 +77,53 @@
             android:backgroundTint="@color/black_0E111B"
             android:fontFamily="@font/readexpro_bold"
             android:paddingVertical="@dimen/_15sdp"
+            android:visibility="visible"
             android:text="@string/try_for_free"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_radius_12"
+            android:backgroundTint="@color/black_0E111B"
+            android:fontFamily="@font/readexpro_bold"
+            android:paddingVertical="@dimen/_15sdp"
+            android:visibility="gone"
+            android:text="@string/continue1"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/progress2"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone" />
+        </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"

@@ -20,7 +20,6 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
         binding = ActivityStudyLayoutPaywallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mỗi nút mở một Activity tương ứng
         binding.btnPage1.setOnClickListener {
             startActivity(Intent(this, LayoutPaywallActivity::class.java))
         }

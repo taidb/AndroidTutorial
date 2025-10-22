@@ -121,15 +121,23 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginBottom="@dimen/_26sdp"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/include_activity"
+            app:layout_constraintBottom_toTopOf="@+id/includeActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idImage">
@@ -148,6 +156,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTryAgain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -161,11 +170,12 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btn_ClaimOffer"
+            android:id="@+id/btnClaimOffer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginBottom="@dimen/_26sdp"
             android:background="@drawable/button_gradient_red"
             android:fontFamily="@font/funnelsansextrabold"
             android:gravity="center"
@@ -173,6 +183,7 @@
             android:text="@string/claim_offer"
             android:textColor="@color/white"
             android:textSize="@dimen/_15sdp"
+            app:layout_constraintBottom_toTopOf="@+id/includeActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idImage" />
@@ -184,21 +195,19 @@
             android:indeterminate="true"
             android:indeterminateTint="@color/white"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/btn_ClaimOffer"
-            app:layout_constraintEnd_toEndOf="@id/btn_ClaimOffer"
-            app:layout_constraintStart_toStartOf="@id/btn_ClaimOffer"
-            app:layout_constraintTop_toTopOf="@id/btn_ClaimOffer" />
+            app:layout_constraintBottom_toBottomOf="@id/btnClaimOffer"
+            app:layout_constraintEnd_toEndOf="@id/btnClaimOffer"
+            app:layout_constraintStart_toStartOf="@id/btnClaimOffer"
+            app:layout_constraintTop_toTopOf="@id/btnClaimOffer" />
 
         <include
-            android:id="@+id/include_activity"
+            android:id="@+id/includeActivity"
             layout="@layout/activity_include"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_ClaimOffer" />
-
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

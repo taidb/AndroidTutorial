@@ -3,7 +3,6 @@ package com.example.androidtutorial.activity.designlayout
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Spannable
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,7 @@ class LayoutPaywallActivity1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLayoutPaywall1Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.txtTryAgain.paintFlags=android.graphics.Paint.UNDERLINE_TEXT_FLAG
 
         SpannableHelper.setupTermsAndPrivacyText(
             this,
@@ -42,6 +41,7 @@ class LayoutPaywallActivity1 : AppCompatActivity() {
                 binding.progress.visibility = View.GONE
                 binding.btnClaimOffer.visibility = View.GONE
                 binding.linearLayout2.visibility = View.VISIBLE
+
             }, 3000)
         }
 

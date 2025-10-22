@@ -14,7 +14,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/_23sdp"
                 android:layout_height="@dimen/_23sdp"
-                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginHorizontal="@dimen/_14sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:src="@drawable/close_btn"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,12 +59,14 @@
                         android:id="@+id/txtTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="48dp"
                         android:fontFamily="@font/funnelsanssemibold"
                         android:text="@string/Optimize_Storage_Get_Space"
                         android:textAlignment="center"
                         android:textColor="@color/SUPER_LIGHT"
                         android:textSize="@dimen/_20sdp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +85,7 @@
                             android:id="@+id/txtPriceOff"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_6sdp"
+                            android:layout_marginHorizontal="@dimen/_6sdp"
                             android:alpha="0.6"
                             android:fontFamily="@font/funnelsanslight"
                             android:gravity="center"
@@ -175,6 +177,7 @@
                             android:textStyle="bold" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtTryAgain"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -228,7 +231,7 @@
                         android:text="@string/Billed_weekly_cancel_anytime."
                         android:textAlignment="center"
                         android:textColor="@color/SUPER_LIGHT"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_12sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnClaim" />

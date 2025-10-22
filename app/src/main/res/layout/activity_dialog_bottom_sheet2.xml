@@ -64,10 +64,9 @@
                 android:id="@+id/btnIap1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:background="@drawable/bg_btn_pw_4_selected"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtTitle">
 
@@ -104,21 +103,19 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_bold"
                         android:includeFontPadding="false"
+                        android:text="@string/yearly_plan"
                         android:textColor="@color/color_25104A"
                         android:textSize="@dimen/_19sdp"
-                        android:textStyle="bold"
-                        android:text="@string/yearly_plan"
-                    />
+                        android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvDesPrice1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_regular"
-                        android:textColor="@color/color_25104A"
-                        android:textSize="@dimen/_11sdp"
                         android:text="@string/only_0_412_per_week"
-                         />
+                        android:textColor="@color/color_25104A"
+                        android:textSize="@dimen/_11sdp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -166,6 +163,19 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                    android:layout_marginEnd="@dimen/_26sdp"
+                    android:visibility="gone" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -189,6 +199,7 @@
                     android:fontFamily="@font/readexpro_bold"
                     android:gravity="center_vertical"
                     android:maxLines="2"
+                    android:text="@string/weekly_plan"
                     android:textColor="@color/color_25104A"
                     android:textSize="@dimen/_15sdp"
                     app:autoSizeMaxTextSize="@dimen/_15sdp"
@@ -197,11 +208,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"
-                    android:text="@string/weekly_plan"
-                    />
+                    app:layout_constraintWidth_percent="0.5" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayout1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -243,12 +253,25 @@
                         app:autoSizeTextType="uniform" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <ProgressBar
+                    android:id="@+id/progress1"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout1"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout1"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+                    android:layout_marginEnd="@dimen/_26sdp"
+                    android:visibility="gone" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -257,40 +280,106 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnIap2">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAutoRenew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:text="@string/after_free_trial_ends"
+                    android:text="@string/auto_renew_cancel_anytime"
                     android:textColor="@color/dark"
                     android:textSize="@dimen/_13sdp" />
 
-
-                <androidx.appcompat.widget.AppCompatTextView
+                <FrameLayout
+                    android:id="@+id/frameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/bg_radius_12"
-                    android:backgroundTint="@color/color_8147FF"
-                    android:fontFamily="@font/readexpro_bold"
-                    android:paddingVertical="@dimen/_15sdp"
-                    android:text="@string/try_for_free"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_15sdp"
-                    android:textStyle="bold" />
+                    android:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnTryForFree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_radius_12"
+                        android:backgroundTint="@color/color_8147FF"
+                        android:fontFamily="@font/readexpro_bold"
+                        android:paddingVertical="@dimen/_15sdp"
+                        android:text="@string/try_for_free"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progress2"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnContinue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_radius_12"
+                        android:backgroundTint="@color/color_8147FF"
+                        android:fontFamily="@font/readexpro_bold"
+                        android:paddingVertical="@dimen/_15sdp"
+                        android:text="@string/continue1"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progress3"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="gone" />
+                </FrameLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvNoPayment"
+                    android:id="@+id/txtNoPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:drawableStart="@drawable/security"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:fontFamily="@font/readexpro_regular"
+                    android:text="@string/free_trial_ends_in"
+                    android:textColor="#00A073"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_13sdp"
                     android:drawableStart="@drawable/security"
                     android:drawablePadding="@dimen/_6sdp"
+                    android:visibility="gone"
                     android:fontFamily="@font/readexpro_regular"
-                    android:text="@string/free_trial_ends_in"
+                    android:text="@string/cacel_anytime"
                     android:textColor="#00A073"
                     android:textSize="@dimen/_12sdp"
                     app:layout_constraintEnd_toEndOf="parent"

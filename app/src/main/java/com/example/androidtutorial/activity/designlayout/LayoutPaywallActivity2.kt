@@ -15,9 +15,9 @@ class LayoutPaywallActivity2 : AppCompatActivity() {
     private lateinit var binding : ActivityLayoutPaywall2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding=ActivityLayoutPaywall2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.txtTryAgain.paintFlags=android.graphics.Paint.UNDERLINE_TEXT_FLAG
         SpannableHelper.setupTermsAndPrivacyText(
             this,
             binding.includeActivity.txtPrivacyPolicies,

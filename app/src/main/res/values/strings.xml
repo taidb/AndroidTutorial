@@ -91,8 +91,11 @@
     <string name="weekly">Weekly</string>
     <string name="shrink_size_keep_quality">SHRINK SIZE\nKEEP QUALITY</string>
     <string name="after_free_trial_ends">$14.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
+    <string name="auto_renew_cancel_anytime">Auto renew, Cancel anytime</string>
     <string name="free_trial_enabled">Free trial enabled</string>
+    <string name="enable_free_trial">Enabled free trial </string>
     <string name="try_for_free">TRY FOR FREE</string>
+    <string name="continue1">CONTINUE</string>
     <string name="high_quality_compression">high-quality\ncompression</string>
     <string name="smarter_storage_made_affordable">SMARTER STORAGE MADE\nAFFORDABLE</string>
     <string name="saved">Saved 92%</string>
@@ -101,6 +104,7 @@
     <string name="only_0_412_per_week">Only $0.412 per week</string>
     <string name="money_plan">$19.99/year</string>
     <string name="free_trial_ends_in">3-day free trial enabled</string>
+    <string name="cacel_anytime">cancel anytime</string>
 
 
 </resources>

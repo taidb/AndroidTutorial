@@ -12,10 +12,10 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/guidelineTop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,36 +86,34 @@
                     android:layout_marginVertical="@dimen/_12sdp"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:orientation="vertical"
-                    android:paddingEnd="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/btnIap1"
                     app:layout_constraintStart_toStartOf="@+id/btnIap1"
                     app:layout_constraintTop_toBottomOf="@+id/tvMostPopular">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvPrice1"
+                        android:id="@+id/txtPrice1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_bold"
                         android:includeFontPadding="false"
+                        android:text="@string/yearly_plan"
                         android:textColor="@color/color_25104A"
                         android:textSize="@dimen/_19sdp"
-                        android:textStyle="bold"
-                        android:text="@string/yearly_plan"
-                        />
+                        android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvDesPrice1"
+                        android:id="@+id/txtDesPrice1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_regular"
-                        android:textColor="@color/color_25104A"
-                        android:textSize="@dimen/_11sdp"
                         android:text="@string/only_0_412_per_week"
-                        />
+                        android:textColor="@color/color_25104A"
+                        android:textSize="@dimen/_11sdp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -128,7 +126,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tvMostPopular">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvTime1"
+                        android:id="@+id/txtTime1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -142,7 +140,7 @@
                         app:autoSizeTextType="uniform" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvTime2"
+                        android:id="@+id/txtTime2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
@@ -157,6 +155,19 @@
                         app:autoSizeTextType="uniform" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                    android:layout_marginEnd="@dimen/_26sdp"
+                    android:visibility="gone" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -172,7 +183,7 @@
                 app:layout_constraintTop_toBottomOf="@id/btnIap1">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvTime3"
+                    android:id="@+id/txtTime3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_12sdp"
@@ -181,6 +192,7 @@
                     android:fontFamily="@font/readexpro_bold"
                     android:gravity="center_vertical"
                     android:maxLines="2"
+                    android:text="@string/weekly_plan"
                     android:textColor="@color/color_25104A"
                     android:textSize="@dimen/_15sdp"
                     app:autoSizeMaxTextSize="@dimen/_15sdp"
@@ -189,11 +201,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"
-                    android:text="@string/weekly_plan"
-                    />
+                    app:layout_constraintWidth_percent="0.5" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayout1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -202,11 +213,11 @@
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tvTime3"
+                    app:layout_constraintStart_toEndOf="@id/txtTime3"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvPrice"
+                        android:id="@+id/txtPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -220,7 +231,7 @@
                         app:autoSizeTextType="uniform" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvTime4"
+                        android:id="@+id/txtTime4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
@@ -235,8 +246,22 @@
                         app:autoSizeTextType="uniform" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <ProgressBar
+                    android:id="@+id/progress1"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout1"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout1"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+                    android:layout_marginEnd="@dimen/_26sdp"
+                    android:visibility="gone" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -248,40 +273,106 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnIap2">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAutoRenew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:text="@string/after_free_trial_ends"
+                    android:text="@string/auto_renew_cancel_anytime"
                     android:textColor="@color/dark"
                     android:textSize="@dimen/_13sdp" />
 
-
-                <androidx.appcompat.widget.AppCompatTextView
+                <FrameLayout
+                    android:id="@+id/frameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/bg_radius_12"
-                    android:backgroundTint="@color/color_8147FF"
-                    android:fontFamily="@font/readexpro_bold"
-                    android:paddingVertical="@dimen/_15sdp"
-                    android:text="@string/try_for_free"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_15sdp"
-                    android:textStyle="bold" />
+                    android:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnTryForFree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_radius_12"
+                        android:backgroundTint="@color/color_8147FF"
+                        android:fontFamily="@font/readexpro_bold"
+                        android:paddingVertical="@dimen/_15sdp"
+                        android:text="@string/try_for_free"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progress2"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnContinue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_radius_12"
+                        android:backgroundTint="@color/color_8147FF"
+                        android:fontFamily="@font/readexpro_bold"
+                        android:paddingVertical="@dimen/_15sdp"
+                        android:text="@string/continue1"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progress3"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="gone" />
+                </FrameLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvNoPayment"
+                    android:id="@+id/txtNoPayment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_12sdp"
                     android:drawableStart="@drawable/security"
                     android:drawablePadding="@dimen/_6sdp"
                     android:fontFamily="@font/readexpro_regular"
+                    android:text="@string/free_trial_ends_in"
+                    android:textColor="#00A073"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_13sdp"
-                    android:text="@string/free_trial_ends_in"
+                    android:drawableStart="@drawable/security"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:visibility="gone"
+                    android:fontFamily="@font/readexpro_regular"
+                    android:text="@string/cacel_anytime"
                     android:textColor="#00A073"
                     android:textSize="@dimen/_12sdp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -291,12 +382,11 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_14sdp"
                     android:alpha="0.9"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:paddingVertical="@dimen/_7sdp"
                     android:lineHeight="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_7sdp"
                     android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"
                     android:textColor="@color/black_4D5A68"
                     android:textSize="@dimen/_9sdp" />

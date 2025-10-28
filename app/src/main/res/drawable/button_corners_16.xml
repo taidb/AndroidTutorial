@@ -7,5 +7,5 @@
         android:endColor="#544CEF"
         android:startColor="#6477FF" />
 
-    <corners android:radius="@dimen/_16sdp" />  <!-- bo tròn -->
+    <corners android:radius="@dimen/_12sdp" />  <!-- bo tròn -->
 </shape>

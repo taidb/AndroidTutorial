@@ -107,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_regular"
-                        android:text="@string/only_0_412_per_week"
+                        android:text="@string/only_price_per_week"
                         android:textColor="@color/color_25104A"
                         android:textSize="@dimen/_11sdp" />
 
@@ -297,12 +297,12 @@
                         android:background="@drawable/bg_radius_12"
                         android:backgroundTint="@color/color_8147FF"
                         android:fontFamily="@font/readexpro_bold"
-                        android:paddingVertical="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_11sdp"
                         android:text="@string/try_for_free"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 
                     <ProgressBar

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.androidtutorial"
+    namespace = "com.eco.musicplayer.audioplayer.music"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.androidtutorial.tai"
+        applicationId = "com.eco.musicplayer.audioplayer.music"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -61,5 +61,5 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.google.android.material:material:1.12.0")
-
+    implementation ("com.android.billingclient:billing:6.1.0")
 }

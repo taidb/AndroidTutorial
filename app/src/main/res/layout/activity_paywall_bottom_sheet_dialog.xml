@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true">
@@ -96,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readexpro_regular"
-                android:text="@string/only_0_412_per_week"
+                android:text="@string/only_price_per_week"
                 android:textColor="@color/color_25104A"
                 android:textSize="@dimen/_11sdp" />
 
@@ -284,12 +283,12 @@
                 android:background="@drawable/bg_radius_12"
                 android:backgroundTint="@color/color_8147FF"
                 android:fontFamily="@font/readexpro_bold"
-                android:paddingVertical="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_11sdp"
                 android:text="@string/try_for_free"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
 
             <ProgressBar
@@ -367,7 +366,7 @@
             android:alpha="0.9"
             android:fontFamily="@font/readexpro_regular"
             android:gravity="center"
-            android:lineHeight="@dimen/_12sdp"
+            android:lineSpacingExtra="@dimen/_1sdp"
             android:paddingVertical="@dimen/_7sdp"
             android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"
             android:textColor="@color/black_4D5A68"

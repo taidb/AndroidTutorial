@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_marginHorizontal="@dimen/_12sdp"
     android:layout_height="match_parent"
 >
-    <com.example.androidtutorial.activity.widget.StatusBarView
+    <com.eco.musicplayer.audioplayer.music.activity.widget.StatusBarView
         android:id="@+id/statusBarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingClass" />
       <androidx.appcompat.widget.AppCompatTextView
           android:id="@+id/idHighQuality"
           android:layout_width="match_parent"
@@ -131,7 +132,7 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:alpha="0.9"
             android:gravity="center"
-            android:lineHeight="@dimen/_12sdp"
+            android:lineSpacingExtra="@dimen/_1sdp"
             android:textSize="@dimen/_9sdp"
             android:fontFamily="@font/readexpro_regular"
             android:paddingVertical="@dimen/_7sdp"

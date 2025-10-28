@@ -5,34 +5,44 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/back_ground">
+        android:background="@drawable/back_ground"
+        android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+            <com.eco.musicplayer.audioplayer.music.activity.widget.StatusBarView
+                android:id="@+id/statusBarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/idClose"
                 android:layout_width="@dimen/_23sdp"
                 android:layout_height="@dimen/_23sdp"
-                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_14sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:src="@drawable/close_btn"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/statusBarView" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottie"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_minus24sdp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="360:520"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.95"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/compress_pw_50" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -51,8 +61,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_18sdp"
-                    android:layout_marginRight="@dimen/_17sdp"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_17sdp"
                     app:layout_constraintWidth_percent="0.9">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -63,7 +73,7 @@
                         android:fontFamily="@font/funnelsanssemibold"
                         android:text="@string/Optimize_Storage_Get_Space"
                         android:textAlignment="center"
-                        android:textColor="@color/SUPER_LIGHT"
+                        android:textColor="@color/super_light"
                         android:textSize="@dimen/_20sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -91,18 +101,21 @@
                             android:gravity="center"
                             android:text="@string/price_off"
                             android:textAlignment="center"
-                            android:textColor="@color/SUPER_LIGHT"
-                            android:textSize="@dimen/_19sdp"
+                            android:textColor="@color/super_light"
+                            android:textSize="@dimen/_14sdp"
                             android:textStyle="bold" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/idDiscount"
                             android:layout_width="@dimen/_69sdp"
                             android:layout_height="@dimen/_26sdp"
                             android:background="@drawable/cornered_gearbox_3"
-                            android:paddingHorizontal="@dimen/_6sdp"
-                            android:paddingVertical="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:paddingHorizontal="@dimen/_3sdp"
+                            android:paddingVertical="@dimen/_2sdp"
                             android:text="@string/discount"
-                            android:textSize="@dimen/_14sdp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -124,8 +137,8 @@
                             android:gravity="center"
                             android:text="@string/price"
                             android:textAlignment="center"
-                            android:textColor="@color/SUPER_LIGHT"
-                            android:textSize="@dimen/_49sdp"
+                            android:textColor="@color/super_light"
+                            android:textSize="@dimen/_28sdp"
                             android:textStyle="bold" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -135,8 +148,8 @@
                             android:gravity="center"
                             android:text="@string/week"
                             android:textAlignment="center"
-                            android:textColor="@color/SUPER_LIGHT"
-                            android:textSize="@dimen/_29sdp"
+                            android:textColor="@color/super_light"
+                            android:textSize="@dimen/_26sdp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -199,11 +212,11 @@
                         android:background="@drawable/button_corners_16"
                         android:fontFamily="@font/funnelsansextrabold"
                         android:gravity="center"
-                        android:visibility="visible"
                         android:paddingVertical="@dimen/_13sdp"
                         android:text="@string/claim_offer"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18sdp"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/linearLayout1" />
@@ -228,10 +241,10 @@
                         android:layout_marginTop="@dimen/_9sdp"
                         android:fontFamily="@font/funnelsansmedium"
                         android:gravity="center"
-                        android:text="@string/Billed_weekly_cancel_anytime."
+                        android:text="@string/billed_weekly_cancel_anytime"
                         android:textAlignment="center"
-                        android:textColor="@color/SUPER_LIGHT"
-                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/super_light"
+                        android:textSize="@dimen/_10sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnClaim" />
@@ -240,20 +253,20 @@
                         android:id="@+id/txtPrivacyPolicies"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:alpha="0.9"
                         android:layout_marginTop="@dimen/_8sdp"
+                        android:alpha="0.9"
                         android:clickable="true"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:fontFamily="@font/funnelsansregular"
                         android:gravity="center"
-                        android:lineHeight="@dimen/_12sdp"
+                        android:lineSpacingExtra="@dimen/_1sdp"
                         android:paddingVertical="@dimen/_4sdp"
                         android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_9sdp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="@dimen/_8sdp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtDescription"
 
                         />

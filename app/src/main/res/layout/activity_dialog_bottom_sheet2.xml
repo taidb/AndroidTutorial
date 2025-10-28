@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,9 +25,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/idClose"
-            android:layout_width="@dimen/_9sdp"
-            android:layout_height="@dimen/_9sdp"
-            android:layout_marginTop="@dimen/_14sdp"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_22sdp"
             android:layout_marginEnd="@dimen/_18sdp"
             android:src="@drawable/ic_cancel"
             app:layout_constraintEnd_toEndOf="@+id/idImage"
@@ -92,7 +91,6 @@
                     android:layout_marginVertical="@dimen/_12sdp"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:orientation="vertical"
-                    android:paddingEnd="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/btnIap1"
                     app:layout_constraintStart_toStartOf="@+id/btnIap1"
                     app:layout_constraintTop_toBottomOf="@+id/tvMostPopular">
@@ -113,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/readexpro_regular"
-                        android:text="@string/only_0_412_per_week"
+                        android:text="@string/only_price_per_week"
                         android:textColor="@color/color_25104A"
                         android:textSize="@dimen/_11sdp" />
 
@@ -141,9 +139,9 @@
                         android:maxLines="1"
                         android:text="$19.99"
                         android:textColor="@color/color_25104A"
-                        android:textSize="@dimen/_18sdp"
-                        app:autoSizeMaxTextSize="@dimen/_18sdp"
-                        app:autoSizeMinTextSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_12sdp"
+                        app:autoSizeMaxTextSize="@dimen/_15sdp"
+                        app:autoSizeMinTextSize="@dimen/_10sdp"
                         app:autoSizeTextType="uniform" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -232,9 +230,9 @@
                         android:maxLines="1"
                         android:text="$4.99"
                         android:textColor="@color/color_25104A"
-                        android:textSize="@dimen/_18sdp"
-                        app:autoSizeMaxTextSize="@dimen/_18sdp"
-                        app:autoSizeMinTextSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_12sdp"
+                        app:autoSizeMaxTextSize="@dimen/_15sdp"
+                        app:autoSizeMinTextSize="@dimen/_10sdp"
                         app:autoSizeTextType="uniform" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -245,7 +243,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/readexpro_regular"
                         android:maxLines="1"
-                        android:text="/year"
+                        android:text="/week"
                         android:textColor="@color/color_25104A"
                         android:textSize="@dimen/_13sdp"
                         app:autoSizeMaxTextSize="@dimen/_13sdp"
@@ -277,8 +275,10 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnIap2">
+                app:layout_constraintTop_toBottomOf="@+id/btnIap2"
+                app:layout_constraintVertical_bias="1.0">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtAutoRenew"
@@ -304,12 +304,12 @@
                         android:background="@drawable/bg_radius_12"
                         android:backgroundTint="@color/color_8147FF"
                         android:fontFamily="@font/readexpro_bold"
-                        android:paddingVertical="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_11sdp"
                         android:text="@string/try_for_free"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -336,12 +336,12 @@
                         android:background="@drawable/bg_radius_12"
                         android:backgroundTint="@color/color_8147FF"
                         android:fontFamily="@font/readexpro_bold"
-                        android:paddingVertical="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_11sdp"
                         android:text="@string/continue1"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -394,7 +394,7 @@
                     android:alpha="0.9"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:lineHeight="@dimen/_12sdp"
+                    android:lineSpacingExtra="@dimen/_1sdp"
                     android:paddingVertical="@dimen/_7sdp"
                     android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"
                     android:textColor="@color/black_4D5A68"

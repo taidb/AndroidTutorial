@@ -5,6 +5,10 @@
 
     <string name="name_app">S2Note</string>
     <string name="trang1">Trang 1</string>
+    <string name="trang4_1">Trang 4</string>
+    <string name="trang5_1">Trang 5</string>
+    <string name="trang6">Trang 6</string>
+    <string name="trang7">Trang 7</string>
     <string name="trang3">Trang 3</string>
     <string name="trang4">Viewmodel</string>
     <string name="trang5">Permission</string>
@@ -55,12 +59,13 @@
     <string name="score">50</string>
     <string name="Pro">Pro</string>
     <string name="Optimize_Storage_Get_Space">Optimize Storage, Get Space</string>
-    <string name="price_off">$8.99/week</string>
-    <string name="price">$3.99</string>
+    <string name="price_off">%1$s/week</string>
+    <string name="price">%1$s</string>
     <string name="we_couldnt_load_the_infomation">We couldn’t load the infomation</string>
     <string name="try_again">Try again</string>
     <string name="week">/week</string>
-    <string name="discount">OFF 50%</string>
+    <string name="year">/year</string>
+    <string name="discount">OFF %1$d%%</string>
     <string name="percent">30%</string>
     <string name="off">OFF</string>
 
@@ -83,7 +88,7 @@
 </string>
 
 
-    <string name="Billed_weekly_cancel_anytime.">$3.99 for first week then $8.99 next week.
+    <string name="billed_weekly_cancel_anytime"> %1$s for first week then %2$s next week.
     \nBilled weekly, cancel anytime.</string>
     <string name="try_3_day_for_free">Try 3 days for FREE, then 8.99$ per week. Auto renew, cancel anytime</string>
     <string name="faster_compress_made_simple">Faster compress made simple</string>
@@ -91,10 +96,10 @@
     <string name="weekly">Weekly</string>
     <string name="shrink_size_keep_quality">SHRINK SIZE\nKEEP QUALITY</string>
     <string name="after_free_trial_ends_yearly">$14.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
-    <string name="after_free_trial_ends_yearly_max">$19.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
-    <string name="after_free_trial_ends_weekly">$4.99/weekly after free trial ends.\nAuto renew, Cancel anytime</string>
-    <string name="year_enable">$14.99/year.\nAuto renew, Cancel anytime</string>
-    <string name="weekly_enable">$4.99/weekly.\nAuto renew, Cancel anytime</string>
+    <string name="after_free_trial_ends_yearly_max">%1$s/year after free trial ends.\nAuto renew, Cancel anytime</string>
+    <string name="after_free_trial_ends_weekly">%1$s/weekly.\nAuto renew, Cancel anytime</string>
+    <string name="year_enable">14.99/year.\nAuto renew, Cancel anytime</string>
+    <string name="weekly_enable">4.99/weekly.\nAuto renew, Cancel anytime</string>
     <string name="auto_renew_cancel_anytime">Auto renew, Cancel anytime</string>
     <string name="free_trial_enabled">Free trial enabled</string>
     <string name="enable_free_trial">Enabled free trial </string>
@@ -105,8 +110,10 @@
     <string name="saved">Saved 92%</string>
     <string name="yearly_plan">Yearly Plan</string>
     <string name="weekly_plan">Weekly Plan</string>
-    <string name="only_0_412_per_week">Only $0.412 per week</string>
+    <string name="only_price_per_week">Only %1$s per week</string>
     <string name="money_plan">$19.99/year</string>
+    <string name="price_year">$19.99</string>
+    <string name="price_week">$4.99</string>
     <string name="free_trial_ends_in">3-day free trial enabled</string>
     <string name="cacel_anytime">cancel anytime</string>
 

@@ -14,11 +14,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.androidtutorial.activity.widget.StatusBarView
+            <com.eco.musicplayer.audioplayer.music.activity.widget.StatusBarView
                 android:id="@+id/statusBarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingClass" />
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -27,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_subscription_package"
                 android:orientation="horizontal"
-                android:padding="@dimen/_5sdp"
+                android:padding="@dimen/_4sdp"
                 app:layout_constraintDimensionRatio="220:34"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +40,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corners_6"
                     android:fontFamily="@font/readexpro_regular"
-                    android:paddingHorizontal="@dimen/_20sdp"
-                    android:paddingVertical="@dimen/_2sdp"
+                    android:paddingHorizontal="@dimen/_21sdp"
+                    android:paddingVertical="@dimen/_3sdp"
                     android:text="@string/yearly"
                     android:textAlignment="center"
                     android:textColor="@color/dark"
@@ -50,7 +51,7 @@
                     android:id="@+id/idWeekly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/readexpro_regular"
                     android:paddingHorizontal="@dimen/_20sdp"
                     android:paddingVertical="@dimen/_2sdp"
@@ -245,7 +246,7 @@
                     android:alpha="0.9"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
-                    android:lineHeight="@dimen/_12sdp"
+                    android:lineSpacingExtra="@dimen/_1sdp"
                     android:paddingHorizontal="@dimen/_14sdp"
                     android:paddingVertical="@dimen/_7sdp"
                     android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"

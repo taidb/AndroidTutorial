@@ -8,7 +8,7 @@
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-
+     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- quyền chụp ảnh và lưu trữ ảnh trong bộ nhớ trong -->
@@ -20,7 +20,8 @@
         android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"
+        android:requiredFeature="true"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -39,20 +40,20 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".activity.designlayout.DialogBottomSheetActivity2"
+            android:name=".activity.designlayout.DialogBottomSheet2"
             android:exported="false" />
         <activity
-            android:name=".activity.designlayout.DialogBottomSheetActivity"
+            android:name=".activity.designlayout.DialogBottomSheet"
             android:exported="false" />
         <activity
-            android:name=".activity.designlayout.LayoutPaywallActivity"
+            android:name=".activity.designlayout.PaywallActivity"
             android:exported="false" />
 
         <activity
-            android:name=".activity.designlayout.LayoutPaywallActivity3"
+            android:name=".activity.designlayout.PaywallActivity3"
             android:exported="false" />
         <activity
-            android:name=".activity.designlayout.LayoutPaywallActivity4"
+            android:name=".activity.designlayout.PaywallActivity4"
             android:exported="false" />
         <activity
             android:name=".activity.layout.S2NotesActivity"
@@ -66,10 +67,7 @@
         <activity
             android:name=".activity.activity.permission.PermissionActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.activity.launchmodel.HomeActivity"
-            android:exported="false"
-            android:launchMode="singleTask" />
+
         <activity
             android:name=".activity.activity.launchmodel.SplashActivity"
             android:exported="false"
@@ -89,8 +87,9 @@
             android:name=".activity.activity.TestIntent"
             android:exported="false" /> <!-- nhận dữ liêu từ app khác truyền vào -->
         <activity
-            android:name=".activity.activity.MainActivity2"
-            android:exported="true">
+            android:name=".activity.activity.launchmodel.HomeActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -100,7 +99,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.designlayout.StudyLayoutPaywallActivity"
+
+            android:name=".activity.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

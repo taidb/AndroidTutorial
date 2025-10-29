@@ -2,6 +2,7 @@ package com.eco.musicplayer.audioplayer.music.activity.util
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
@@ -23,7 +24,6 @@ object SpannableHelper {
         try {
             val fullText = context.getString(R.string.by_continuing_you_agree_to_our_terms_and_privacy_policies)
 
-            println("FULL TEXT: $fullText")
 
             val spannable = SpannableString(fullText)
 
@@ -47,6 +47,7 @@ object SpannableHelper {
                         super.updateDrawState(ds)
                         ds.isUnderlineText = true
                         ds.color = Color.WHITE
+                        ds.typeface=Typeface.create(ds.typeface, Typeface.BOLD)
                     }
                 }
                 spannable.setSpan(termsSpan, termsStart, termsEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

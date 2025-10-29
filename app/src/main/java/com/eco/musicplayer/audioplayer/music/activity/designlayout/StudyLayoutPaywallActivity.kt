@@ -22,28 +22,28 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
 
 
         binding.btnPage1.setOnClickListener {
-            startActivity(Intent(this, LayoutPaywallActivity::class.java))
+            startActivity(Intent(this, PaywallActivity::class.java))
         }
 
         binding.btnPage2.setOnClickListener {
-            val paywallDialog = LayoutPaywallActivity1(this)
+            val paywallDialog = PaywallActivity1(this)
             paywallDialog.show()
 
          //   startActivity(Intent(this, LayoutPaywallActivity1::class.java))
         }
 
         binding.btnPage3.setOnClickListener {
-            val paywallDialog = LayoutPaywallActivity2(this)
+            val paywallDialog = PaywallActivity2(this)
             paywallDialog.show()
            // startActivity(Intent(this, LayoutPaywallActivity2::class.java))
         }
 
         binding.btnPage4.setOnClickListener {
-            startActivity(Intent(this, LayoutPaywallActivity3::class.java))
+            startActivity(Intent(this, PaywallActivity3::class.java))
         }
 
         binding.btnPage5.setOnClickListener {
-            startActivity(Intent(this, LayoutPaywallActivity4::class.java))
+            startActivity(Intent(this, PaywallActivity4::class.java))
         }
 
         // Trong Activity/Fragment của bạn
@@ -53,7 +53,7 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
         }
 
         binding.btnPage7.setOnClickListener {
-            startActivity(Intent(this, DialogBottomSheetActivity2::class.java))
+            startActivity(Intent(this, DialogBottomSheet2::class.java))
         }
     }
 }

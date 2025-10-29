@@ -90,7 +90,7 @@
 
     <string name="billed_weekly_cancel_anytime"> %1$s for first week then %2$s next week.
     \nBilled weekly, cancel anytime.</string>
-    <string name="try_3_day_for_free">Try 3 days for FREE, then 8.99$ per week. Auto renew, cancel anytime</string>
+    <string name="try_3_day_for_free">Try 3 days for FREE, then 8.99$ per week.\nAuto renew, cancel anytime</string>
     <string name="faster_compress_made_simple">Faster compress made simple</string>
     <string name="yearly">Yearly</string>
     <string name="weekly">Weekly</string>

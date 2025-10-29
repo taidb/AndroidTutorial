@@ -5,9 +5,9 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/color_F0F7FF"
         android:fillViewport="true"
-        tools:context=".activity.designlayout.LayoutPaywallActivity3">
+        tools:context=".activity.designlayout.PaywallActivity3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"
@@ -19,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/color_F0F7FF"
                 tools:ignore="MissingClass" />
 
 
@@ -45,7 +46,7 @@
                     android:text="@string/yearly"
                     android:textAlignment="center"
                     android:textColor="@color/dark"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_10sdp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/idWeekly"
@@ -58,16 +59,17 @@
                     android:text="@string/weekly"
                     android:textAlignment="center"
                     android:textColor="@color/white_EAF5F8"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_10sdp"  />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/idClose"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
+                android:id="@+id/icClose"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="end"
+                android:padding="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:background="@drawable/ic_cancel"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -78,7 +80,7 @@
                 android:id="@+id/txtShrinkSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:fontFamily="@font/readexpro_bold"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -87,7 +89,7 @@
                 android:text="@string/shrink_size_keep_quality"
                 android:textAllCaps="true"
                 android:textColor="@color/dark"
-                android:textSize="@dimen/_27sdp"
+                android:textSize="@dimen/_20sdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,24 +99,21 @@
                 android:id="@+id/imageMiddle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_22sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:src="@drawable/hero_banner"
                 app:layout_constraintDimensionRatio="360:284"
                 app:layout_constraintTop_toBottomOf="@+id/txtShrinkSize" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_18sdp"
-                android:layout_marginTop="@dimen/_18sdp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="320:308"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageMiddle"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintTop_toBottomOf="@+id/imageMiddle">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtAutoRenew"
@@ -124,13 +123,13 @@
                     android:gravity="center"
                     android:text="@string/after_free_trial_ends_yearly"
                     android:textColor="@color/dark"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_10sdp" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/bg_radius_12"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -144,8 +143,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/readexpro_regular"
                         android:text="@string/free_trial_enabled"
+                        android:padding="@dimen/_12sdp"
                         android:textColor="@color/dark"
-                        android:textSize="@dimen/_13sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:visibility="visible" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -153,11 +153,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:visibility="gone"
                         android:fontFamily="@font/readexpro_regular"
                         android:text="@string/enable_free_trial"
+                        android:padding="@dimen/_12sdp"
                         android:textColor="@color/dark"
-                        android:textSize="@dimen/_13sdp" />
+                        android:textSize="@dimen/_10sdp"
+                        android:visibility="gone" />
 
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -187,12 +188,12 @@
                         android:background="@drawable/bg_radius_12"
                         android:backgroundTint="@color/dark"
                         android:fontFamily="@font/readexpro_bold"
-                        android:paddingVertical="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_14sdp"
                         android:text="@string/try_for_free"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -220,12 +221,12 @@
                         android:background="@drawable/bg_radius_12"
                         android:backgroundTint="@color/dark"
                         android:fontFamily="@font/readexpro_bold"
-                        android:paddingVertical="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_14sdp"
                         android:text="@string/continue1"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
                         android:textStyle="bold" />
 
                     <ProgressBar

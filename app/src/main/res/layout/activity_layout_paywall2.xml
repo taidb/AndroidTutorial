@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_80000000"
-    tools:context=".activity.designlayout.LayoutPaywallActivity2">
+    tools:context=".activity.designlayout.PaywallActivity2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -20,15 +19,18 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingClass" />
+
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/idClose"
-            android:layout_width="@dimen/_23sdp"
-            android:layout_height="@dimen/_23sdp"
-            android:layout_marginStart="@dimen/_15sdp"
+            android:id="@+id/icClose"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_6sdp"
+            android:padding="@dimen/_4sdp"
             android:src="@drawable/close_btn_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statusBarView" />
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/idImage"
@@ -40,14 +42,14 @@
             app:layout_constraintDimensionRatio="320:380"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idClose" />
+            app:layout_constraintTop_toBottomOf="@+id/icClose" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_38sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/idImage"
+            app:layout_constraintTop_toBottomOf="@+id/idImage"
             app:layout_constraintEnd_toEndOf="@+id/idImage"
             app:layout_constraintStart_toStartOf="@+id/idImage"
             app:layout_constraintTop_toTopOf="@+id/idImage">
@@ -55,9 +57,10 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/txtLogo"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo_vecto"
-                app:layout_constraintDimensionRatio="300:32"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo_app"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="160:32"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -65,63 +68,56 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtAdditional"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_13sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:gravity="center"
                 android:text="@string/faster_compress_made_simple"
                 android:textColor="@color/white_EAF5F8"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtLogo" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout1"
-                android:layout_width="wrap_content"
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPercent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/funnelsansextrabold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.02"
+                android:shadowColor="#80000000"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="6"
+                android:text="@string/percent"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:textSize="@dimen/_86sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtAdditional">
+                app:layout_constraintTop_toBottomOf="@+id/txtAdditional" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtPercent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/funnelsansextrabold"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="0.02"
-                    android:shadowColor="#80000000"
-                    android:shadowDx="0"
-                    android:shadowDy="4"
-                    android:shadowRadius="6"
-                    android:text="@string/percent"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_80sdp"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtOff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/funnelsansextrabold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.03"
+                android:shadowColor="#80000000"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="6"
+                android:text="@string/off"
+                android:textColor="#FFFFFFFF"
+                android:textSize="@dimen/_46sdp"
+                app:layout_constraintEnd_toEndOf="@+id/txtPercent"
+                app:layout_constraintStart_toStartOf="@+id/txtPercent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPercent" />
 
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtOff"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/funnelsansextrabold"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="0.03"
-                    android:shadowColor="#80000000"
-                    android:shadowDx="0"
-                    android:shadowDy="4"
-                    android:shadowRadius="6"
-                    android:text="@string/off"
-                    android:textColor="#FFFFFFFF"
-                    android:textSize="@dimen/_48sdp"
-                    app:layout_constraintEnd_toEndOf="@+id/txtPercent"
-                    app:layout_constraintStart_toStartOf="@+id/txtPercent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPercent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -133,16 +129,15 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/bg_radius_8"
             android:fontFamily="@font/funnelsanssemibold"
             android:gravity="center"
             android:paddingHorizontal="@dimen/_20sdp"
-            android:paddingVertical="@dimen/_4sdp"
+            android:paddingVertical="@dimen/_6sdp"
             android:text="@string/try_3_day_for_free"
             android:textAlignment="center"
             android:textColor="@color/white_EAF5F8"
-            android:textSize="@dimen/_13sdp"
+            android:textSize="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idImage" />
@@ -192,15 +187,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/button_gradient_purple"
             android:fontFamily="@font/funnelsansextrabold"
             android:gravity="center"
-            android:paddingVertical="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_12sdp"
             android:text="@string/claim_offer"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtFreeAnnouncement" />
 
@@ -233,7 +229,7 @@
             android:paddingVertical="@dimen/_4sdp"
             android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies"
             android:textColor="@color/white"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_7sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnClaimOffer"

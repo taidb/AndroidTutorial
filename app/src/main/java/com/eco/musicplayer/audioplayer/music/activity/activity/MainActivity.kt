@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             val imageBitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                result.data?.extras?.getParcelable("data2", Bitmap::class.java)
+                result.data?.extras?.getParcelable("data", Bitmap::class.java)
             } else {
                 TODO("VERSION.SDK_INT < TIRAMISU")
             }
@@ -260,7 +260,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+//evenmust
     private fun setupDialogFragment() {
         binding.btnDialogFragment.setOnClickListener {
             val dialogFragment = StartDialogFragment()

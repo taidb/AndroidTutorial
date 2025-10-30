@@ -3,12 +3,18 @@ package com.eco.musicplayer.audioplayer.music.activity.billing
 import android.app.Activity
 import android.content.Context
 import com.android.billingclient.api.*
+import com.eco.musicplayer.audioplayer.music.activity.remoteconfig.InAppProduct
 
 
 class BillingManager(private val context: Context) {
 
     private lateinit var billingClient: BillingClient
     private var productDetailsList: List<ProductDetails> = emptyList()
+    private var remoteProducts :List<InAppProduct> = emptyList()
+
+    fun setRemoteConfigProducts(products:List<InAppProduct>){
+        this.remoteProducts=products
+    }
 
     fun initializeBilling(callback: BillingCallback) {
         billingClient = BillingClient.newBuilder(context)
@@ -32,24 +38,35 @@ class BillingManager(private val context: Context) {
 
 
     private fun queryProducts(callback: BillingCallback) {
-        val productList = listOf(
+//        val productList = listOf(
+//            QueryProductDetailsParams.Product.newBuilder()
+//                .setProductId("free_123")
+//                .setProductType(BillingClient.ProductType.SUBS)
+//                .build(),
+//            QueryProductDetailsParams.Product.newBuilder()
+//                .setProductId("test1")
+//                .setProductType(BillingClient.ProductType.SUBS)
+//                .build(),
+//            QueryProductDetailsParams.Product.newBuilder()
+//                .setProductId("test2")
+//                .setProductType(BillingClient.ProductType.SUBS)
+//                .build(),
+//            QueryProductDetailsParams.Product.newBuilder()
+//                .setProductId("test3")
+//                .setProductType(BillingClient.ProductType.SUBS)
+//                .build()
+//        )
+        val productList = remoteProducts.map { remoteProduct ->
             QueryProductDetailsParams.Product.newBuilder()
-                .setProductId("free_123")
-                .setProductType(BillingClient.ProductType.SUBS)
-                .build(),
-            QueryProductDetailsParams.Product.newBuilder()
-                .setProductId("test1")
-                .setProductType(BillingClient.ProductType.SUBS)
-                .build(),
-            QueryProductDetailsParams.Product.newBuilder()
-                .setProductId("test2")
-                .setProductType(BillingClient.ProductType.SUBS)
-                .build(),
-            QueryProductDetailsParams.Product.newBuilder()
-                .setProductId("test3")
+                .setProductId(remoteProduct.productId ?: "")
                 .setProductType(BillingClient.ProductType.SUBS)
                 .build()
-        )
+        }
+
+        if (productList.isEmpty()) {
+            callback.onError("No products configured")
+            return
+        }
 
         val params = QueryProductDetailsParams.newBuilder()
             .setProductList(productList)
@@ -61,7 +78,7 @@ class BillingManager(private val context: Context) {
                 this.productDetailsList = productDetailsList
                 productDetailsList.forEach { product ->
                     product.subscriptionOfferDetails?.forEach { offer ->
-                        offer.pricingPhases.pricingPhaseList.forEachIndexed { index, phase ->
+                        offer.pricingPhases.pricingPhaseList.forEachIndexed { _, _ ->
                         }
                     }
                 }
@@ -73,7 +90,7 @@ class BillingManager(private val context: Context) {
         }
     }
 
-    private val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
+    private val purchasesUpdatedListener = PurchasesUpdatedListener { _, _ ->
 
     }
 
@@ -95,5 +112,34 @@ class BillingManager(private val context: Context) {
             .build()
 
         billingClient.launchBillingFlow(activity, billingFlowParams)
+    }
+    fun getOfferTokenForProduct(productId: String, productDetails: ProductDetails): String {
+        val remoteProduct = remoteProducts.find { it.productId == productId }
+        val offerId = remoteProduct?.offerId
+
+        if (!offerId.isNullOrEmpty()) {
+            productDetails.subscriptionOfferDetails?.forEach { offer ->
+                if (offer.offerId == offerId) {
+                    return offer.offerToken
+                }
+            }
+        }
+
+        // Fallback
+        return getBasePlanOfferToken(productDetails)
+    }
+     fun getBasePlanOfferToken(productDetails: ProductDetails): String {
+        val subscriptionOfferDetails = productDetails.subscriptionOfferDetails
+        if (subscriptionOfferDetails.isNullOrEmpty()) return ""
+
+        subscriptionOfferDetails.forEach { offer ->
+            offer.pricingPhases.pricingPhaseList.forEach { phase ->
+                if (phase.priceAmountMicros > 0L) {
+                    return offer.offerToken
+                }
+            }
+        }
+
+        return subscriptionOfferDetails.firstOrNull()?.offerToken ?: ""
     }
 }

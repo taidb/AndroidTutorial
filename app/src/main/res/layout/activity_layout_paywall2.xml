@@ -27,7 +27,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:padding="@dimen/_4sdp"
-            android:src="@drawable/close_btn_1"
+            android:src="@drawable/btn_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statusBarView" />
 

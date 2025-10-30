@@ -86,21 +86,11 @@
         <activity
             android:name=".activity.activity.TestIntent"
             android:exported="false" /> <!-- nhận dữ liêu từ app khác truyền vào -->
-        <activity
-            android:name=".activity.activity.launchmodel.HomeActivity"
-            android:exported="false"
-            android:launchMode="singleTask" />
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="image/*" />
-            </intent-filter>
-        </activity>
         <activity
 
-            android:name=".activity.activity.MainActivity"
+            android:name=".activity.designlayout.StudyLayoutPaywallActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,6 +18,9 @@ import com.android.billingclient.api.ProductDetails
 import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.activity.billing.BillingCallback
 import com.eco.musicplayer.audioplayer.music.activity.billing.BillingManager
+import com.eco.musicplayer.audioplayer.music.activity.remoteconfig.InAppProduct
+import com.eco.musicplayer.audioplayer.music.activity.remoteconfig.PaywallConfig
+import com.eco.musicplayer.audioplayer.music.activity.remoteconfig.RemoteConfig
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityDialogBottomSheet2Binding
 
 class DialogBottomSheet2 : AppCompatActivity() {
@@ -25,10 +28,9 @@ class DialogBottomSheet2 : AppCompatActivity() {
     private var selectedPlan = 1
     private lateinit var billingManager: BillingManager
     val TAG = "BillingOffers"
-    private val planProductMap = mapOf(
-        1 to "free_123",
-        2 to "test1"
-    )
+    private lateinit var remoteConfig: RemoteConfig
+    private var paywallConfig: PaywallConfig? = null
+    private val planProductMap = mutableMapOf<Int, String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
         setContentView(binding.root)
 
         setupWindow()
-        initializeBilling()
+        initializeRemoteConfig()
         //setupInitialLayout()
         setupListeners()
     }
@@ -60,8 +62,35 @@ class DialogBottomSheet2 : AppCompatActivity() {
         }
     }
 
+    private fun initializeRemoteConfig() {
+        remoteConfig = RemoteConfig()
+        remoteConfig.fetchAndActivate {
+            paywallConfig = remoteConfig.getPaywallConfig()
+            paywallConfig?.let { config ->
+                updatePlanMapping(config.products)
+                initializeBilling()
+            }
+        }
+    }
+
+    private fun updatePlanMapping(products: List<InAppProduct>?) {
+        products?.let { productList ->
+            productList.forEachIndexed { index, product ->
+                planProductMap[index + 1] = product.productId ?: ""
+            }
+        }
+
+        if (planProductMap.isEmpty()) {
+            planProductMap[1] = "test1"
+            planProductMap[2] = "free_123"
+        }
+    }
+
     private fun initializeBilling() {
         billingManager = BillingManager(this)
+        paywallConfig?.products?.let { products ->
+            billingManager.setRemoteConfigProducts(products)
+        }
         billingManager.initializeBilling(object : BillingCallback {
             override fun onProductsLoaded(products: List<ProductDetails>) {
                 val test1Product = products.find { it.productId == "test1" }
@@ -121,7 +150,8 @@ class DialogBottomSheet2 : AppCompatActivity() {
                 }
                 runOnUiThread {
                     updateUIWithProductDetails(products)
-                    selectPlan(1)
+                    val selectionPosition = paywallConfig?.selectionPosition ?: 1
+                    selectPlan(selectionPosition)
                 }
             }
 
@@ -136,14 +166,9 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
     private fun updateUIWithProductDetails(products: List<ProductDetails>) {
         products.forEach { productDetails ->
-            productDetails.subscriptionOfferDetails?.forEach { offer ->
-
-            }
-
             when (productDetails.productId) {
-                "test1" -> updateYearlyPlanUI(productDetails)
-                "free_123" -> updateWeeklyPlanUI(productDetails)
-
+                planProductMap[2] -> updateYearlyPlanUI(productDetails)
+                planProductMap[1] -> updateWeeklyPlanUI(productDetails)
             }
         }
     }
@@ -266,7 +291,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
     private fun setDefaultPrices() {
         binding.txtTime1.text =getString(R.string.price_year)
-        binding.txtPrice.text = getString(R.string.week)
+        binding.txtPrice.text = getString(R.string.price_week)
         binding.txtDesPrice1.text =getString(R.string.only_price_per_week, "$4.99")
 
     }
@@ -326,7 +351,8 @@ class DialogBottomSheet2 : AppCompatActivity() {
             productId?.let {
                 val productDetails = billingManager.getProductDetails(it)
                 productDetails?.let { details ->
-                    val offerToken = getOfferTokenForFreeTrial(details)
+                    // Sử dụng offer token từ remote config
+                    val offerToken = billingManager.getOfferTokenForProduct(it, details)
                     billingManager.launchBillingFlow(this, details, offerToken)
                 }
             }
@@ -340,41 +366,14 @@ class DialogBottomSheet2 : AppCompatActivity() {
         productId?.let {
             val productDetails = billingManager.getProductDetails(it)
             productDetails?.let { details ->
-                val offerToken = getBasePlanOfferToken(details)
+                val offerToken =billingManager.getBasePlanOfferToken(details)
                 billingManager.launchBillingFlow(this, details, offerToken)
             }
         }
     }
 
-    private fun getOfferTokenForFreeTrial(productDetails: ProductDetails): String {
-        val subscriptionOfferDetails = productDetails.subscriptionOfferDetails
-        if (subscriptionOfferDetails.isNullOrEmpty()) return ""
 
-        subscriptionOfferDetails.forEach { offer ->
-            offer.pricingPhases.pricingPhaseList.forEach { phase ->
-                if (phase.priceAmountMicros == 0L) {
-                    return offer.offerToken
-                }
-            }
-        }
 
-        return getBasePlanOfferToken(productDetails)
-    }
-
-    private fun getBasePlanOfferToken(productDetails: ProductDetails): String {
-        val subscriptionOfferDetails = productDetails.subscriptionOfferDetails
-        if (subscriptionOfferDetails.isNullOrEmpty()) return ""
-
-        subscriptionOfferDetails.forEach { offer ->
-            offer.pricingPhases.pricingPhaseList.forEach { phase ->
-                if (phase.priceAmountMicros > 0L) {
-                    return offer.offerToken
-                }
-            }
-        }
-
-        return subscriptionOfferDetails.firstOrNull()?.offerToken ?: ""
-    }
 
     private fun showLoadingState(isLoading: Boolean) {
         if (isLoading) {

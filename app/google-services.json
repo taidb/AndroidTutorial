@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "747059305749",
+    "project_id": "test-paywall",
+    "storage_bucket": "test-paywall.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747059305749:android:e78de49031954fd56ddd1c",
+        "android_client_info": {
+          "package_name": "com.eco.musicplayer.audioplayer.music"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZBsmTOnZRIf3KizSzoi1uSFhcNWuccec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

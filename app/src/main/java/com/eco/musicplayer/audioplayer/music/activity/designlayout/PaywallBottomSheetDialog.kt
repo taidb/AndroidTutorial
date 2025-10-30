@@ -56,7 +56,7 @@ class PaywallBottomSheetDialog : BottomSheetDialogFragment() {
             this.skipCollapsed = false
             this.isFitToContents = true
             this.isHideable = true
-            this.isDraggable = true
+                this.isDraggable = true
 
             state = BottomSheetBehavior.STATE_COLLAPSED
             addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {

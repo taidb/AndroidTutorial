@@ -24,9 +24,9 @@
                 android:id="@+id/icClose"
                 android:layout_width="@dimen/_28sdp"
                 android:layout_height="@dimen/_28sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:padding="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_minus20sdp"
                 android:src="@drawable/close_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/statusBarView" />

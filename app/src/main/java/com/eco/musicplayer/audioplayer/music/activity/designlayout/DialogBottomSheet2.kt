@@ -31,6 +31,8 @@ class DialogBottomSheet2 : AppCompatActivity() {
     private lateinit var remoteConfig: RemoteConfig
     private var paywallConfig: PaywallConfig? = null
     private val planProductMap = mutableMapOf<Int, String>()
+    private var weeklyRegularPrice: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
         initializeRemoteConfig()
         //setupInitialLayout()
         setupListeners()
+
     }
 
 
@@ -63,11 +66,16 @@ class DialogBottomSheet2 : AppCompatActivity() {
     }
 
     private fun initializeRemoteConfig() {
+
         remoteConfig = RemoteConfig()
+
         remoteConfig.fetchAndActivate {
+
             paywallConfig = remoteConfig.getPaywallConfig()
-            paywallConfig?.let { config ->
-                updatePlanMapping(config.products)
+            if (paywallConfig == null) {
+                //
+            } else {
+                updatePlanMapping(paywallConfig!!.products)
                 initializeBilling()
             }
         }
@@ -79,7 +87,6 @@ class DialogBottomSheet2 : AppCompatActivity() {
                 planProductMap[index + 1] = product.productId ?: ""
             }
         }
-
         if (planProductMap.isEmpty()) {
             planProductMap[1] = "test1"
             planProductMap[2] = "free_123"
@@ -96,62 +103,11 @@ class DialogBottomSheet2 : AppCompatActivity() {
                 val test1Product = products.find { it.productId == "test1" }
                 val test2Product = products.find { it.productId == "free_123" }
 
-                if (test1Product != null) {
-                    val offerList = test1Product.subscriptionOfferDetails
-                    if (!offerList.isNullOrEmpty()) {
-                        offerList.forEach { offer ->
-                            Log.d(TAG, "-------------------------------------------")
-                            Log.d(TAG, "Offer ID: ${offer.offerId}")
-                            Log.d(TAG, "Base Plan ID: ${offer.basePlanId}")
-                            Log.d(TAG, "Offer Token: ${offer.offerToken}")
-                            Log.d(TAG, "Tags: ${offer.offerTags}")
-
-                            // Mỗi offer có thể có nhiều giai đoạn giá (pricing phase)
-                            offer.pricingPhases.pricingPhaseList.forEachIndexed { index, phase ->
-                                Log.d(TAG, "  Phase $index:")
-                                Log.d(TAG, "    Price: ${phase.formattedPrice}")
-                                Log.d(TAG, "    Billing Period: ${phase.billingPeriod}")
-                                Log.d(TAG, "    Recurrence Mode: ${phase.recurrenceMode}")
-                                Log.d(TAG, "    Duration (cycle count): ${phase.billingCycleCount}")
-                                Log.d(TAG, "    Price (micros): ${phase.priceAmountMicros}")
-                            }
-                        }
-                    } else {
-                        Log.w(TAG, "Không có offer nào cho sản phẩm test2")
-                    }
-                } else {
-                    Log.e(TAG, "Không tìm thấy sản phẩm test2")
-                }
-                if (test2Product != null) {
-                    val offerList = test2Product.subscriptionOfferDetails
-                    if (!offerList.isNullOrEmpty()) {
-                        offerList.forEach { offer ->
-                            Log.d(TAG, "-------------------------------------------")
-                            Log.d(TAG, "Offer ID: ${offer.offerId}")
-                            Log.d(TAG, "Base Plan ID: ${offer.basePlanId}")
-                            Log.d(TAG, "Offer Token: ${offer.offerToken}")
-                            Log.d(TAG, "Tags: ${offer.offerTags}")
-
-                            // Mỗi offer có thể có nhiều giai đoạn giá (pricing phase)
-                            offer.pricingPhases.pricingPhaseList.forEachIndexed { index, phase ->
-                                Log.d(TAG, "  Phase $index:")
-                                Log.d(TAG, "    Price: ${phase.formattedPrice}")
-                                Log.d(TAG, "    Billing Period: ${phase.billingPeriod}")
-                                Log.d(TAG, "    Recurrence Mode: ${phase.recurrenceMode}")
-                                Log.d(TAG, "    Duration (cycle count): ${phase.billingCycleCount}")
-                                Log.d(TAG, "    Price (micros): ${phase.priceAmountMicros}")
-                            }
-                        }
-                    } else {
-                        Log.w(TAG, "Không có offer nào cho sản phẩm test2")
-                    }
-                } else {
-                    Log.e(TAG, "Không tìm thấy sản phẩm test2")
-                }
+                logProductOffers(test1Product, "test1")
+                logProductOffers(test2Product, "free_123")
                 runOnUiThread {
                     updateUIWithProductDetails(products)
-                    val selectionPosition = paywallConfig?.selectionPosition ?: 1
-                    selectPlan(selectionPosition)
+                    selectPlan(1)
                 }
             }
 
@@ -163,6 +119,36 @@ class DialogBottomSheet2 : AppCompatActivity() {
             }
         })
     }
+
+    private fun logProductOffers(product: ProductDetails?, productName: String) {
+        if (product != null) {
+            val offerList = product.subscriptionOfferDetails
+            if (!offerList.isNullOrEmpty()) {
+                offerList.forEach { offer ->
+                    Log.d(TAG, "-------------------------------------------")
+                    Log.d(TAG, "Product: $productName")
+                    Log.d(TAG, "Offer ID: ${offer.offerId}")
+                    Log.d(TAG, "Base Plan ID: ${offer.basePlanId}")
+                    Log.d(TAG, "Offer Token: ${offer.offerToken}")
+                    Log.d(TAG, "Tags: ${offer.offerTags}")
+
+                    offer.pricingPhases.pricingPhaseList.forEachIndexed { index, phase ->
+                        Log.d(TAG, "  Phase $index:")
+                        Log.d(TAG, "    Price: ${phase.formattedPrice}")
+                        Log.d(TAG, "    Billing Period: ${phase.billingPeriod}")
+                        Log.d(TAG, "    Recurrence Mode: ${phase.recurrenceMode}")
+                        Log.d(TAG, "    Duration (cycle count): ${phase.billingCycleCount}")
+                        Log.d(TAG, "    Price (micros): ${phase.priceAmountMicros}")
+                    }
+                }
+            } else {
+                Log.w(TAG, "Không có offer nào cho sản phẩm $productName")
+            }
+        } else {
+            Log.e(TAG, "Không tìm thấy sản phẩm $productName")
+        }
+    }
+
 
     private fun updateUIWithProductDetails(products: List<ProductDetails>) {
         products.forEach { productDetails ->
@@ -184,35 +170,55 @@ class DialogBottomSheet2 : AppCompatActivity() {
         basePlan?.let { offer ->
             val pricingPhases = offer.pricingPhases.pricingPhaseList
             if (pricingPhases.isNotEmpty()) {
-                // Lấy phase đầu tiên (thường là giá chính)
                 val firstPhase = pricingPhases[0]
 
-                // Chỉ hiển thị nếu giá > 0
                 if (firstPhase.priceAmountMicros > 0) {
                     binding.txtTime1.text = firstPhase.formattedPrice
                     binding.txtTime2.text = getString(R.string.year)
-                    binding.txtAutoRenew.text =getString(R.string.after_free_trial_ends_yearly_max,firstPhase.formattedPrice)
-                    // Tính giá theo tuần để hiển thị
+                    binding.txtAutoRenew.text = getString(
+                        R.string.after_free_trial_ends_yearly_max,
+                        firstPhase.formattedPrice
+                    )
                     val weeklyPrice = calculateWeeklyPrice(firstPhase)
-                    binding.txtDesPrice1.text =getString(R.string.only_price_per_week,weeklyPrice)
+                    binding.txtDesPrice1.text = getString(R.string.only_price_per_week, weeklyPrice)
                 } else {
-                    // Nếu phase đầu tiên là free trial, tìm phase tiếp theo
                     if (pricingPhases.size > 1) {
                         val nextPhase = pricingPhases[1]
                         binding.txtTime1.text = nextPhase.formattedPrice
                         binding.txtTime2.text = getString(R.string.year)
-                        binding.txtAutoRenew.text =getString(R.string.after_free_trial_ends_yearly_max,nextPhase.formattedPrice)
+                        binding.txtAutoRenew.text = getString(
+                            R.string.after_free_trial_ends_yearly_max,
+                            nextPhase.formattedPrice
+                        )
                         val weeklyPrice = calculateWeeklyPrice(nextPhase)
-                        binding.txtDesPrice1.text =  getString(R.string.only_price_per_week,weeklyPrice)
+                        binding.txtDesPrice1.text =
+                            getString(R.string.only_price_per_week, weeklyPrice)
                     }
                 }
             }
         } ?: run {
             binding.txtTime1.text = getString(R.string.price_year)
             binding.txtTime2.text = getString(R.string.year)
-            binding.txtDesPrice1.text =getString(R.string.only_price_per_week,"$19.99")
-            binding.txtAutoRenew.text =getString(R.string.after_free_trial_ends_yearly_max,"19.99")
+            binding.txtDesPrice1.text = getString(R.string.only_price_per_week, "$19.99")
+            binding.txtAutoRenew.text =
+                getString(R.string.after_free_trial_ends_yearly_max, "$19.99")
         }
+    }
+
+    private fun findBasePlan(offerDetails: List<ProductDetails.SubscriptionOfferDetails>):
+            ProductDetails.SubscriptionOfferDetails? {
+
+        offerDetails.forEach { offer ->
+            offer.pricingPhases.pricingPhaseList.forEach { phase ->
+                if (phase.priceAmountMicros > 0L) {
+                    return offer
+                }
+            }
+        }
+
+        val firstOffer = offerDetails.firstOrNull()
+        Log.d(TAG, "Using first offer: ${firstOffer?.offerId}")
+        return firstOffer
     }
 
 
@@ -223,86 +229,105 @@ class DialogBottomSheet2 : AppCompatActivity() {
             return
         }
 
-        val basePlan = findBasePlan(subscriptionOfferDetails)
-        basePlan?.let { offer ->
+        val introOffer = findIntroPriceOffer(subscriptionOfferDetails)
+        introOffer?.let { offer ->
             val pricingPhases = offer.pricingPhases.pricingPhaseList
-            if (pricingPhases.isNotEmpty()) {
-                val firstPhase = pricingPhases[0]
-                if (firstPhase.priceAmountMicros > 0) {
-                    binding.txtPrice.text = firstPhase.formattedPrice
-                    binding.txtTime4.text =getString(R.string.week)
-                    binding.txtAutoRenew.text =getString(R.string.after_free_trial_ends_weekly,firstPhase.formattedPrice)
-                } else {
-                    if (pricingPhases.size > 1) {
-                        val nextPhase = pricingPhases[1]
-                        binding.txtPrice.text = nextPhase.formattedPrice
-                        binding.txtTime4.text = getString(R.string.week)
-                        binding.txtAutoRenew.text =getString(R.string.after_free_trial_ends_weekly,nextPhase.formattedPrice)
-                    }
-                }
+            if (pricingPhases.size >= 2) {
+                val introPhase = pricingPhases[0]
+                val regularPhase = pricingPhases[1]
+
+                binding.txtPrice.text = introPhase.formattedPrice
+                binding.txtTime4.text = getString(R.string.week)
+
+                binding.txtAutoRenew.text = getString(
+                    R.string.after_intro_ends_weekly,
+                    introPhase.formattedPrice,
+                    regularPhase.formattedPrice
+                )
+                weeklyRegularPrice = regularPhase.formattedPrice
             }
         } ?: run {
             binding.txtPrice.text = getString(R.string.price_week)
             binding.txtTime4.text = getString(R.string.week)
-            binding.txtAutoRenew.text =getString(R.string.after_free_trial_ends_weekly,"4.99")
+            binding.txtAutoRenew.text =
+                getString(R.string.after_free_trial_ends_weekly, "130.000 ₫")
+
         }
     }
 
-    private fun findBasePlan(offerDetails: List<ProductDetails.SubscriptionOfferDetails>):
+    private fun findIntroPriceOffer(offerDetails: List<ProductDetails.SubscriptionOfferDetails>):
             ProductDetails.SubscriptionOfferDetails? {
-
-        //tìm plan không phải free trial
         offerDetails.forEach { offer ->
-            offer.pricingPhases.pricingPhaseList.forEach { phase ->
-                if (phase.priceAmountMicros > 0L) {
+            if (offer.offerId == "intro-price") {
+                return offer
+            }
+        }
+
+        offerDetails.forEach { offer ->
+            offer.pricingPhases.pricingPhaseList.firstOrNull()?.let { firstPhase ->
+                if (firstPhase.priceAmountMicros in 1 until 130000000000L) {
+                    Log.d(TAG, "Found low price intro offer: ${offer.offerId}")
                     return offer
                 }
             }
         }
 
-        // Nếu không tìm thấy, trả về offer đầu tiên
-        return offerDetails.firstOrNull()
+        return null
     }
 
-        private fun calculateWeeklyPrice(pricingPhase: ProductDetails.PricingPhase): String {
-           // return when (pricingPhase.billingPeriod) {
-           //     "P1W" -> { // 1 year
-                    val yearlyPrice = pricingPhase.priceAmountMicros / 1000000.0
-                    val weeklyPrice = yearlyPrice / 52.0
-                    val formatter = java.text.DecimalFormat("#,###.##")
+    private fun handleContinueClick() {
+        handleButtonLoading(binding.btnContinue, binding.progress3, selectedPlan)
 
-                 return  "${formatter.format(weeklyPrice)} đ"
-                   // "$${String.format("%.3f", weeklyPrice)}"
-//                }
-
-//               // "P1M" -> { // 1 month
-//                    val monthlyPrice = pricingPhase.priceAmountMicros / 1000000.0
-//                    val weeklyPrice = monthlyPrice / 4.33
-//                    val formatter = java.text.DecimalFormat("#,###.##")
-//                    return  "${formatter.format(weeklyPrice)} đ"
-//                    //"$${String.format("%.3f", weeklyPrice)}"
-//              // }
-
-//                else -> {
-//                    pricingPhase.formattedPrice
-//                }
-        //    }
+        val productId = planProductMap[selectedPlan]
+        productId?.let {
+            val productDetails = billingManager.getProductDetails(it)
+            productDetails?.let { details ->
+                val offerToken = billingManager.getOfferTokenForProduct(it, details)
+                billingManager.launchBillingFlow(this, details, offerToken)
+            }
         }
+    }
+
+
+    private fun calculateWeeklyPrice(pricingPhase: ProductDetails.PricingPhase): String {
+        // return when (pricingPhase.billingPeriod) {
+        //     "P1W" -> { // 1 year
+        val yearlyPrice = pricingPhase.priceAmountMicros / 1000000.0
+        val weeklyPrice = yearlyPrice / 52.0
+        val formatter = java.text.DecimalFormat("#,###.##")
+
+        return "${formatter.format(weeklyPrice)} đ"
+        // "$${String.format("%.3f", weeklyPrice)}"
+        //                }
+
+        //               // "P1M" -> { // 1 month
+        //                    val monthlyPrice = pricingPhase.priceAmountMicros / 1000000.0
+        //                    val weeklyPrice = monthlyPrice / 4.33
+        //                    val formatter = java.text.DecimalFormat("#,###.##")
+        //                    return  "${formatter.format(weeklyPrice)} đ"
+        //                    //"$${String.format("%.3f", weeklyPrice)}"
+        //              // }
+
+        //                else -> {
+        //                    pricingPhase.formattedPrice
+        //                }
+        //    }
+    }
 
     private fun setDefaultPrices() {
-        binding.txtTime1.text =getString(R.string.price_year)
+        binding.txtTime1.text = getString(R.string.price_year)
         binding.txtPrice.text = getString(R.string.price_week)
-        binding.txtDesPrice1.text =getString(R.string.only_price_per_week, "$4.99")
+        binding.txtDesPrice1.text = getString(R.string.only_price_per_week, "$4.99")
 
     }
 
-//    private fun setupInitialLayout() {
-//        binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
-//        binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
-//        binding.tvMostPopular.backgroundTintList =
-//            ContextCompat.getColorStateList(this, R.color.color_8147FF)
-//        showTryForFreeLayout()
-//    }
+    //    private fun setupInitialLayout() {
+    //        binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
+    //        binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
+    //        binding.tvMostPopular.backgroundTintList =
+    //            ContextCompat.getColorStateList(this, R.color.color_8147FF)
+    //        showTryForFreeLayout()
+    //    }
 
     private fun setupListeners() {
         binding.icClose.setOnClickListener { finish() }
@@ -316,6 +341,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
             handleContinueClick()
         }
     }
+
     private fun selectPlan(plan: Int) {
         selectedPlan = plan
         when (plan) {
@@ -326,9 +352,11 @@ class DialogBottomSheet2 : AppCompatActivity() {
                     ContextCompat.getColorStateList(this, R.color.color_8147FF)
 
                 val price = binding.txtTime1.text.toString()
-                binding.txtAutoRenew.text = getString(R.string.after_free_trial_ends_yearly_max, price)
+                binding.txtAutoRenew.text =
+                    getString(R.string.after_free_trial_ends_yearly_max, price)
                 showTryForFreeLayout()
             }
+
             2 -> {
                 binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
                 binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
@@ -336,7 +364,8 @@ class DialogBottomSheet2 : AppCompatActivity() {
                     ContextCompat.getColorStateList(this, R.color.color_908DAC)
 
                 val price = binding.txtPrice.text.toString()
-                binding.txtAutoRenew.text = getString(R.string.after_free_trial_ends_weekly, price)
+                binding.txtAutoRenew.text =
+                    getString(R.string.after_intro_ends_weekly, price, weeklyRegularPrice)
                 showContinueLayout()
             }
         }
@@ -351,28 +380,12 @@ class DialogBottomSheet2 : AppCompatActivity() {
             productId?.let {
                 val productDetails = billingManager.getProductDetails(it)
                 productDetails?.let { details ->
-                    // Sử dụng offer token từ remote config
-                    val offerToken = billingManager.getOfferTokenForProduct(it, details)
+                    val offerToken = billingManager.getFreeTrialOfferToken(details)
                     billingManager.launchBillingFlow(this, details, offerToken)
                 }
             }
         }
     }
-
-    private fun handleContinueClick() {
-        handleButtonLoading(binding.btnContinue, binding.progress3, selectedPlan)
-
-        val productId = planProductMap[selectedPlan]
-        productId?.let {
-            val productDetails = billingManager.getProductDetails(it)
-            productDetails?.let { details ->
-                val offerToken =billingManager.getBasePlanOfferToken(details)
-                billingManager.launchBillingFlow(this, details, offerToken)
-            }
-        }
-    }
-
-
 
 
     private fun showLoadingState(isLoading: Boolean) {
@@ -427,7 +440,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
     private fun setInfoTextsVisibility(isVisible: Boolean) {
         binding.txtAutoRenew.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
-        binding.txtNoPayment.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
+        binding.txtNoPayment.visibility = if (isVisible) View.VISIBLE else View.GONE
         binding.txtCancel.visibility = if (isVisible) View.GONE else View.INVISIBLE
     }
 

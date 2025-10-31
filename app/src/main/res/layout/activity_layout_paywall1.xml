@@ -68,7 +68,7 @@
                     android:adjustViewBounds="false"
                     android:paddingEnd="@dimen/_minus57sdp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/logo_pro"
+                    android:src="@drawable/logo_vecto_pro"
                     app:layout_constraintDimensionRatio="220:30"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -79,10 +79,10 @@
                     android:id="@+id/txtAdditional"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_9sdp"
+                    android:layout_marginTop="12dp"
                     android:gravity="end"
                     android:text="@string/faster_compress_made_simple"
-                    android:textColor="@color/white_EAF5F8"
+                    android:textColor="@color/color_F3F3FC"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -107,15 +107,16 @@
                         android:includeFontPadding="false"
                         android:letterSpacing="0.02"
                         android:lineSpacingExtra="0dp"
-                        android:textColor="@color/white"
                         android:lineSpacingMultiplier="1"
                         android:padding="0dp"
+                        android:textColor="@color/color_F3F3FC"
                         android:shadowColor="#80000000"
                         android:shadowDx="0"
                         android:shadowDy="3"
                         android:shadowRadius="6"
                         android:text="@string/percent"
-                        android:textSize="@dimen/_72sdp" />
+
+                        android:textSize="@dimen/_80sdp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txtOff"
@@ -123,7 +124,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/funnelsansextrabold"
                         android:gravity="end"
-                        android:textColor="@color/white"
                         android:includeFontPadding="false"
                         android:letterSpacing="0.03"
                         android:lineSpacingExtra="0dp"
@@ -133,7 +133,7 @@
                         android:shadowDx="0"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-
+                        android:textColor="@color/color_F3F3FC"
                         android:text="@string/off"
                         android:textSize="@dimen/_50sdp" />
 

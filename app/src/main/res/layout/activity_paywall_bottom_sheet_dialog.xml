@@ -25,8 +25,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/icClose"
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_22sdp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:padding="@dimen/_4sdp"
             android:src="@drawable/ic_cancel"
             app:layout_constraintEnd_toEndOf="parent"

@@ -58,7 +58,7 @@
                     android:paddingVertical="@dimen/_2sdp"
                     android:text="@string/weekly"
                     android:textAlignment="center"
-                    android:textColor="@color/white_EAF5F8"
+                    android:textColor="@color/color_F3F3FC"
                     android:textSize="@dimen/_10sdp"  />
 
 
@@ -133,7 +133,6 @@
                     android:background="@drawable/bg_radius_12"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/_8sdp"
                     android:visibility="visible">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -164,9 +163,10 @@
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/customSwitch"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_12sdp"
                         android:checked="true"
                         android:showText="false"
+                        android:layout_marginEnd="@dimen/_12sdp"
                         android:theme="@style/SwitchNoTint"
                         android:thumb="@drawable/switch_thumb"
                         android:track="@drawable/switch_track" />
@@ -243,13 +243,13 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:alpha="0.9"
                     android:fontFamily="@font/readexpro_regular"
                     android:gravity="center"
                     android:lineSpacingExtra="@dimen/_1sdp"
                     android:paddingHorizontal="@dimen/_14sdp"
-                    android:paddingVertical="@dimen/_7sdp"
+                    android:paddingVertical="@dimen/_6sdp"
                     android:text="@string/by_continuing_you_agree_to_our_terms_and_privacy_policies2"
                     android:textColor="@color/black_4D5A68"
                     android:textSize="@dimen/_9sdp" />

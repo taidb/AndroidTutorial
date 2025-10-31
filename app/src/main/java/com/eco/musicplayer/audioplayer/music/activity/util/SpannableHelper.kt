@@ -65,6 +65,7 @@ object SpannableHelper {
                         super.updateDrawState(ds)
                         ds.isUnderlineText = true
                         ds.color = Color.WHITE
+                        ds.typeface=Typeface.create(ds.typeface, Typeface.BOLD)
                     }
                 }
                 spannable.setSpan(privacySpan, privacyStart, privacyEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

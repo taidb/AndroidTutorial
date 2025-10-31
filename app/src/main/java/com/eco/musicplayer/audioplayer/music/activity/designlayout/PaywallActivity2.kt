@@ -89,7 +89,7 @@ class PaywallActivity2(
         binding.btnClaimOffer.isEnabled = false
         binding.txtFreeAnnouncement.visibility = View.GONE
         binding.progress.visibility = View.VISIBLE
-
+        binding.txtPercent.visibility=View.INVISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
             binding.progress.visibility = View.GONE
             binding.btnClaimOffer.visibility = View.INVISIBLE
@@ -104,6 +104,7 @@ class PaywallActivity2(
         binding.progress.visibility = View.GONE
         binding.linearLayout2.visibility = View.GONE
         binding.txtFreeAnnouncement.visibility = View.VISIBLE
+        binding.txtPercent.visibility=View.VISIBLE
     }
 
 

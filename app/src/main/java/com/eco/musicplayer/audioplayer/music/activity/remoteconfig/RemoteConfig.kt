@@ -11,35 +11,48 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.google.firebase.remoteconfig.remoteConfig
 import com.google.gson.Gson
+import org.json.JSONObject
 
 class RemoteConfig {
 
     private val remoteConfig: FirebaseRemoteConfig by lazy {
         Firebase.remoteConfig.apply {
             val configSettings = FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(0)
-                .setFetchTimeoutInSeconds(0)
+                .setMinimumFetchIntervalInSeconds(3600)
+                .setFetchTimeoutInSeconds(3600)
                 .build()
             setConfigSettingsAsync(configSettings)
             setDefaultsAsync(R.xml.remote_config_defaults)
-            reset()
         }
     }
 
     private var onComplete: (() -> Unit)? = null
 
     fun fetchAndActivate(complete: (() -> Unit)? = null) {
-        this.onComplete = complete
-        remoteConfig.fetchAndActivate().addOnCompleteListener {
-            if (it.isSuccessful) onComplete?.invoke()
+
+        remoteConfig.fetchAndActivate().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val jsonString = remoteConfig.getString("paywall_config")
+                try {
+                    val jsonObject = JSONObject(jsonString)
+                } catch (e: Exception) {
+                    Log.e("RemoteConfig", "Lỗi parse JSON: ${e.message}")
+                }
+
+            } else {
+                Log.e("RemoteConfig", "Fetch thất bại: ${task.exception}")
+            }
+
+            complete?.invoke()
         }
     }
+
 
     fun registerRealtimeUpdate() {
         runCatching {
             remoteConfig.addOnConfigUpdateListener(object : ConfigUpdateListener {
                 override fun onUpdate(configUpdate: ConfigUpdate) {
-                   // ECOLog.showLog("onUpdate")
+                    // ECOLog.showLog("onUpdate")
 
                     Log.d("ECOLog", "onUpdate")
 
@@ -53,16 +66,16 @@ class RemoteConfig {
         }
     }
 
-    fun getPaywallConfig():PaywallConfig?{
-        return  try {
-            val configJson=remoteConfig.getString("pricing_config")
-            if (configJson.isNotEmpty()){
-                Gson().fromJson(configJson,PaywallConfig::class.java)
-            }else{
+    fun getPaywallConfig(): PaywallConfig? {
+        return try {
+            val configJson = remoteConfig.getString("paywall_config")
+            if (configJson.isNotEmpty()) {
+                Gson().fromJson(configJson, PaywallConfig::class.java)
+            } else {
                 null
             }
-        }catch (e:Exception){
-            Log.e("RemoteConfig","Error ${e.message}")
+        } catch (e: Exception) {
+            Log.e("RemoteConfig", "Error ${e.message}")
             null
         }
     }

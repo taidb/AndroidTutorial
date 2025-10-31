@@ -42,7 +42,7 @@ class PaywallBottomSheetDialog : BottomSheetDialogFragment() {
                 setupFixedBottomSheetBehavior(behavior)
             }
 
-            dialog.window?.setDimAmount(0.6f)
+            dialog.window?.setDimAmount(0.7f)
         }
     }
 
@@ -50,7 +50,7 @@ class PaywallBottomSheetDialog : BottomSheetDialogFragment() {
         behavior.apply {
             val displayMetrics = resources.displayMetrics
             val screenHeight = displayMetrics.heightPixels
-            val peekHeight = (screenHeight * 0.6).toInt()
+            val peekHeight = (screenHeight * 0.7).toInt()
 
             this.peekHeight = peekHeight
             this.skipCollapsed = false

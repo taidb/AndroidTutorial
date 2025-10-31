@@ -18,8 +18,7 @@ import com.android.billingclient.api.ProductDetails
 import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.activity.billing.BillingCallback
 import com.eco.musicplayer.audioplayer.music.activity.billing.BillingManager
-import com.eco.musicplayer.audioplayer.music.activity.remoteconfig.PaywallConfig
-import com.eco.musicplayer.audioplayer.music.activity.remoteconfig.RemoteConfig
+
 import com.eco.musicplayer.audioplayer.music.activity.util.SpannableHelper
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityLayoutPaywallBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior

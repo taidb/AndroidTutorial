@@ -23,7 +23,9 @@ class PaywallActivity4 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLayoutPaywall4Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.icClose.setOnClickListener {
+            finish()
+        }
         setupWindow()
         setupButtonListeners()
 

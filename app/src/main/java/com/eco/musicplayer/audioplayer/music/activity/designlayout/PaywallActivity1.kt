@@ -96,7 +96,7 @@ class PaywallActivity1(
         binding.btnClaimOffer.isEnabled = false
         binding.progress.visibility = View.VISIBLE
         binding.txtFreeAnnouncement.visibility = View.INVISIBLE
-
+        binding.txtPercent.visibility=View.INVISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
             binding.progress.visibility = View.GONE
             binding.btnClaimOffer.visibility = View.INVISIBLE
@@ -112,6 +112,7 @@ class PaywallActivity1(
         binding.progress.visibility = View.GONE
         binding.linearLayout2.visibility = View.GONE
         binding.txtFreeAnnouncement.visibility = View.VISIBLE
+        binding.txtPercent.visibility=View.VISIBLE
     }
 
 //    private fun setGradientTextWithShadow(

@@ -69,4 +69,7 @@ dependencies {
     implementation("com.google.firebase:firebase-config")
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.android.material:material:1.6.0")
+    implementation("com.jakewharton.threetenabp:threetenabp:1.4.8")
+    implementation("com.android.billingclient:billing-ktx:8.0.0")
 }

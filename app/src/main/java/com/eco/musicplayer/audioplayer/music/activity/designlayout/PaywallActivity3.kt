@@ -3,11 +3,13 @@ package com.eco.musicplayer.audioplayer.music.activity.designlayout
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
@@ -32,29 +34,50 @@ class PaywallActivity3 : AppCompatActivity() {
         setupPlanSelection()
         setupSwitchListener()
         setupButtons()
-        binding.txtAutoRenew.setOnClickListener {
+        binding.txtFreeTrial.setOnClickListener {
             binding.customSwitch.isChecked = !binding.customSwitch.isChecked
         }
-    }
+        binding.txtEnable.setOnClickListener {
+            binding.customSwitch.isChecked = !binding.customSwitch.isChecked
+        }
 
+    }
     @SuppressLint("UseKtx")
     private fun setupWindow() {
         window?.apply {
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             setBackgroundDrawable(ColorDrawable(Color.parseColor("#80000000")))
             clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
-            statusBarColor = Color.TRANSPARENT
+            // Thiết lập status bar
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = ContextCompat.getColor(this@PaywallActivity3, R.color.color_F0F7FF)
             navigationBarColor = Color.TRANSPARENT
 
-            decorView.systemUiVisibility = (
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    )
+            // Sử dụng WindowInsetsController cho API 30+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                setDecorFitsSystemWindows(false)
+                val controller = decorView.windowInsetsController
+                controller?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
+            }
+            // Cho các API cũ hơn
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                decorView.systemUiVisibility = (
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                        )
+            } else {
+                decorView.systemUiVisibility = (
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        )
+            }
         }
     }
-
     private fun setupPlanSelection() {
         with(binding) {
             idYearly.setOnClickListener {

@@ -126,18 +126,47 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/dialogFragment"
-            app:layout_constraintEnd_toStartOf="@id/btn_dialog_activity"
+            app:layout_constraintEnd_toStartOf="@id/btnParcelable"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_date_picker_dialog" />
 
         <Button
-            android:id="@+id/btn_dialog_activity"
+            android:id="@+id/btnParcelable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/activityDialog"
+            android:text="@string/Parcelable"
+            app:layout_constraintBottom_toTopOf="@+id/btn_camera"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_dialog_fragment"
-            app:layout_constraintTop_toTopOf="@id/btn_dialog_fragment" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/image_view" />
+
+        <Button
+            android:id="@+id/btnSerializable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Serializable"
+            app:layout_constraintBottom_toTopOf="@+id/btnParcelable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image_view" />
+
+        <Button
+            android:id="@+id/btnSerializable1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/librarySerializable"
+            app:layout_constraintBottom_toTopOf="@+id/btnParcelable1"
+            app:layout_constraintEnd_toStartOf="@+id/image_view"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnParcelable1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/libraryParcelable"
+            app:layout_constraintBottom_toTopOf="@+id/btn_image"
+            app:layout_constraintEnd_toStartOf="@+id/image_view"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btn_custom_dialog"
@@ -190,9 +219,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/trang5"
-            app:layout_constraintEnd_toStartOf="@id/btn_click2"
-            app:layout_constraintStart_toEndOf="@id/btn_click3"
-            app:layout_constraintTop_toTopOf="@id/btn_click" />
+            app:layout_constraintBottom_toTopOf="@+id/btn_alert_dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_dialog_fragment" />
 
         <Button
             android:id="@+id/btn_click2"
@@ -200,8 +229,9 @@
             android:layout_height="wrap_content"
             android:text="@string/trang3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_click4"
-            app:layout_constraintTop_toTopOf="@id/btn_click" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btn_click3"
+            app:layout_constraintTop_toTopOf="@+id/btn_click3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

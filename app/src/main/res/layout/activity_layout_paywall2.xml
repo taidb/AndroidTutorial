@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/black_80000000"
     android:layout_height="match_parent"
     tools:context=".activity.designlayout.PaywallActivity2">
 
@@ -17,6 +17,7 @@
             android:id="@+id/statusBarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/StatusBarTheme"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingClass" />
 
@@ -92,7 +93,7 @@
                 android:shadowRadius="6"
                 android:text="@string/percent"
                 android:textColor="@color/color_F3F3FC"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:textSize="@dimen/_88sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -195,7 +196,6 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtFreeAnnouncement" />
 

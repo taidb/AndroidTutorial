@@ -12,7 +12,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-//ViewModel giúp tách biệt logic xử lý dữ liệu khỏi giao diện người dùng, tránh mất dữ liệu khi xoay màn hình hoặc khi Activity/Fragment bị hủy và tạo lại.
+//Các thành phần chính và chức năng :
+//Dữ liệu (data) :Viewmodel lưu trữ các dữ liệu cần thiết cho UI.-> Thay vì lưu trong activity/frament thì lưu vào Viewmodel để tránh mất khi thay đổi cấu hinhf -> khi activity/fragment bị huỷ thì viewmodel vẫn tồn tại
+//Logic nghiệp vụ: ViewModel chứa các logic liên quan đến việc xử lý dữ liệu, chẳng hạn như gọi API để lấy dữ liệu, xử lý các thao tác của người dùng và cập nhật dữ liệu.
+//
+//MVVM:
+//View: View là phần giao diện của ứng dụng để hiển thị dữ liệu và nhận tương tác của người dùng
+//Model: Chứa logic nghiệp vụ và dữ liệu của ứng dụng. Model không biết gì về View hoặc ViewModel.
+//ViewModel: Lớp trung gian giữa View và Model.
 class StudentViewModel : ViewModel() {
     private val _students = MutableStateFlow<Resource<List<Student>>>(Resource.Unspecified())
     val students = _students.asStateFlow()

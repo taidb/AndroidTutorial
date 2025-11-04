@@ -1,4 +1,5 @@
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.os.Handler
@@ -16,6 +17,11 @@ class PaywallBottomSheetDialog : BottomSheetDialogFragment() {
 
     private lateinit var binding: ActivityPaywallBottomSheetDialogBinding
     private var selectedPlan = 1
+    private var dismissListener: (() -> Unit)? = null
+
+    fun setOnDismissListener(listener: () -> Unit) {
+        dismissListener = listener
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
@@ -165,7 +171,7 @@ class PaywallBottomSheetDialog : BottomSheetDialogFragment() {
             progress.visibility = visibilityProgress
             progress1.visibility = visibilityProgress
 
-            val color = ContextCompat.getColor(requireContext(), R.color.color_0F1E47C)
+            val color = ContextCompat.getColor(requireContext(), R.color.color_0F1E47)
             progress.indeterminateTintList = ColorStateList.valueOf(color)
             progress1.indeterminateTintList = ColorStateList.valueOf(color)
         }
@@ -186,6 +192,10 @@ class PaywallBottomSheetDialog : BottomSheetDialogFragment() {
             txtNoPayment.visibility = View.VISIBLE
             txtCancel.visibility = View.GONE
         }
+    }
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        dismissListener?.invoke()
     }
 
     override fun onDestroyView() {

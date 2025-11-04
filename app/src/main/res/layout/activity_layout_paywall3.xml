@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@color/color_F0F7FF"
+                android:theme="@style/StatusBarTheme"
                 tools:ignore="MissingClass" />
 
 
@@ -30,6 +31,7 @@
                 android:background="@drawable/background_subscription_package"
                 android:orientation="horizontal"
                 android:padding="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 app:layout_constraintDimensionRatio="220:34"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,10 +68,10 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/icClose"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
+                android:layout_width="@dimen/_19sdp"
+                android:layout_height="@dimen/_19sdp"
                 android:layout_gravity="end"
-                android:padding="@dimen/_4sdp"
+                android:padding="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:background="@drawable/ic_cancel"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -162,14 +164,15 @@
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/customSwitch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_12sdp"
-                        android:checked="true"
-                        android:showText="false"
-                        android:layout_marginEnd="@dimen/_12sdp"
-                        android:theme="@style/SwitchNoTint"
+                        android:layout_width="60dp"
+                        android:layout_height="24dp"
                         android:thumb="@drawable/switch_thumb"
-                        android:track="@drawable/switch_track" />
+                        android:track="@drawable/switch_track"
+                        android:checked="true"
+                        app:trackTintMode="multiply"
+                        app:thumbTintMode="multiply"
+                        android:layout_marginEnd="12dp" />
+
 
 
                 </LinearLayout>

@@ -131,7 +131,7 @@ class DialogBottomSheet : AppCompatActivity() {
             progress.visibility = visibilityProgress
             progress1.visibility = visibilityProgress
 
-            val color = ContextCompat.getColor(this@DialogBottomSheet, R.color.color_0F1E47C)
+            val color = ContextCompat.getColor(this@DialogBottomSheet, R.color.color_0F1E47)
             progress.indeterminateTintList = ColorStateList.valueOf(color)
             progress1.indeterminateTintList = ColorStateList.valueOf(color)
         }

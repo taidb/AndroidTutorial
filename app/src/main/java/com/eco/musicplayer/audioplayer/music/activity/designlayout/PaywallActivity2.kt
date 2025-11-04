@@ -5,14 +5,18 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.activity.util.SpannableHelper
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityLayoutPaywall2Binding
 
@@ -35,21 +39,40 @@ class PaywallActivity2(
         setupClickListeners()
     }
 
+
     @SuppressLint("UseKtx")
     private fun setupWindow() {
         window?.apply {
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             setBackgroundDrawable(ColorDrawable(Color.parseColor("#80000000")))
             clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
-            statusBarColor = Color.TRANSPARENT
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = ContextCompat.getColor(window?.context!!, R.color.black_80000000)
             navigationBarColor = Color.TRANSPARENT
 
-            decorView.systemUiVisibility = (
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    )
+            // Sử dụng WindowInsetsController cho API 30+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                setDecorFitsSystemWindows(false)
+                val controller = decorView.windowInsetsController
+                controller?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
+            }
+            // Cho các API cũ hơn
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                decorView.systemUiVisibility = (
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                        )
+            } else {
+                decorView.systemUiVisibility = (
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        )
+            }
         }
     }
 

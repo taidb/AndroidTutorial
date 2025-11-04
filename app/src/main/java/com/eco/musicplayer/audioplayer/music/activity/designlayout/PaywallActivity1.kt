@@ -6,14 +6,18 @@ import android.content.Context
 import android.graphics.Color
 
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.activity.util.SpannableHelper
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityLayoutPaywall1Binding
 
@@ -22,14 +26,13 @@ class PaywallActivity1(
     context: Context,
     private val onCloseClick: (() -> Unit)? = null,
     private val onClaimOfferClick: (() -> Unit)? = null
-) : Dialog(context, android.R.style.Theme_Translucent_NoTitleBar) {
+) : Dialog(context) {
 
     private lateinit var binding: ActivityLayoutPaywall1Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLayoutPaywall1Binding.inflate(layoutInflater)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
 
         setupWindow()
@@ -42,23 +45,44 @@ class PaywallActivity1(
 //        }
     }
 
+
+
     @SuppressLint("UseKtx")
     private fun setupWindow() {
         window?.apply {
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             setBackgroundDrawable(ColorDrawable(Color.parseColor("#80000000")))
             clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
-            statusBarColor = Color.TRANSPARENT
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = ContextCompat.getColor(window?.context!!, R.color.black_80000000)
             navigationBarColor = Color.TRANSPARENT
 
-            decorView.systemUiVisibility = (
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    )
+            // Sử dụng WindowInsetsController cho API 30+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                setDecorFitsSystemWindows(false)
+                val controller = decorView.windowInsetsController
+                controller?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
+            }
+            // Cho các API cũ hơn
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                decorView.systemUiVisibility = (
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                        )
+            } else {
+                decorView.systemUiVisibility = (
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        )
+            }
         }
     }
+
 
     private fun initViews() {
         binding.txtTryAgain.paintFlags = android.graphics.Paint.UNDERLINE_TEXT_FLAG
@@ -94,9 +118,9 @@ class PaywallActivity1(
     private fun handleClaimOffer() {
         binding.btnClaimOffer.text = ""
         binding.btnClaimOffer.isEnabled = false
-        binding.progress.visibility = View.VISIBLE
         binding.txtFreeAnnouncement.visibility = View.INVISIBLE
-        binding.txtPercent.visibility=View.INVISIBLE
+        binding.progress.visibility = View.VISIBLE
+        binding.txtPercent.visibility = View.INVISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
             binding.progress.visibility = View.GONE
             binding.btnClaimOffer.visibility = View.INVISIBLE
@@ -112,42 +136,8 @@ class PaywallActivity1(
         binding.progress.visibility = View.GONE
         binding.linearLayout2.visibility = View.GONE
         binding.txtFreeAnnouncement.visibility = View.VISIBLE
-        binding.txtPercent.visibility=View.VISIBLE
+        binding.txtPercent.visibility = View.VISIBLE
     }
-
-//    private fun setGradientTextWithShadow(
-//        textView: TextView,
-//        startColor: String = "#F3F3FC",
-//        endColor: String = "#A2B1DA",
-//        angle: Float = 135f
-//    ) {
-//        textView.post {
-//            val width = textView.paint.measureText(textView.text.toString())
-//            val height = textView.textSize
-//
-//            if (width == 0f || height == 0f) return@post
-//
-//            textView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-//
-//            val angleRad = Math.toRadians(angle.toDouble())
-//            val length = Math.sqrt((width * width + height * height).toDouble()).toFloat()
-//            val xEnd = (cos(angleRad) * length).toFloat()
-//            val yEnd = (sin(angleRad) * length).toFloat()
-//
-//            val shader = LinearGradient(
-//                0f, 0f, xEnd, yEnd,
-//                intArrayOf(
-//                    Color.parseColor(startColor),
-//                    Color.parseColor(endColor)
-//                ),
-//                null,
-//                Shader.TileMode.CLAMP
-//            )
-//            textView.paint.shader = shader
-//            textView.invalidate()
-//        }
-//    }
-
 
 
 }

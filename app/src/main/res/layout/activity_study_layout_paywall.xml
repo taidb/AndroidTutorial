@@ -54,6 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_8sdp" />
 
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPage5"
         android:layout_width="0dp"
@@ -76,6 +77,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_8sdp" />
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/btnPage6"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPage6"
+        app:layout_constraintEnd_toEndOf="@+id/btnPage6"
+        app:layout_constraintStart_toStartOf="@+id/btnPage6"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPage7"
         android:layout_width="0dp"
@@ -86,6 +97,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_8sdp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -99,12 +99,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_8sdp" />
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEventBus"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:text="@string/btnEventBus"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/btnFragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_8sdp" />
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnVersionSdk1"
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             android:text="@string/btnVersionSdk1"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnFragment"
+            app:layout_constraintTop_toBottomOf="@id/btnEventBus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_8sdp" />

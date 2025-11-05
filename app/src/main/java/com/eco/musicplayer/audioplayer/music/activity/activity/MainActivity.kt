@@ -21,13 +21,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import androidx.core.net.toUri
 import com.eco.musicplayer.audioplayer.music.R
-import com.eco.musicplayer.audioplayer.music.activity.activity.permission.PermissionActivity
 import com.eco.musicplayer.audioplayer.music.activity.dialog.StartDialogFragment
-import com.eco.musicplayer.audioplayer.music.activity.model.Staff
-import com.eco.musicplayer.audioplayer.music.activity.model.Student
-import com.eco.musicplayer.audioplayer.music.activity.model.Teacher
+
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityMainBinding
-import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -314,7 +310,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupPermissionActivity() {
         binding.btnClick4.setOnClickListener {
-            navigationPage(PermissionActivity::class.java)
+           // navigationPage(PermissionActivity::class.java)
         }
     }
 

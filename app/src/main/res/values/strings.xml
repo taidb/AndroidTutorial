@@ -25,6 +25,7 @@
     <string name="service">Service</string>
     <string name="customBroadcastReceiver">Custom Broadcast Receiver</string>
     <string name="fragment">Fragment</string>
+    <string name="btnEventBus">EventBus</string>
     <string name="btnVersionSdk1">Version SDK dưới 11</string>
     <string name="btnVersionSdk2">Version SDK trên 11</string>
     <string name="btnVersionSdk3">Version SDK trên 13</string>

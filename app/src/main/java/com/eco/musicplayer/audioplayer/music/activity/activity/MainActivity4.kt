@@ -18,6 +18,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.eco.musicplayer.audioplayer.music.activity.activity.permission.Api30To32Activity
+import com.eco.musicplayer.audioplayer.music.activity.activity.permission.Api33PlusActivity
+import com.eco.musicplayer.audioplayer.music.activity.activity.permission.PreApi30Activity
 import com.eco.musicplayer.audioplayer.music.activity.broadcast.Broadcast
 import com.eco.musicplayer.audioplayer.music.activity.broadcast.CustomBroadcast
 import com.eco.musicplayer.audioplayer.music.activity.event.EventBusTest
@@ -30,7 +33,19 @@ import com.eco.musicplayer.audioplayer.music.activity.network.isWifeEnabled
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityMain4Binding
 import com.google.gson.Gson
 import org.greenrobot.eventbus.EventBus
-
+//Trước Android 11 (API < 30)	Hộp thoại yêu cầu quyền của hệ thống sẽ luôn hiển thị mỗi
+// lần bạn yêu cầu, trừ khi người dùng chọn rõ ràng tùy chọn "Don't ask again" (Không hỏi lại).
+//Android 11 trở lên (API >= 30)	Nếu người dùng nhấn "Từ chối" hai lần (không có hộp kiểm
+// "Don't ask again" hiển thị nữa), hệ thống sẽ ngầm hiểu là "không hỏi lại".
+// Các yêu cầu tiếp theo sẽ tự động bị từ chối ngay lập tức mà không hiển thị hộp thoại hệ thống.
+// Truy cập bộ nhớ/ảnh/video/audio:
+//Trước Android 13: Sử dụng quyền chung READ_EXTERNAL_STORAGE hoặc WRITE_EXTERNAL_STORAGE.
+//Android 13 (API 33) trở lên: Cần các quyền chi tiết hơn như READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO.
+// Điều này giúp người dùng chỉ cấp quyền truy cập vào loại tệp cụ thể mà ứng dụng cần.
+//Thông báo (Notifications):
+//Trước Android 13: Quyền thông báo được cấp mặc định khi cài đặt.
+//Android 13 (API 33) trở lên: Yêu cầu quyền thời gian chạy POST_NOTIFICATIONS. Người dùng có thể từ chối quyền này.
+//Vị trí, Camera, Microphone: Android 11 giới thiệu quyền một lần (one-time permissions),
 class MainActivity4 : AppCompatActivity() {
     private lateinit var binding: ActivityMain4Binding
     private lateinit var broadcast: Broadcast
@@ -60,20 +75,20 @@ class MainActivity4 : AppCompatActivity() {
         useBroacastReceiver()
         useFragment()
 
-//        binding.btnVersionSdk1.setOnClickListener {
-//            val intent = Intent(this, BelowApi11Activity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.btnVersionSdk2.setOnClickListener {
-//            val intent = Intent(this, Api11To12Activity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.btnVersionSdk3.setOnClickListener {
-//            val intent = Intent(this, Api13PlusActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.btnVersionSdk1.setOnClickListener {
+            val intent = Intent(this, PreApi30Activity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnVersionSdk2.setOnClickListener {
+            val intent = Intent(this, Api30To32Activity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnVersionSdk3.setOnClickListener {
+            val intent = Intent(this, Api33PlusActivity::class.java)
+            startActivity(intent)
+        }
         binding.btnEventBus.setOnClickListener {
             startActivity(Intent(this, EventBusTest::class.java))
 

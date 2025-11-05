@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.activity.model.Staff
 import com.eco.musicplayer.audioplayer.music.activity.model.Student
+import com.eco.musicplayer.audioplayer.music.activity.model.Teacher
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityMain2Binding
+import com.google.gson.Gson
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
@@ -42,15 +45,37 @@ class MainActivity2 : AppCompatActivity() {
                 val data = intent.getStringExtra("data")
                 binding.txtReceiveData.text = data
             }
-            intent.hasExtra("data1") -> {
+            intent.hasExtra("student") -> {
                 val student = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    intent.getParcelableExtra("data1", Student::class.java)
+                    intent.getParcelableExtra("student", Student::class.java)
                 } else {
                     @Suppress("DEPRECATION")
-                    intent.getParcelableExtra<Student>("data1")
+                    intent.getParcelableExtra<Student>("student")
                 }
 
                 val formattedText = getString(R.string.student_info, student?.name, student?.age, student?.address)
+                binding.txtReceiveData.text = formattedText
+
+            }
+            intent.hasExtra("staff") -> {
+                val staff = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getSerializableExtra("staff", Staff::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    intent.getSerializableExtra("staff") as? Staff
+                }
+
+                val formattedText = getString(R.string.staff_info,staff?.id, staff?.name, staff?.age, staff?.salary)
+                binding.txtReceiveData.text = formattedText
+
+            }
+            intent.hasExtra("jsonString") -> {
+                    val gson = Gson()
+                    val userJson = intent.getStringExtra("jsonString")
+
+                    val teacher = gson.fromJson(userJson, Teacher::class.java)
+
+                val formattedText = getString(R.string.teacher_info, teacher?.name, teacher?.age)
                 binding.txtReceiveData.text = formattedText
 
             }

@@ -39,7 +39,7 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityStudyLayoutPaywallBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        isCheckNetwork()
+
 
         binding.btnPage1.setSafeOnClickListener {
             startActivity(Intent(this, PaywallActivity::class.java))
@@ -103,15 +103,6 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
         }
     }
 
-    private fun isCheckNetwork() {
-        if (isWifeEnabled(applicationContext)) {
-            Toast.makeText(this, "Wife turned on", Toast.LENGTH_LONG).show()
-        } else if (isNetworkAvailable(applicationContext)) {
-            Toast.makeText(this, "Network is available", Toast.LENGTH_LONG).show()
 
-        } else {
-            Toast.makeText(this, "Internet turned on", Toast.LENGTH_LONG).show()
-        }
-    }
 }
 

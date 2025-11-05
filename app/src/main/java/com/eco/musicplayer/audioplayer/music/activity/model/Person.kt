@@ -1,4 +1,3 @@
 package com.eco.musicplayer.audioplayer.music.activity.model
 
-data class Teacher(val name: String,val age: Int)  {
-}
+data class Person(var name: String)

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.activity.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp">
+
+
+        <Button
+            android:id="@+id/btnImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/takephoto"
+            app:layout_constraintEnd_toStartOf="@id/btnVideo"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btnVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:text="@string/video"
+            app:layout_constraintEnd_toStartOf="@id/btnCamera"
+            app:layout_constraintStart_toEndOf="@id/btnImage"
+            app:layout_constraintTop_toTopOf="@id/btnImage" />
+
+        <Button
+            android:id="@+id/btnCamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnVideo"
+            app:layout_constraintTop_toTopOf="@id/btnImage" />
+
+        <Button
+            android:id="@+id/btnMemory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/memory"
+            app:layout_constraintEnd_toStartOf="@id/btnAudio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnImage" />
+
+        <Button
+            android:id="@+id/btnAudio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/audio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnMemory"
+            app:layout_constraintTop_toTopOf="@id/btnMemory" />
+
+        <Button
+            android:id="@+id/btnNotification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnMemory" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

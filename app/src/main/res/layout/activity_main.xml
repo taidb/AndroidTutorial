@@ -151,22 +151,15 @@
             app:layout_constraintStart_toEndOf="@+id/image_view" />
 
         <Button
-            android:id="@+id/btnSerializable1"
+            android:id="@+id/btnTransferJson"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/librarySerializable"
-            app:layout_constraintBottom_toTopOf="@+id/btnParcelable1"
-            app:layout_constraintEnd_toStartOf="@+id/image_view"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btnParcelable1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/libraryParcelable"
+            android:text="@string/transferJson"
             app:layout_constraintBottom_toTopOf="@+id/btn_image"
             app:layout_constraintEnd_toStartOf="@+id/image_view"
             app:layout_constraintStart_toStartOf="parent" />
+
+
 
         <Button
             android:id="@+id/btn_custom_dialog"

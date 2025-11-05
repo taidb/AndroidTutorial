@@ -27,6 +27,7 @@ import com.eco.musicplayer.audioplayer.music.activity.model.Staff
 import com.eco.musicplayer.audioplayer.music.activity.model.Student
 import com.eco.musicplayer.audioplayer.music.activity.model.Teacher
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityMainBinding
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -116,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         setupBottomSheetDialog()
 
         //DialogActivity
-        transferObject1()
+
 
         //DialogFragment
         setupDialogFragment()
@@ -254,36 +255,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun transferObject1() {
-        binding.btnParcelable.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            val student = Student("Nguyen Van A", 2021, "Ha Noi")
-            intent.putExtra("data1", student)
-            startActivity(intent)
-        }
-    }
-    private fun transferObject2() {
-        binding.btnParcelable1.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            val student = Student("Nguyen Van A", 2021, "Ha Noi")
-            intent.putExtra("data1", student)
-            startActivity(intent)
-        }
-    }
-    private fun transferObject3() {
-        binding.btnSerializable.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            val student = Student("Nguyen Van A", 2021, "Ha Noi")
-            intent.putExtra("data1", student)
-            startActivity(intent)
 
-        }
-    }
-    private fun transferObject4() {
-        val intent = Intent(this, MainActivity2::class.java)
-        val teacher = Teacher("Nguyen Van A", 34)
-        startActivity(intent)
-    }
+
 //evenmust
     private fun setupDialogFragment() {
         binding.btnDialogFragment.setOnClickListener {

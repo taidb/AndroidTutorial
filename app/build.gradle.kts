@@ -72,4 +72,8 @@ dependencies {
     implementation ("com.google.android.material:material:1.6.0")
     implementation("com.jakewharton.threetenabp:threetenabp:1.4.8")
     implementation("com.android.billingclient:billing-ktx:8.0.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("org.greenrobot:eventbus:3.3.1")
+
 }

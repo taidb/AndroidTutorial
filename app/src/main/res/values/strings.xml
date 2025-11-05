@@ -18,14 +18,25 @@
     <string name="bottomSheetDialog">Bottom Sheet Dialog</string>
     <string name="activityDialog">Activity Dialog</string>
     <string name="Parcelable">Parcelable</string>
+    <string name="checkNetwork">CheckNetwork</string>
     <string name="Serializable">Serializable</string>
     <string name="libraryParcelable">LibraryParcelable</string>
-    <string name="librarySerializable">LibrarySerializable</string>
+    <string name="transferJson">TransferJson</string>
+    <string name="service">Service</string>
+    <string name="customBroadcastReceiver">Custom Broadcast Receiver</string>
+    <string name="fragment">Fragment</string>
+    <string name="btnVersionSdk1">Version SDK dưới 11</string>
+    <string name="btnVersionSdk2">Version SDK trên 11</string>
+    <string name="btnVersionSdk3">Version SDK trên 13</string>
     <string name="editText1">Nhập thông tin tên </string>
     <string name="editText2">Nhập thông tin tuổi </string>
     <string name="editText3">Nhập thông tin địa chỉ </string>
     <string name="takephoto">Hình ảnh</string>
     <string name="transfer">Web</string>
+    <string name="memory">Bộ nhớ</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="notification">Notification </string>
     <string name="camera">Chụp ảnh</string>
     <string name="dialogFragment">Dialog Frament</string>
     <string name="alertdialog">Thông tin cần lưu ý</string>
@@ -35,6 +46,8 @@
     <string name="date_time_picker">TimePickerDialog</string>
     <string name="back_data">Dữ liệu từ trang sau</string>
     <string name="student_info">%1$s - %2$d - %3$s</string>
+    <string name="staff_info">%1$d - %2$s - %3$d - %4$.2f</string>
+    <string name="teacher_info">%1$s - %2$d</string>
     <string name="student_list">Tên: %1$s, Tuổi: %2$d, Địa chỉ: %3$s</string>
     <string name="from">Từ</string>
     <string name="ecomobile">Eco Mobile</string>
@@ -122,6 +135,8 @@
     <string name="free_trial_ends_in">3-day free trial enabled</string>
     <string name="free_trial_ends_in_two">2-months free trial enabled</string>
     <string name="cacel_anytime">Cancel anytime</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -5,15 +5,27 @@ import android.net.ConnectivityManager
 import android.net.wifi.WifiManager
 import android.os.Build
 
+//fun isNetworkAvailables(): Boolean {
+//    val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//    val wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+//    val mobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+//    return if (wifi != null) {
+//        if (wifi.isConnected) true else {
+//            mobile?.isConnected ?: false
+//        }
+//    } else {
+//        mobile?.isConnected ?: false
+//    }
+//}
 
-    //Kiểm tra kết nối mạng chung
+    //Kiểm tra kết nối mạng chung ( c kết nối hay không)
     fun isNetworkAvailable(context: Context):Boolean{
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetworkInfo = connectivityManager.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 
-    // Kiểm tra wifi cụ thể
+    // Kiểm tra wifi có bật không
     fun isWifeEnabled(context: Context):Boolean{
         val wifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
         return wifiManager.isWifiEnabled

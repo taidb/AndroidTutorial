@@ -21,13 +21,13 @@ class MyForegroundService : Service() {
 
     private val CHANNEL_ID = "ForegroundServiceChannel"
 
-    override fun onCreate() {
+    override fun onCreate() { // Được gọi khi service lần đầu tiên được tạo.
         super.onCreate()
         Log.d("MyForegroundService", "onCreate")
     }
 
     @SuppressLint("ForegroundServiceType")
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int { //Được gọi mỗi khi service được startService() từ Activity.
         Log.d("MyForegroundService", "onStartCommand")
 
         createNotificationChannel()
@@ -42,12 +42,12 @@ class MyForegroundService : Service() {
         return START_STICKY
     }
 
-    override fun onDestroy() {
+    override fun onDestroy() { //Gọi khi service bị stop hoặc app bị kill.
         super.onDestroy()
         Log.d("MyForegroundService", "onDestroy")
     }
 
-    override fun onBind(intent: Intent?): IBinder? = null
+    override fun onBind(intent: Intent?): IBinder? = null //Service này không hỗ trợ bind → trả về null.
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

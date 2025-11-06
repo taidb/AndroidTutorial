@@ -100,7 +100,10 @@ class MainActivity4 : AppCompatActivity() {
             val intent = Intent(this, ServiceActivity::class.java)
             startActivity(intent)
         }
-
+        binding.btnFragment1.setOnClickListener {
+            val intent = Intent(this, DemoFragment::class.java)
+            startActivity(intent)
+        }
 
 
     }

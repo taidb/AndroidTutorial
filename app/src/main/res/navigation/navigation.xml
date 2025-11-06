@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment">
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.eco.musicplayer.audioplayer.music.activity.fragment.Fragment1"
+        android:label="Fragment1">
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.eco.musicplayer.audioplayer.music.activity.fragment.Fragment2"
+        android:label="Fragment2">
+
+        <action
+            android:id="@+id/action_fragment1_to_fragment3"
+            app:destination="@id/fragment3"
+            app:enterAnim="@anim/frombottom"
+            />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="com.eco.musicplayer.audioplayer.music.activity.fragment.Fragment3"
+        android:label="fragment_3"
+        tools:layout="@layout/fragment_3">
+        <action
+            android:id="@+id/action_fragment3_to_fragment1"
+            app:destination="@id/fragment1"
+            app:enterAnim="@anim/fromright"
+            app:exitAnim="@anim/toleft"
+            app:popEnterAnim="@anim/fromleft"
+            app:popExitAnim="@anim/toright"
+            />
+        <argument
+            android:name="filter"
+            app:argType="string" />
+    </fragment>
+</navigation>

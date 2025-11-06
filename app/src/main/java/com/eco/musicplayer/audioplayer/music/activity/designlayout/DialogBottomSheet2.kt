@@ -17,6 +17,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
 import com.eco.musicplayer.audioplayer.music.activity.billing.asProductDetailsOffer
 import com.eco.musicplayer.audioplayer.music.R
@@ -86,9 +87,11 @@ class DialogBottomSheet2 : AppCompatActivity() {
                     is BillingQueryState.ProductDetailsComplete -> {
                         updateProductDetailsUI(state.products)
                     }
+
                     is BillingQueryState.PurchaseComplete -> {
                         checkPurchases(state.purchases)
                     }
+
                     is BillingQueryState.Error -> {
                         handleBillingError(state.exception)
                     }
@@ -97,21 +100,42 @@ class DialogBottomSheet2 : AppCompatActivity() {
         )
     }
 
-    private fun updateProductDetailsUI(products: List<com.android.billingclient.api.ProductDetails>) {
+    private fun updateProductDetailsUI(products: List<ProductDetails>) {
         products.forEach { productDetails ->
+            android.util.Log.d(
+                "BILLING_PRODUCTS", """
+            ProductId: ${productDetails.productId}
+            Title: ${productDetails.title}
+            Description: ${productDetails.description}
+            Offer Token(s):
+            ${productDetails.subscriptionOfferDetails}
+            OneTimePrice: ${productDetails.oneTimePurchaseOfferDetails?.formattedPrice}
+        """.trimIndent()
+            )
+
             val offer = productDetails.asProductDetailsOffer()
+            android.util.Log.d(
+                "BILLING_OFFER", """
+    FormattedPrice: ${offer.formattedPrice}
+    OfferToken: ${offer.offerToken}
+    TypePeriod: ${offer.typePeriod}
+    TypeOffer: ${offer.typeOffer}
+    PriceMicros: ${offer.priceAmountMicros}
+""".trimIndent()
+            )
             when (productDetails.productId) {
                 yearlyProductId -> {
                     yearlyProduct = offer
                     updateYearlyPlanUI(offer)
                 }
+
                 weeklyProductId -> {
                     weeklyProduct = offer
                     updateWeeklyPlanUI(offer)
                 }
+
                 lifetimeProductId -> {
                     lifetimeProduct = offer
-                    // Có thể thêm lifetime plan nếu cần
                 }
             }
         }
@@ -131,7 +155,8 @@ class DialogBottomSheet2 : AppCompatActivity() {
         }
         val weeklyPrice = weeklyPriceMicros / 1000000.0
 
-        binding.txtDesPrice1.text = getString(R.string.only_price_per_week, "$${String.format("%.3f", weeklyPrice)}")
+        binding.txtDesPrice1.text =
+            getString(R.string.only_price_per_week, "$${String.format("%.3f", weeklyPrice)}")
 
         // Cập nhật free trial info
         if (offer.typeOffer != ProductDetailsOffer.TypeOffer.NONE && !hasUsedFreeTrial) {
@@ -177,7 +202,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
         // Kiểm tra các purchase cũ có product ID của free trial
         return purchases.any { purchase ->
-            purchase.products.contains(yearlyProductId) && purchase.isAcknowledged
+            purchase.products.contains(yearlyProductId) && purchase.isAcknowledged && (purchase.purchaseState==Purchase.PurchaseState.PURCHASED)
         }
     }
 
@@ -277,6 +302,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
                     showContinueLayout()
                 }
             }
+
             2 -> {
                 binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
                 binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
@@ -349,12 +375,15 @@ class DialogBottomSheet2 : AppCompatActivity() {
                 }
                 showPurchaseSuccess()
             }
+
             is BillingPurchasesState.AcknowledgePurchaseLoading -> {
                 showLoadingState(state.isLoading)
             }
+
             is BillingPurchasesState.UserCancelPurchase -> {
                 showPurchaseCancelled()
             }
+
             is BillingPurchasesState.Error -> {
                 handleBillingError(state.exception)
             }

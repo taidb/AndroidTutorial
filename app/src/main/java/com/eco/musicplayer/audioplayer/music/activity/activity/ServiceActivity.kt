@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
@@ -55,7 +56,12 @@ class ServiceActivity : AppCompatActivity() {
     fun startForegroundService() {
         Log.d("ServiceActivity", "Starting Foreground Service")
         val intent = Intent(this, MyForegroundService::class.java)
-        ContextCompat.startForegroundService(this, intent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ContextCompat.startForegroundService(this,intent)
+        } else {
+            startService(intent)
+        }
+       // .startForegroundService(this, intent)
         binding.txtBoundData.text = "Foreground Service started"
     }
 

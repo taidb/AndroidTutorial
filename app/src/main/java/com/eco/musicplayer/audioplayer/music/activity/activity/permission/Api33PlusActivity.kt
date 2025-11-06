@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import com.eco.musicplayer.audioplayer.music.R
 
 class Api33PlusActivity : BasePermissionActivity() {
@@ -14,10 +15,23 @@ class Api33PlusActivity : BasePermissionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_permission)
+        val debugText = """
+            === DEBUG VERSION INFO ==='
+            SDK_INT: ${Build.VERSION.SDK_INT}
+            RELEASE: ${Build.VERSION.RELEASE}
+            CODENAME: ${Build.VERSION.CODENAME}
+            TIRAMISU: ${Build.VERSION_CODES.TIRAMISU} (API 33)
+            R: ${Build.VERSION_CODES.R} (API 30)
+            Current API: ${Build.VERSION.SDK_INT}
+        """.trimIndent()
 
+        println(debugText)
+
+        // Hiển thị trên UI để dễ debug
+        findViewById<TextView>(R.id.tvTitle).text = debugText
         title = "API 33+ - Quyền chi tiết & Notification"
 
-        // Khởi tạo permissions cho API 33+
+        // Khởi tạo permissions cho API 33+(version 13 trở lên)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             permissions = arrayOf(
                 Manifest.permission.READ_MEDIA_IMAGES,
@@ -33,8 +47,7 @@ class Api33PlusActivity : BasePermissionActivity() {
             "API 33+ Behavior",
             "• Quyền Media CHI TIẾT: Ảnh, Video, Audio riêng biệt\n" +
                     "• Notification: Cần POST_NOTIFICATIONS\n" +
-                    "• Từ chối 2 lần → Không hỏi lại\n" +
-                    "• Granular control cho người dùng"
+                    "• Từ chối 2 lần → Không hỏi lại\n"
         )
 
         findViewById<Button>(R.id.btnRequest).setOnClickListener { requestPermissions() }
@@ -46,7 +59,7 @@ class Api33PlusActivity : BasePermissionActivity() {
         if (denyCount >= 3) {
             showSimpleDialog(
                 "Đã từ chối ${denyCount-1} lần",
-                "Hệ thống sẽ KHÔNG hiển thị hộp thoại nữa. Phải vào Settings."
+                "Chuyển vào Settings."
             )
             showSettingsDialog()
             return
@@ -59,8 +72,8 @@ class Api33PlusActivity : BasePermissionActivity() {
                         "• READ_MEDIA_IMAGES - Truy cập ảnh\n" +
                         "• READ_MEDIA_VIDEO - Truy cập video\n" +
                         "• READ_MEDIA_AUDIO - Truy cập audio\n" +
-                        "• POST_NOTIFICATIONS - Hiển thị thông báo\n\n" +
-                        "Nếu từ chối 2 lần, sẽ không hỏi lại!"
+                        "• POST_NOTIFICATIONS - Hiển thị thông báo\n\n"
+
             )
 
             requestPermissions(permissions, PERMISSION_REQUEST_CODE)
@@ -88,7 +101,7 @@ class Api33PlusActivity : BasePermissionActivity() {
             } else {
                 showSimpleDialog(
                     "Đã từ chối $denyCount lần",
-                    "Một số quyền bị từ chối. Hãy thử lại để thấy hành vi 'từ chối 2 lần'."
+                    "Một số quyền bị từ chối. Hãy thử lại."
                 )
             }
         }

@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -15,6 +16,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updateLayoutParams
 import com.android.billingclient.api.ProductDetails
 import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.activity.billing.BillingManager
+import com.eco.musicplayer.audioplayer.music.activity.billing.asProductDetailsOffer
+import com.eco.musicplayer.audioplayer.music.activity.billing.model.IN_APP
+import com.eco.musicplayer.audioplayer.music.activity.billing.model.ProductDetailsOffer
+import com.eco.musicplayer.audioplayer.music.activity.billing.model.ProductInfo
+import com.eco.musicplayer.audioplayer.music.activity.billing.model.SUBS
+import com.eco.musicplayer.audioplayer.music.activity.billing.queryAlls
+import com.eco.musicplayer.audioplayer.music.activity.billing.state.BillingQueryState
 
 import com.eco.musicplayer.audioplayer.music.activity.util.SpannableHelper
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityLayoutPaywallBinding
@@ -24,10 +33,20 @@ class PaywallActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLayoutPaywallBinding
     private lateinit var behavior: BottomSheetBehavior<View>
-   // private lateinit var billingManager: BillingManager
-   // val TAG = "BillingOffers"
+    private lateinit var billingManager: BillingManager
 
-
+    // val TAG = "BillingOffers"
+    private val yearlyProductId = "test2"
+    private val weeklyProductId = "test1"     // Weekly
+    private val lifetimeProductId = "test3"
+    private val productInfos = listOf(
+        ProductInfo(SUBS, yearlyProductId, false),
+        ProductInfo(SUBS, weeklyProductId, false),
+        ProductInfo(IN_APP, lifetimeProductId, false)
+    )
+    private var yearlyProduct :ProductDetailsOffer?=null
+    private var weeklyProduct :ProductDetailsOffer?=null
+    private var lifeTimeProduct :ProductDetailsOffer?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLayoutPaywallBinding.inflate(layoutInflater)
@@ -38,12 +57,70 @@ class PaywallActivity : AppCompatActivity() {
         setupBottomSheet()
         setupSpannableText()
         setupClickListeners()
-
+        setupBillingManager()
         binding.constraintLayout.updateLayoutParams {
             height = (resources.displayMetrics.heightPixels * 0.58).toInt()
         }
-       // initializeBilling()
+        // initializeBilling()
     }
+
+    private fun setupBillingManager() {
+        billingManager = BillingManager(this)
+        billingManager.queryAlls(
+            identity = this::class.java.simpleName,
+            productInfos =productInfos,
+            onDataState = { state ->
+                when (state){
+                   is BillingQueryState.ProductDetailsComplete -> {
+                       updateProductDetailsUI(state.products)
+                   }
+                    is BillingQueryState.PurchaseComplete ->{
+                       // checkPurchases(state.purchases)
+                    }
+                    is BillingQueryState.Error ->{
+                       // handleBillingError(state.exception)
+                    }
+                }
+            }
+        )
+    }
+    private fun updateProductDetailsUI(products: List<ProductDetails>){
+        products.forEach { productDetails ->
+            android.util.Log.d(
+                "BILLING_PRODUCT", """ 
+                ProductId: ${productDetails.productId}
+                Title:${productDetails.title}
+                Description: ${productDetails.description}
+                Offer Token(s): ${productDetails.subscriptionOfferDetails}
+                OneTimePrice: ${productDetails.oneTimePurchaseOfferDetails?.formattedPrice}
+                """.trimIndent()
+            )
+
+            val offer = productDetails.asProductDetailsOffer()
+            android.util.Log.d(
+                "BILLING_PRODUCT", """ 
+                ProductId: ${productDetails.productId}
+                Title:${productDetails.title}
+                Description: ${productDetails.description}
+                Offer Token(s): ${productDetails.subscriptionOfferDetails}
+                OneTimePrice: ${productDetails.oneTimePurchaseOfferDetails?.formattedPrice}
+                """.trimIndent()
+            )
+
+            when (productDetails.productId) {
+                yearlyProductId -> {
+                    yearlyProduct = offer
+
+                }
+
+                weeklyProductId -> {
+                }
+
+            }
+        }
+    }
+
+
 
 
     @SuppressLint("UseKtx")
@@ -181,10 +258,11 @@ class PaywallActivity : AppCompatActivity() {
         val defaultOldPrice = getString(R.string.price_week)
         val defaultNewPrice = getString(R.string.price_year)
         binding.txtPriceOff.text = defaultOldPrice
-      //  binding.idDiscount.text = percent.toString()
+        //  binding.idDiscount.text = percent.toString()
         binding.txtPrice.text = defaultNewPrice
 
-        binding.txtDescription.text = getString(R.string.billed_weekly_cancel_anytime, defaultNewPrice, defaultOldPrice)
+        binding.txtDescription.text =
+            getString(R.string.billed_weekly_cancel_anytime, defaultNewPrice, defaultOldPrice)
     }
 
     private fun initUI() {
@@ -281,7 +359,7 @@ class PaywallActivity : AppCompatActivity() {
                 // Reset các view khác
                 view.visibility = View.VISIBLE
                 txtDescription.visibility = View.VISIBLE
-                view.visibility=View.GONE
+                view.visibility = View.GONE
 
 
             }

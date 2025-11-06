@@ -134,7 +134,7 @@ private fun ProductDetails.productDetailsCustomTwoPhase(
 
 private fun ProductDetails.PricingPhase.getType(): ProductDetailsOffer.TypePeriod {
     return when {
-        billingPeriod.contains("D") -> ProductDetailsOffer.TypePeriod.WEEK
+        billingPeriod.contains("D") -> ProductDetailsOffer.TypePeriod.DAY
         billingPeriod.contains("W") -> ProductDetailsOffer.TypePeriod.WEEK
         billingPeriod.contains("M") -> ProductDetailsOffer.TypePeriod.MONTH
         billingPeriod.contains("Y") -> ProductDetailsOffer.TypePeriod.YEAR

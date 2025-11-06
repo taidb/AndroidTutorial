@@ -8,12 +8,12 @@ import android.util.Log
 
 class MyBackgroundService : Service() {
 
-    override fun onCreate() {
+    override fun onCreate() { //được gọi khi service lần đầu tiên được tạo.Thường dùng để khởi tạo các tài nguyên ví dụ: mở kết nối database, tạo thread, hoặc set up listener.
         super.onCreate()
         Log.d("MyBackgroundService", "onCreate")
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int { //được gọi mỗi khi Activity hoặc component khác gọi startService().
         Log.d("MyBackgroundService", "onStartCommand - chạy nền")
         Thread {
             for (i in 1..5) {
@@ -25,7 +25,7 @@ class MyBackgroundService : Service() {
         return START_NOT_STICKY
     }
 
-    override fun onDestroy() {
+    override fun onDestroy() { //Được gọi khi service bị dừng hoặc stopSelf() được gọi.
         super.onDestroy()
         Log.d("MyBackgroundService", "onDestroy")
     }

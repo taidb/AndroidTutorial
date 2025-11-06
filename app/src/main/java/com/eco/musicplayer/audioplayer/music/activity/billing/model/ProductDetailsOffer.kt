@@ -22,6 +22,7 @@ data class ProductDetailsOffer(
         LIFETIMES,
         WEEK,
         MONTH,
+        DAY,
         YEAR
     }
 

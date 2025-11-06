@@ -7,7 +7,7 @@ import android.os.IBinder
 import android.util.Log
 import kotlin.random.Random
 
-class MyBoundService : Service() {
+class MyBoundService : Service() { //Activity hoặc component khác có thể bind để tương tác trực tiếp với service. service này sẽ tồn tại khi còn client bind với nó.
 
     private val binder = MyBinder()
 
@@ -20,12 +20,13 @@ class MyBoundService : Service() {
         Log.d("MyBoundService", "onCreate")
     }
 
-    override fun onBind(intent: Intent?): IBinder {
+    override fun onBind(intent: Intent?): IBinder { //Được gọi khi Activity gọi bindService().
+       // Trả về IBinder, cho phép Activity giao tiếp trực tiếp với service.
         Log.d("MyBoundService", "onBind")
         return binder
     }
 
-    override fun onUnbind(intent: Intent?): Boolean {
+    override fun onUnbind(intent: Intent?): Boolean { //Gọi khi tất cả client đã unbind.
         Log.d("MyBoundService", "onUnbind")
         return super.onUnbind(intent)
     }

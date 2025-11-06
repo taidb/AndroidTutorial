@@ -4,6 +4,7 @@ plugins {
     id ("kotlin-kapt")
     id ("kotlin-parcelize")
     id ("com.google.gms.google-services")
+    id("androidx.navigation.safeargs")
     }
 
 android {
@@ -75,5 +76,7 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation("org.greenrobot:eventbus:3.3.1")
-
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 }

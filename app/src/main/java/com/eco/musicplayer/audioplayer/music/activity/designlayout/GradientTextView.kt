@@ -43,30 +43,6 @@ class GradientTextView @JvmOverloads constructor(
         }
     }
 
-    fun setGradientAngle(newAngle: Float) {
-        angle = newAngle
-        invalidate()
-    }
-
-    fun setGradientColors(newStartColor: Int, newEndColor: Int) {
-        startColor = newStartColor
-        endColor = newEndColor
-        invalidate()
-    }
-
-    fun setShadow(
-        newShadowRadius: Float,
-        newShadowDx: Float,
-        newShadowDy: Float,
-        newShadowColor: Int = Color.BLACK
-    ) {
-        shadowRadius = newShadowRadius
-        shadowDx = newShadowDx
-        shadowDy = newShadowDy
-        shadowColor = newShadowColor
-        setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor)
-        invalidate()
-    }
 
     override fun onDraw(canvas: Canvas) {
         // Tính toán điểm gradient dựa trên góc

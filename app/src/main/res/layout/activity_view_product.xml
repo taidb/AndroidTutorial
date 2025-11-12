@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".activity.designlayout.ViewProductActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_radius_20"
+        android:backgroundTint="@color/white"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingTop="@dimen/_8sdp">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCrossbar"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:src="@drawable/rectangle_962"
+            app:layout_constraintDimensionRatio="42:5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:shadowColor="#40000000"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="4"
+            android:text="@string/category_chart"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@+id/imgCrossbar" />
+
+        <com.eco.musicplayer.audioplayer.music.activity.designlayout.GradientView
+            android:id="@+id/progressView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_70sdp"
+            android:layout_marginTop="32dp"
+            android:background="#FFFFFF"
+            android:shadowColor="#40000000"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="4"
+            app:layout_constraintDimensionRatio="197:193"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+            app:progress="75"
+            app:progressText="75%"
+            app:subText="Processing"
+            app:subTextColor="#757575"
+            app:subTextSize="@dimen/_15sdp"
+            app:textColor="#1E1E2D"
+            app:textSize="@dimen/_25sdp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressView">
+
+
+            <com.eco.musicplayer.audioplayer.music.activity.designlayout.CanvasGradientTextViewImage
+                android:id="@+id/view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:Colorend="#FF8F6E"
+                app:height="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:radius="@dimen/_3sdp"
+                app:Colorshadow="#80000000"
+                app:Dxshadow="0"
+                app:Dyshadow="4"
+                app:Radiusshadow="4"
+                app:Colorstart="#FFCA63"
+                app:text="Transaction"
+                app:Colortext="#000000"
+                app:Sizetext="@dimen/_10sdp"
+                app:width="@dimen/_10sdp"
+
+                />
+
+            <com.eco.musicplayer.audioplayer.music.activity.designlayout.CanvasGradientTextViewImage
+                android:id="@+id/view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_38sdp"
+                android:padding="8dp"
+                app:Colorend="#C1FFC8"
+                app:height="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@+id/view1"
+                app:radius="@dimen/_3sdp"
+                app:Colorshadow="#80000000"
+                app:Dxshadow="0"
+                app:Dyshadow="4"
+                app:Radiusshadow="4"
+                app:Colorstart="#47DDC2"
+                app:text="Transfer"
+                app:Colortext="#000000"
+                app:Sizetext="@dimen/_10sdp"
+                app:width="@dimen/_10sdp" />
+
+            <com.eco.musicplayer.audioplayer.music.activity.designlayout.CanvasGradientTextViewImage
+                android:id="@+id/view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:Colorend="#08E6F8"
+                app:height="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/view2"
+                app:radius="@dimen/_3sdp"
+                app:Colorshadow="#80000000"
+                app:Dxshadow="0"
+                app:Dyshadow="4"
+                app:Radiusshadow="4"
+                app:Colorstart="#C172FF"
+                app:text="Travel"
+                app:Colortext="#000000"
+                app:Sizetext="@dimen/_10sdp"
+                app:width="@dimen/_10sdp" />
+
+
+            <com.eco.musicplayer.audioplayer.music.activity.designlayout.CanvasGradientTextViewImage
+                android:id="@+id/view4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="8dp"
+                app:Colorend="#C1C8FF"
+                app:height="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/view1"
+                app:radius="@dimen/_3sdp"
+                app:Colorshadow="#80000000"
+                app:Dxshadow="0"
+                app:Dyshadow="4"
+                app:Radiusshadow="4"
+                app:Colorstart="#FF6393"
+                app:text="Food"
+                app:Colortext="#000000"
+                app:Sizetext="@dimen/_10sdp"
+                app:width="@dimen/_10sdp" />
+
+            <com.eco.musicplayer.audioplayer.music.activity.designlayout.CanvasGradientTextViewImage
+                android:id="@+id/view5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="8dp"
+                app:Colorend="#FF8F6E"
+                app:height="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="@+id/view2"
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:radius="@dimen/_3sdp"
+                app:Colorshadow="#80000000"
+                app:Dxshadow="0"
+                app:Dyshadow="4"
+                app:Radiusshadow="4"
+                app:Colorstart="#FFCA63"
+                app:text="Shopping"
+                app:Colortext="#000000"
+                app:Sizetext="@dimen/_10sdp"
+                app:width="@dimen/_10sdp" />
+
+            <com.eco.musicplayer.audioplayer.music.activity.designlayout.CanvasGradientTextViewImage
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="8dp"
+                app:Colorend="#C1FFC8"
+                app:height="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="@+id/view3"
+                app:layout_constraintTop_toBottomOf="@+id/view3"
+                app:radius="@dimen/_3sdp"
+                app:Colorshadow="#80000000"
+                app:Dxshadow="0"
+                app:Dyshadow="4"
+                app:Radiusshadow="4"
+                app:Colorstart="#47DDC2"
+                app:text="Car"
+                app:Colortext="#000000"
+                app:Sizetext="@dimen/_10sdp"
+                app:width="@dimen/_10sdp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="Transaction History"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_13sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/readexpro_regular"
+            android:text="See All"
+            android:textColor="#0066FF"
+            android:textSize="@dimen/_13sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="Today"
+            android:textColor="#A2A2A7"
+            android:textSize="@dimen/_13sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgApple"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:src="@drawable/group_27"
+            app:layout_constraintDimensionRatio="42:42"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="Apple Store"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toEndOf="@+id/imgApple"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_regular"
+            android:text="Entertainment"
+            android:textColor="#A2A2A7"
+            android:textSize="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgApple"
+            app:layout_constraintStart_toEndOf="@+id/imgApple"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="-$5.99"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgApple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgApple"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSpotify"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:src="@drawable/group_321"
+            app:layout_constraintDimensionRatio="42:42"
+            app:layout_constraintTop_toBottomOf="@+id/imgApple" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="Spotify"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toEndOf="@+id/imgSpotify"
+            app:layout_constraintTop_toTopOf="@+id/imgSpotify"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_regular"
+            android:text="Music"
+            android:textColor="#A2A2A7"
+            android:textSize="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSpotify"
+            app:layout_constraintStart_toEndOf="@+id/imgSpotify"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView9"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="-$12.99"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSpotify"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgSpotify"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLastDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last 7 Day"
+            app:layout_constraintTop_toBottomOf="@+id/imgSpotify"
+            android:textColor="#A2A2A7"
+            android:fontFamily="@font/readexpro_medium"
+            android:textSize="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSpotify1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:src="@drawable/group_321"
+            app:layout_constraintDimensionRatio="42:42"
+            app:layout_constraintTop_toBottomOf="@+id/tvLastDay" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="Spotify"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toEndOf="@+id/imgSpotify1"
+            app:layout_constraintTop_toTopOf="@+id/imgSpotify1"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_regular"
+            android:text="Music"
+            android:textColor="#A2A2A7"
+            android:textSize="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSpotify1"
+            app:layout_constraintStart_toEndOf="@+id/imgSpotify1"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView12"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="-$12.99"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSpotify1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgSpotify1"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLastDay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last 7 Day"
+            app:layout_constraintTop_toBottomOf="@+id/imgSpotify1"
+            android:textColor="#A2A2A7"
+            android:fontFamily="@font/readexpro_medium"
+            android:textSize="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSpotify11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:src="@drawable/group_321"
+            app:layout_constraintDimensionRatio="42:42"
+            app:layout_constraintTop_toBottomOf="@+id/tvLastDay1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView121"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="Spotify"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toEndOf="@+id/imgSpotify11"
+            app:layout_constraintTop_toTopOf="@+id/imgSpotify11"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView131"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_regular"
+            android:text="Music"
+            android:textColor="#A2A2A7"
+            android:textSize="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSpotify11"
+            app:layout_constraintStart_toEndOf="@+id/imgSpotify11"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView121"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView141"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:fontFamily="@font/readexpro_medium"
+            android:text="-$12.99"
+            android:textColor="#1E1E2D"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSpotify11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgSpotify11"
+            app:shadowDx="0"
+            app:shadowDy="4"
+            app:shadowRadius="4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -18,7 +18,6 @@ class PreApi30Activity : BasePermissionActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_permission)
 
-        title = "API < 30 - Có checkbox 'Don't ask again'"
 
         showSimpleDialog(
             "API < 30 Behavior",

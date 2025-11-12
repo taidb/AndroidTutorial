@@ -9,4 +9,29 @@
         <attr name="startColor" format="color" />
         <attr name="endColor" format="color" />
     </declare-styleable>
+    <declare-styleable name="GradientView">
+        <attr name="progress" format="float" />
+        <attr name="progressText" format="string" />
+        <attr name="subText" format="string" />
+        <attr name="textSize" format="dimension" />
+        <attr name="subTextSize" format="dimension" />
+        <attr name="textColor" format="color" />
+        <attr name="subTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientViewAndImage">
+        <attr name="text" format="string" />
+        <attr name="Sizetext" format="dimension" />
+        <attr name="Colortext" format="color" />
+        <attr name="width" format="dimension" />
+        <attr name="height" format="dimension" />
+        <attr name="radius" format="dimension" />
+        <attr name="Colorend" format="color" />
+        <attr name="Colorstart" format="color" />
+        <attr name="Colorshadow" format="color" />
+        <attr name="Radiusshadow" format="float" />
+        <attr name="Dxshadow" format="float" />
+        <attr name="Dyshadow" format="float" />
+    </declare-styleable>
+
 </resources>

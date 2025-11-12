@@ -98,6 +98,14 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
             }
         }
 
+        binding.apply {
+            btnPage8.setOnClickListener {
+                val bottomSheet =ViewProductActivity()
+                bottomSheet.show(supportFragmentManager,"ViewProductActivity")
+                progress.visibility = View.INVISIBLE
+            }
+        }
+
         binding.btnPage7.setOnClickListener {
             startActivity(Intent(this, DialogBottomSheet2::class.java))
         }

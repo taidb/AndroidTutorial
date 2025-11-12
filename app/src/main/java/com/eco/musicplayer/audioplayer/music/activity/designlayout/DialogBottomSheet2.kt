@@ -115,7 +115,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
             val offer = productDetails.asProductDetailsOffer()
             android.util.Log.d(
-                "BILLING_OFFER", """
+                "BILLING_PRODUCTS", """
     FormattedPrice: ${offer.formattedPrice}
     OfferToken: ${offer.offerToken}
     TypePeriod: ${offer.typePeriod}
@@ -165,12 +165,13 @@ class DialogBottomSheet2 : AppCompatActivity() {
                 offer.formattedPrice
             )
         } else {
-//            binding.txtAutoRenew.text = getString(R.string.auto_renew_description)
+            binding.txtAutoRenew.text = getString(R.string.after_free_trial_ends_yearly_max,"22000000000")
         }
     }
 
     private fun updateWeeklyPlanUI(offer: ProductDetailsOffer) {
         binding.txtPrice.text = offer.formattedPrice
+        binding.txtAutoRenew.text=getString(R.string.after_free_trial_ends_weekly,offer.formattedPrice)
     }
 
     private fun checkPurchases(purchases: List<Purchase>) {
@@ -202,7 +203,7 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
         // Kiểm tra các purchase cũ có product ID của free trial
         return purchases.any { purchase ->
-            purchase.products.contains(yearlyProductId) && purchase.isAcknowledged && (purchase.purchaseState==Purchase.PurchaseState.PURCHASED)
+            purchase.products.contains(yearlyProductId) && purchase.isAcknowledged && (purchase.purchaseState == Purchase.PurchaseState.PURCHASED)
         }
     }
 

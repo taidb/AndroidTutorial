@@ -1,19 +1,21 @@
 package com.eco.musicplayer.audioplayer.music.activity.activity
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.activity.service.LocationForegroundService
 import com.eco.musicplayer.audioplayer.music.activity.service.MyBackgroundService
 import com.eco.musicplayer.audioplayer.music.activity.service.MyBoundService
 import com.eco.musicplayer.audioplayer.music.activity.service.MyForegroundService
@@ -23,7 +25,12 @@ import com.eco.musicplayer.audioplayer.music.databinding.ActivityServiceBinding
 class ServiceActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityServiceBinding
-
+   private val loctationPermission =registerForActivityResult(
+       ActivityResultContracts.RequestPermission()
+   ){ granted ->
+       if (granted) startLocationService()
+       else Toast.makeText(this, "Quyền bị từ chối", Toast.LENGTH_SHORT).show()
+   }
     private var boundService: MyBoundService? = null
     private var isBound = false
     private val connection = object : ServiceConnection {
@@ -53,16 +60,51 @@ class ServiceActivity : AppCompatActivity() {
         Log.d("ServiceActivity", "Activity created")
     }
 
-    fun startForegroundService() {
-        Log.d("ServiceActivity", "Starting Foreground Service")
-        val intent = Intent(this, MyForegroundService::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+     fun checkPermissionAndStart() {
+        if (ContextCompat.checkSelfPermission(
+            this,Manifest.permission.ACCESS_FINE_LOCATION
+        )==PackageManager.PERMISSION_GRANTED){
+            startLocationService()
+        }else{
+            loctationPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
+
+    private fun startLocationService() {
+        val intent =Intent(this,LocationForegroundService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             ContextCompat.startForegroundService(this,intent)
-        } else {
+        }else{
             startService(intent)
         }
-       // .startForegroundService(this, intent)
-        binding.txtBoundData.text = "Foreground Service started"
+    }
+
+    @SuppressLint("ImplicitSamInstance")
+     fun stopLocationService(){
+        stopService(Intent(this,LocationForegroundService::class.java))
+    }
+
+    fun startForegroundService() {
+        val intent = Intent(this, MyForegroundService::class.java)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Android 13+ yêu cầu quyền thông báo
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
+                return
+            }
+
+            // Bắt buộc dùng startForegroundService
+            ContextCompat.startForegroundService(this, intent)
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8 - 12
+            ContextCompat.startForegroundService(this, intent)
+        } else {
+            // Android 7 trở xuống
+            startService(intent)
+        }
     }
 
     fun stopForegroundService() {

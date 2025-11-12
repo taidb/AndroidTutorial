@@ -18,12 +18,11 @@ class Api30To32Activity : BasePermissionActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_permission)
 
-        title = "API 30-32 - Từ chối 2 lần → Không hỏi lại"
 
         showSimpleDialog(
             "API 30-32 Behavior",
-            "• Từ chối 2 lần → hệ thống NGẦM HIỂU 'không hỏi lại'\n" +
-                    "• KHÔNG có checkbox 'Don't ask again' rõ ràng\n" +
+            "•Từ chối 2 lần → hệ thống: 'không hỏi lại'\n" +
+                    "• KHÔNG có checkbox 'Don't ask again'\n" +
                     "• Storage: MANAGE_EXTERNAL_STORAGE\n" +
                     "• Notification: Tự động được cấp"
         )
@@ -71,7 +70,6 @@ class Api30To32Activity : BasePermissionActivity() {
                 showSimpleDialog("Thành công", "Tất cả quyền đã được cấp!")
             } else {
                 denyCount++
-
                 // Kiểm tra xem có nên hiển thị giải thích không
                 val shouldShowRationale = permissions.any { permission ->
                     shouldShowRequestPermissionRationale(permission)

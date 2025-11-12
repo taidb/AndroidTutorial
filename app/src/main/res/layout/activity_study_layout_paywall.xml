@@ -97,6 +97,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_8sdp" />
+   <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPage8"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:text="@string/trang8"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnPage7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_8sdp" />
 
 
 

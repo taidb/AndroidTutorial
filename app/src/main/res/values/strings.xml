@@ -9,6 +9,7 @@
     <string name="trang5_1">Trang 5</string>
     <string name="trang6">Trang 6</string>
     <string name="trang7">Trang 7</string>
+    <string name="trang8">Trang 8</string>
     <string name="trang3">Trang 3</string>
     <string name="trang4">Viewmodel</string>
     <string name="trang5">Permission</string>
@@ -44,6 +45,8 @@
     <string name="alertdialog">Thông tin cần lưu ý</string>
     <string name="username">Tên đăng nhập</string>
     <string name="password">Mật khẩu</string>
+    <string name="login">Login</string>
+    <string name="password1">Password</string>
     <string name="date_picker_dialog">DatePickerDialog</string>
     <string name="date_time_picker">TimePickerDialog</string>
     <string name="back_data">Dữ liệu từ trang sau</string>
@@ -116,7 +119,7 @@
     <string name="shrink_size_keep_quality">SHRINK SIZE\nKEEP QUALITY</string>
     <string name="after_free_trial_ends_yearly">$14.99/year after free trial ends.\nAuto renew, Cancel anytime</string>
     <string name="after_free_trial_ends_yearly_max">%1$s/year after free trial ends.\nAuto renew, Cancel anytime</string>
-    <string name="after_free_trial_ends_weekly">%1$s/weekly.\nAuto renew, Cancel anytime</string>
+    <string name="after_free_trial_ends_weekly">%1$s/weekly after free trial ends.\nAuto renew, Cancel anytime</string>
     <string name="after_intro_ends_weekly">%1$s for first 2 weeks, then %2$s/week.\nAutomatically renews, cancel anytime</string>
     <string name="year_enable">14.99/year.\nAuto renew, Cancel anytime</string>
     <string name="weekly_enable">4.99/weekly.\nAuto renew, Cancel anytime</string>
@@ -139,6 +142,9 @@
     <string name="cacel_anytime">Cancel anytime</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_address">Email address</string>
+    <string name="forgot_passcode">Forgot passcode?</string>
+    <string name="category_chart">Category Chart</string>
 
 
 </resources>

@@ -16,7 +16,6 @@ class Api33PlusActivity : BasePermissionActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_permission)
         val debugText = """
-            === DEBUG VERSION INFO ==='
             SDK_INT: ${Build.VERSION.SDK_INT}
             RELEASE: ${Build.VERSION.RELEASE}
             CODENAME: ${Build.VERSION.CODENAME}
@@ -29,7 +28,6 @@ class Api33PlusActivity : BasePermissionActivity() {
 
         // Hiển thị trên UI để dễ debug
         findViewById<TextView>(R.id.tvTitle).text = debugText
-        title = "API 33+ - Quyền chi tiết & Notification"
 
         // Khởi tạo permissions cho API 33+(version 13 trở lên)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

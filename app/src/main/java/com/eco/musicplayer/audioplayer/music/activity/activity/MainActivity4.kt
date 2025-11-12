@@ -1,23 +1,17 @@
 package com.eco.musicplayer.audioplayer.music.activity.activity
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
+
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import android.content.Context
 import com.eco.musicplayer.audioplayer.music.activity.activity.permission.Api30To32Activity
 import com.eco.musicplayer.audioplayer.music.activity.activity.permission.Api33PlusActivity
 import com.eco.musicplayer.audioplayer.music.activity.activity.permission.PreApi30Activity
@@ -164,14 +158,27 @@ class MainActivity4 : AppCompatActivity() {
     private fun useBroacastReceiver() {
         broadcast = Broadcast()
         val intentFilter = IntentFilter().apply {
-            addAction("android.intent.action.AIRPLANE_MODE")
+            addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+            addAction(Intent.ACTION_BATTERY_LOW)
+            addAction(Intent.ACTION_BATTERY_OKAY)
             addAction("android.net.wifi.WIFI_STATE_CHANGED")
             addAction("android.net.wifi.STATE_CHANGE")
             addAction("android.net.conn.CONNECTIVITY_CHANGE")
-            addAction("android.intent.action.ACTION_BATTERY_LOW")
-            addAction("android.intent.action.ACTION_BATTERY_OKAY")
+            addAction("test.Broadcast")
         }
-        registerReceiver(broadcast, intentFilter)
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            // Android 13+ cần flag
+            registerReceiver(
+                broadcast,
+                intentFilter,
+                Context.RECEIVER_EXPORTED  // hoặc RECEIVER_NOT_EXPORTED nếu broadcast nội bộ
+            )
+        } else {
+            // Android 12 trở xuống
+            registerReceiver(broadcast, intentFilter)
+        }
+
 
         binding.btnBroadcastReceiver.setOnClickListener {
             val intent = Intent(this, CustomBroadcast::class.java)
@@ -191,10 +198,11 @@ class MainActivity4 : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        try {
             unregisterReceiver(broadcast)
-        } catch (e: Exception) {
-            // Ignore if already unregistered
-        }
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(broadcast)
+    }
+
 }

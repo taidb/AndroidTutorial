@@ -38,7 +38,6 @@ class Fragment1 : Fragment() {
 
         // Observer cho filteredList
         viewModel.filteredList.observe(viewLifecycleOwner) { items ->
-            // Cập nhật RecyclerView hoặc UI khác
             binding.tvItemCount.text = "Số lượng items: ${items.size}"
         }
 

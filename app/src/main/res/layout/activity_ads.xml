@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.activity.AdsActivity">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutAdsCross"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_65sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.96" />
+
+    <FrameLayout
+        android:id="@+id/layoutContainAllAds"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintVertical_bias="1"
+   >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutAds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="2dp" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutAdsCrossTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+/>
+
+    <FrameLayout
+        android:id="@+id/layoutContainAllAdsTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.96"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutAdsTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="2dp" />
+
+    </FrameLayout>
+
+    <include
+        android:id="@+id/layoutLoadAds"
+        layout="@layout/layout_load_ads"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

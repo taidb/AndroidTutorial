@@ -7,6 +7,26 @@ import android.os.Bundle
 import android.widget.Button
 
 import com.eco.musicplayer.audioplayer.music.R
+//Trước Android 11 (API < 30)	Hộp thoại yêu cầu quyền của hệ thống sẽ luôn hiển thị mỗi
+// lần bạn yêu cầu, trừ khi người dùng chọn rõ ràng tùy chọn "Don't ask again" (Không hỏi lại).
+//Android 11 trở lên (API >= 30)	Nếu người dùng nhấn "Từ chối" hai lần (không có hộp kiểm
+// "Don't ask again" hiển thị nữa), hệ thống sẽ ngầm hiểu là "không hỏi lại".
+// Các yêu cầu tiếp theo sẽ tự động bị từ chối ngay lập tức mà không hiển thị hộp thoại hệ thống.
+// Truy cập bộ nhớ/ảnh/video/audio:
+//Trước Android 13: Sử dụng quyền chung READ_EXTERNAL_STORAGE hoặc WRITE_EXTERNAL_STORAGE.
+//Android 13 (API 33) trở lên: Cần các quyền chi tiết hơn như READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO.
+// Điều này giúp người dùng chỉ cấp quyền truy cập vào loại tệp cụ thể mà ứng dụng cần.
+//Thông báo (Notifications):
+//Trước Android 13: Quyền thông báo được cấp mặc định khi cài đặt.
+//Android 13 (API 33) trở lên: Yêu cầu quyền thời gian chạy POST_NOTIFICATIONS. Người dùng có thể từ chối quyền này.
+//Vị trí, Camera, Microphone: Android 11 giới thiệu quyền một lần (one-time permissions),
+//Android 14:chỉ cho phép người dùng chia sẻ 1 số ảnh/video với app :
+//Người dùng sẽ thấy 3 tùy chọn:
+//Cho phép tất cả ảnh
+//Cho phép chỉ một số ảnh
+//Không cho phép
+//Android 15: Foreground Service chỉ được phép chạy tối đa 6 tiếng
+//Một số quyền liên quan đến truy cập background location (ACCESS_BACKGROUND_LOCATION) yêu cầu người dùng đồng ý foreground trước.
 class PreApi30Activity : BasePermissionActivity() {
     private val permissions = arrayOf(
         Manifest.permission.READ_EXTERNAL_STORAGE,

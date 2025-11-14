@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.eco.musicplayer.audioplayer.music.R
 
-class Api33PlusActivity : BasePermissionActivity() {
+class Api33Activity : BasePermissionActivity() {
     private lateinit var permissions: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,10 +4,18 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import com.eco.musicplayer.audioplayer.music.activity.activity.koin.UserRepository
+import com.eco.musicplayer.audioplayer.music.activity.activity.koin.appModule
 import com.eco.musicplayer.audioplayer.music.activity.ads.APP_OPEN_ID
 import com.eco.musicplayer.audioplayer.music.activity.ads.AppOpenManager
 import com.google.firebase.crashlytics.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
+import org.koin.mp.KoinPlatform.getKoin
 
 fun Context.getApplication(result: ((CompressVideoApplication) ->Unit) ?=null){
     if(applicationContext is CompressVideoApplication){
@@ -24,8 +32,26 @@ class CompressVideoApplication :Application(),Application.ActivityLifecycleCallb
     override fun onCreate() {
         super.onCreate()
         val appOpenManager =AppOpenManager(this,APP_OPEN_ID)
-        FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = !BuildConfig.DEBUG
+     FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = !BuildConfig.DEBUG
+
+        startKoin {
+            androidContext(this@CompressVideoApplication)
+            androidLogger(Level.INFO) //debug khi cần xem dependency nào được tạo.
+            modules(appModule)
+
+            chekDependencies()
+        }
     }
+
+    private fun chekDependencies() {
+        try {
+            getKoin().get<UserRepository>()
+
+        }catch (e:Exception){
+             println("koin setup thất bại :${e.message}")
+        }
+    }
+
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         TODO("Not yet implemented")
     }

@@ -31,6 +31,7 @@
     <string name="btnVersionSdk1">Version SDK dưới 11</string>
     <string name="btnVersionSdk2">Version SDK trên 11</string>
     <string name="btnVersionSdk3">Version SDK trên 13</string>
+    <string name="btnVersionSdk4">Version SDK trên 14</string>
     <string name="editText1">Nhập thông tin tên </string>
     <string name="editText2">Nhập thông tin tuổi </string>
     <string name="editText3">Nhập thông tin địa chỉ </string>

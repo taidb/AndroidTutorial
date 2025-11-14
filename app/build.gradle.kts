@@ -66,7 +66,6 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.1.0") // Đã cập nhật phiên bản
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation("com.android.billingclient:billing:6.1.0")
 
     implementation(platform("com.google.firebase:firebase-bom:33.0.0")) // Đã điều chỉnh phiên bản
     implementation("com.google.firebase:firebase-config")
@@ -74,7 +73,6 @@ dependencies {
 
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.jakewharton.threetenabp:threetenabp:1.4.8")
-    implementation("com.android.billingclient:billing-ktx:6.1.0") // Đã đồng bộ phiên bản
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation("org.greenrobot:eventbus:3.3.1")
@@ -87,17 +85,15 @@ dependencies {
     implementation("com.ecomobileapp:ads-sdk:3.0.8")
 
     // Material design (chỉ cần 1 lần)
-    implementation("com.google.android.material:material:1.12.0")
     implementation("com.android.billingclient:billing:7.1.1")
     implementation("com.android.billingclient:billing-ktx:7.1.1")
-    implementation ("com.mikhaellopez:circularprogressbar:3.1.0")
-    implementation ("com.google.android.gms:play-services-location:21.2.0")
+    implementation("com.mikhaellopez:circularprogressbar:3.1.0")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 
-    // Koin core features
-    implementation ("org.koin:koin-core:3.2.0")
+    //sự dụng koin
+    implementation("io.insert-koin:koin-core:3.5.6")
 
-    // Koin Android features
-    implementation ("org.koin:koin-android:3.2.0")
-    implementation ("org.koin:koin-androidx-viewmodel:3.2.0")
+    implementation("io.insert-koin:koin-android:3.5.6")
+
 
 }

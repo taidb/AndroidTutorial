@@ -33,6 +33,7 @@ class StudentAdapter(
             return oldItem == newItem
         }
     }
+
     val differ = AsyncListDiffer(this, diffCallback)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
         return StudentViewHolder(

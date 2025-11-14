@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Xin quyền thông thường -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -13,7 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Storage / Media -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
         tools:ignore="CoarseFineLocation" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission
@@ -34,7 +35,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="com.android.vending.BILLING" />
-
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
     <application
         android:name=".activity.CompressVideoApplication"
         android:allowBackup="true"
@@ -45,8 +46,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTutorial"
-        tools:targetApi="31" >
-
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.activity.permission.Api34PlusActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.activity.DemoFragment"
             android:exported="false" />
@@ -54,7 +57,7 @@
             android:name=".activity.activity.permission.BasePermissionActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.activity.permission.Api33PlusActivity"
+            android:name=".activity.activity.permission.Api33Activity"
             android:exported="false" />
         <activity
             android:name=".activity.activity.permission.Api30To32Activity"
@@ -141,8 +144,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".activity.activity.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.activity.MainActivity4"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -154,7 +160,7 @@
             android:name=".activity.broadcast.Broadcast"
             android:enabled="true"
             android:exported="true"
-            tools:ignore="Instantiatable" >
+            tools:ignore="Instantiatable">
             <intent-filter>
 
                 <!-- <action android:name="android.intent.action.AIRPLANE_MODE" /> -->

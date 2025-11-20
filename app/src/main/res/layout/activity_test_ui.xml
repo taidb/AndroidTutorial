@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llCompress"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_58sdp"
+            android:background="@drawable/bg_radius_24"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgMain"
+                android:layout_width="@dimen/_34sdp"
+                android:layout_height="@dimen/_34sdp"
+                app:srcCompat="@drawable/ic_crop_main" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/crop_main"
+                android:textColor="@color/text_on_color_heading"
+                android:textSize="@dimen/_15sdp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llMergeVideo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/bg_radius_12"
+            android:foreground="@drawable/ripple_rounded_12"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/llTrimVideo"
+            app:layout_constraintTop_toBottomOf="@+id/llCompress">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_voice_changer_main" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingTop="@dimen/_2sdp"
+                android:text="Voice Changer"
+                android:textColor="@color/text_default_heading"
+                android:textSize="@dimen/_15sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llTrimVideo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:background="@drawable/bg_radius_12"
+            android:foreground="@drawable/ripple_rounded_12"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/llMergeVideo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/llMergeVideo">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgMain2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_trim_main" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleMain2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Trim Video"
+                android:textColor="@color/text_default_heading"
+                android:textSize="@dimen/_15sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llFastVideo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_radius_12"
+            android:foreground="@drawable/ripple_rounded_12"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/llTrimVideo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llTrimVideo">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgCompress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_compress_video_main" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingTop="@dimen/_2sdp"
+                android:text="Speed Up Video"
+                android:textColor="@color/text_default_heading"
+                android:textSize="@dimen/_15sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llConvertAudio"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="@drawable/bg_radius_12"
+            android:foreground="@drawable/ripple_rounded_12"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/llMergeVideo"
+            app:layout_constraintStart_toStartOf="@+id/llMergeVideo"
+            app:layout_constraintTop_toBottomOf="@+id/llMergeVideo">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/group" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingTop="@dimen/_2sdp"
+                android:text="Video to audio"
+                android:textColor="@color/text_default_heading"
+                android:textSize="@dimen/_14sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llMyVideo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="@drawable/bg_radius_12"
+            android:foreground="@drawable/ripple_rounded_12"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/llFastVideo"
+            app:layout_constraintStart_toStartOf="@+id/llFastVideo"
+            app:layout_constraintTop_toBottomOf="@+id/llFastVideo">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/icon_collection" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingTop="@dimen/_2sdp"
+                android:text="Collection"
+                android:textColor="@color/text_default_heading"
+                android:textSize="@dimen/_14sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:text="@string/context_thank"
+            app:layout_constraintTop_toBottomOf="@+id/llMyVideo"
+            android:fontFamily="@font/readexpro_medium"
+            android:textColor="@color/text_default_heading"
+            android:textSize="@dimen/_14sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -84,7 +84,7 @@ class Api30To32Activity : BasePermissionActivity() {
                 } else {
                     showSimpleDialog(
                         "Đã từ chối $denyCount lần",
-                        "Hãy tiếp tục thử để thấy sự khác biệt về hành vi."
+                        "Hãy tiếp tục thử để thấy sự khác biệt hành vi."
                     )
                 }
             }

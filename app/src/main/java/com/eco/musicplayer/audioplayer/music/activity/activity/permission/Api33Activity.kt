@@ -86,8 +86,22 @@ class Api33Activity : BasePermissionActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == PERMISSION_REQUEST_CODE) {
+//
+//            val resultBuilder = StringBuilder()
+//
+//            permissions.forEachIndexed { index, permission ->
+//                val granted = grantResults[index] == PackageManager.PERMISSION_GRANTED
+//
+//                val status = if (granted) " ĐƯỢC CẤP" else "BỊ TỪ CHỐI"
+//
+//                resultBuilder.append("$permission → $status\n")
+//            }
+//
+//            showSimpleDialog(
+//                "Kết quả cấp quyền:",
+//                resultBuilder.toString()
+//            )
             val allGranted = grantResults.all { it == PackageManager.PERMISSION_GRANTED }
-
             if (allGranted) {
                 denyCount = 0
                 showSimpleDialog(

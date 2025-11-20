@@ -1,5 +1,6 @@
 package com.eco.musicplayer.audioplayer.music.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.content.Context
@@ -17,25 +18,26 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.mp.KoinPlatform.getKoin
 
-fun Context.getApplication(result: ((CompressVideoApplication) ->Unit) ?=null){
-    if(applicationContext is CompressVideoApplication){
-        result?.let { it(applicationContext as CompressVideoApplication) }
+fun Context.getApplication(result: ((AdsApplication) ->Unit) ?=null){
+    if(applicationContext is AdsApplication){
+        result?.let { it(applicationContext as AdsApplication) }
     }
 }
 
-class CompressVideoApplication :Application(),Application.ActivityLifecycleCallbacks {
+class AdsApplication :Application(),Application.ActivityLifecycleCallbacks {
     var isShowFullAds =false
     var isShowAdsWhenOpen =false
     var lastTimeForShowInterAds =0L
     var remoteConfig =false
     var isShowedOfferDialog =false
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate() {
         super.onCreate()
         val appOpenManager =AppOpenManager(this,APP_OPEN_ID)
      FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = !BuildConfig.DEBUG
 
         startKoin {
-            androidContext(this@CompressVideoApplication)
+            androidContext(this@AdsApplication)
             androidLogger(Level.INFO) //debug khi cần xem dependency nào được tạo.
             modules(appModule)
 

@@ -28,15 +28,15 @@ class Fragment2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnTranser.setOnClickListener {
             val filterText = binding.etFilter.text.toString()
-            val action = Fragment2Directions.actionFragment1ToFragment3(filterText)
+            val action = Fragment2Directions.actionFragment1ToFragment2(filterText)
             view.findNavController().navigate(action)
         }
 
 
         // Observer cho selectedItem
-        viewModel.selectedItem.observe(viewLifecycleOwner) { item ->
-            binding.tvSelectedItem.text = "Item được chọn: ${item.name} - ID: ${item.id}"
-        }
+//        viewModel.selectedItem.observe(viewLifecycleOwner) { item ->
+//            binding.tvSelectedItem.text = "Item được chọn: ${item.name} - ID: ${item.id}"
+       // }
 
         // Thêm filter
         binding.btnAddFilter.setOnClickListener {

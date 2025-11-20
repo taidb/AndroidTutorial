@@ -1,26 +1,21 @@
 package com.eco.musicplayer.audioplayer.music.activity.ads
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.eco.musicplayer.audioplayer.music.activity.CompressVideoApplication
-import com.google.android.gms.ads.AdError
+import com.eco.musicplayer.audioplayer.music.activity.AdsApplication
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.appopen.AppOpenAd.AppOpenAdLoadCallback
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
-class AppOpenManager(private val myApplication: CompressVideoApplication,idAds:String) : Application.ActivityLifecycleCallbacks, LifecycleObserver {
+class AppOpenManager(private val myApplication: AdsApplication, idAds:String) : Application.ActivityLifecycleCallbacks, LifecycleObserver {
     var appOpenAd: AppOpenAd? =
         null // Quảng cáo khi mở ứng dụng được dùng để hiển thị quảng cáo khi người dùng mở ứng dụng của bạn
     private lateinit var currentActivity: Activity

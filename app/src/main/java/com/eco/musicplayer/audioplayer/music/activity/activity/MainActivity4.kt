@@ -18,6 +18,7 @@ import com.eco.musicplayer.audioplayer.music.activity.activity.permission.Api34P
 import com.eco.musicplayer.audioplayer.music.activity.activity.permission.PreApi30Activity
 import com.eco.musicplayer.audioplayer.music.activity.broadcast.Broadcast
 import com.eco.musicplayer.audioplayer.music.activity.broadcast.CustomBroadcast
+import com.eco.musicplayer.audioplayer.music.activity.contentprovider.ContentProviderActivity
 import com.eco.musicplayer.audioplayer.music.activity.event.EventBusTest
 import com.eco.musicplayer.audioplayer.music.activity.model.MessageEvent
 import com.eco.musicplayer.audioplayer.music.activity.model.Staff
@@ -92,16 +93,21 @@ class MainActivity4 : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnContentProvide.setOnClickListener {
+            val intent =Intent(this,ContentProviderActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
     private fun isCheckNetwork() {
         binding.checkNetwork.setOnClickListener {
             when {
-                isWifeEnabled(applicationContext) -> {
-                    Toast.makeText(this, "WiFi turned on", Toast.LENGTH_LONG).show()
-                }
-                isNetworkAvailable(applicationContext) -> {
+//                isWifeEnabled(applicationContext) -> {
+//                    Toast.makeText(this, "WiFi turned on", Toast.LENGTH_LONG).show()
+//                }
+                isNetworkAvailable() -> {
                     Toast.makeText(this, "Network is available", Toast.LENGTH_LONG).show()
                 }
                 else -> {
@@ -189,13 +195,13 @@ class MainActivity4 : AppCompatActivity() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-            unregisterReceiver(broadcast)
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(broadcast)
-    }
+//    override fun onStop() {
+//        super.onStop()
+//            unregisterReceiver(broadcast)
+//    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//       unregisterReceiver(broadcast)
+//    }
 
 }

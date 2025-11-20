@@ -1,12 +1,13 @@
 package com.eco.musicplayer.audioplayer.music.activity.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.eco.musicplayer.audioplayer.music.R
-import com.eco.musicplayer.audioplayer.music.activity.CompressVideoApplication
+import com.eco.musicplayer.audioplayer.music.activity.AdsApplication
 import com.eco.musicplayer.audioplayer.music.activity.ads.BANNER_MAIN
 import com.eco.musicplayer.audioplayer.music.activity.ads.BannerAdUtil
 import com.eco.musicplayer.audioplayer.music.activity.ads.GG_MAIN_INTERSTITIAL
@@ -23,7 +24,7 @@ class AdsActivity : AppCompatActivity() {
 
     val mainInterstitiaUtil by lazy { InterstitialUtil() }
     private var jobLoadAds: Job? = null
-    val permissionUtil by lazy { isNetworkAvailable(this) }
+    val permissionUtil by lazy { isNetworkAvailable() }
     private val bannerAdUtil: BannerAdUtil by lazy {
         BannerAdUtil(this, object : BannerAdUtil.BannerAdsAdmobListener {
             override fun onBannerAdmobAdsLoaded() {
@@ -71,14 +72,14 @@ class AdsActivity : AppCompatActivity() {
         loadBannerAds()
         showInterAds()
 
-        if (!(application as CompressVideoApplication).isShowAdsWhenOpen) {
+        if (!(application as AdsApplication).isShowAdsWhenOpen) {
             mainInterstitiaUtil.setAdsId(
                 GG_MAIN_INTERSTITIAL,
                 ID_CROSS_INTER_MAIN
             )
             if (mainInterstitiaUtil.isLoaded().not() &&
                 mainInterstitiaUtil.isLoading().not() &&
-                mainInterstitiaUtil.isInCoolOffTime(application as CompressVideoApplication).not()
+                mainInterstitiaUtil.isInCoolOffTime(application as AdsApplication).not()
             ) {
                 mainInterstitiaUtil.loadAds(this)
             }
@@ -90,27 +91,43 @@ class AdsActivity : AppCompatActivity() {
         // Không load banner ads trên onResume nữa
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadBannerAds() {
-        // Chỉ load banner nhưng không hiển thị ngay
-        binding.layoutContainAllAds.post {
-            bannerAdUtil.loadInlineAdaptiveAds(
-                BANNER_MAIN,
-                ID_CROSS_BANNER_MAIN,
-                binding.layoutAds,
-                binding.layoutContainAllAds.height,
-                binding.layoutAdsCross
-            )
-        }
+        binding.layoutContainAllAds.visibility =View.VISIBLE
+            binding.layoutContainAllAds.post {
+                if (true) {
+                    binding.layoutContainAllAds.visibility =View.VISIBLE
+                    binding.layoutContainAllAdsTop.visibility =View.GONE
+                    bannerAdUtil.loadInlineAdaptiveAds(
+                        BANNER_MAIN,
+                        ID_CROSS_BANNER_MAIN,
+                        binding.layoutAds,
+                        binding.layoutContainAllAds.height,
+                        binding.layoutAdsCross
+                    )
+                    binding.layoutAds.visibility =View.VISIBLE
+                } else {
+                    val height = binding.layoutContainAllAds.height
+                    val layoutParams = binding.layoutContainAllAdsTop.layoutParams
+                    layoutParams.height = height
+                    binding.layoutContainAllAdsTop.layoutParams = layoutParams
 
-        binding.layoutContainAllAdsTop.post {
-            bannerAdUtil.loadInlineAdaptiveAds(
-                BANNER_MAIN,
-                ID_CROSS_BANNER_MAIN,
-                binding.layoutAdsTop,
-                binding.layoutContainAllAds.height,
-                binding.layoutAdsCrossTop
-            )
-        }
+                    binding.layoutContainAllAds.visibility =View.GONE
+                    binding.layoutContainAllAdsTop.visibility =View.VISIBLE
+                    binding.layoutContainAllAdsTop.post {
+                        bannerAdUtil.loadInlineAdaptiveAds(
+                            BANNER_MAIN,
+                            ID_CROSS_BANNER_MAIN,
+                            binding.layoutAdsTop,
+                            height,
+                            binding.layoutAdsCrossTop
+                        )
+
+                        }
+                    }
+                    binding.layoutAdsTop.visibility =View.VISIBLE
+                }
+
     }
 
     private fun showInterAds() {
@@ -133,7 +150,7 @@ class AdsActivity : AppCompatActivity() {
             }
         })
 
-        (application as CompressVideoApplication).isShowAdsWhenOpen = true
+        (application as AdsApplication).isShowAdsWhenOpen = true
     }
 
     private fun hideLoadingAndShowBanners() {

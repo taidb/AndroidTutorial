@@ -4,12 +4,10 @@ import PaywallBottomSheetDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.eco.musicplayer.audioplayer.music.activity.network.isNetworkAvailable
-import com.eco.musicplayer.audioplayer.music.activity.network.isWifeEnabled
+
 import com.eco.musicplayer.audioplayer.music.activity.util.setSafeOnClickListener
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityStudyLayoutPaywallBinding
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +53,6 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
             }
             val paywallDialog = PaywallActivity1(this)
             paywallDialog.show()
-
             //   startActivity(Intent(this, LayoutPaywallActivity1::class.java))
         }
 
@@ -84,6 +81,7 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
 
 
         binding.apply {
+
             btnPage6.setOnClickListener {
                 it.isEnabled = false
                 progress.visibility = View.VISIBLE

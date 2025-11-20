@@ -1,6 +1,7 @@
 package com.eco.musicplayer.audioplayer.music.activity.designlayout
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
@@ -17,6 +18,10 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
 import com.eco.musicplayer.audioplayer.music.activity.billing.asProductDetailsOffer
@@ -69,41 +74,61 @@ class DialogBottomSheet2 : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         hasUsedFreeTrial = sharedPreferences.getBoolean(KEY_HAS_USED_FREE_TRIAL, false)
-
+        //hindBottomNavigationBar(binding.root)
         setupWindow()
         setupBillingManager()
+        hideSystemBars(binding.root)
         setupListeners()
         selectPlan(1)
     }
-
-    private fun setupBillingManager() {
-        billingManager = BillingManager(this)
-
-        billingManager.queryAlls(
-            identity = this::class.java.simpleName,
-            productInfos = productInfos,
-            onDataState = { state ->
-                when (state) {
-                    is BillingQueryState.ProductDetailsComplete -> {
-                        updateProductDetailsUI(state.products)
-                    }
-
-                    is BillingQueryState.PurchaseComplete -> {
-                        checkPurchases(state.purchases)
-                    }
-
-                    is BillingQueryState.Error -> {
-                        handleBillingError(state.exception)
-                    }
-                }
-            }
-        )
+    fun hideSystemBars(mainContainer: View) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, mainContainer).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+          //  controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+    fun hindBottomNavigationBar(viewRoot: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(viewRoot) { view, insets ->
+            val systemBarInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(systemBarInsets.left, systemBarInsets.top, systemBarInsets.right, 0)
+            insets
+        }
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.getInsetsController(window,window.decorView).apply {
+            systemBarsBehavior=WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            hide(WindowInsetsCompat.Type.navigationBars())
+        }
     }
 
-    private fun updateProductDetailsUI(products: List<ProductDetails>) {
-        products.forEach { productDetails ->
-            android.util.Log.d(
-                "BILLING_PRODUCTS", """
+        private fun setupBillingManager() {
+            billingManager = BillingManager(this)
+
+            billingManager.queryAlls(
+                identity = this::class.java.simpleName,
+                productInfos = productInfos,
+                onDataState = { state ->
+                    when (state) {
+                        is BillingQueryState.ProductDetailsComplete -> {
+                            updateProductDetailsUI(state.products)
+                        }
+
+                        is BillingQueryState.PurchaseComplete -> {
+                            checkPurchases(state.purchases)
+                        }
+
+                        is BillingQueryState.Error -> {
+                            handleBillingError(state.exception)
+                        }
+                    }
+                }
+            )
+        }
+
+        private fun updateProductDetailsUI(products: List<ProductDetails>) {
+            products.forEach { productDetails ->
+                android.util.Log.d(
+                    "BILLING_PRODUCTS", """
             ProductId: ${productDetails.productId}
             Title: ${productDetails.title}
             Description: ${productDetails.description}
@@ -111,220 +136,255 @@ class DialogBottomSheet2 : AppCompatActivity() {
             ${productDetails.subscriptionOfferDetails}
             OneTimePrice: ${productDetails.oneTimePurchaseOfferDetails?.formattedPrice}
         """.trimIndent()
-            )
+                )
 
-            val offer = productDetails.asProductDetailsOffer()
-            android.util.Log.d(
-                "BILLING_PRODUCTS", """
+                val offer = productDetails.asProductDetailsOffer()
+                android.util.Log.d(
+                    "BILLING_PRODUCTS", """
     FormattedPrice: ${offer.formattedPrice}
     OfferToken: ${offer.offerToken}
     TypePeriod: ${offer.typePeriod}
     TypeOffer: ${offer.typeOffer}
     PriceMicros: ${offer.priceAmountMicros}
 """.trimIndent()
-            )
-            when (productDetails.productId) {
-                yearlyProductId -> {
-                    yearlyProduct = offer
-                    updateYearlyPlanUI(offer)
-                }
+                )
+                when (productDetails.productId) {
+                    yearlyProductId -> {
+                        yearlyProduct = offer
+                        updateYearlyPlanUI(offer)
+                    }
 
-                weeklyProductId -> {
-                    weeklyProduct = offer
-                    updateWeeklyPlanUI(offer)
-                }
+                    weeklyProductId -> {
+                        weeklyProduct = offer
+                        updateWeeklyPlanUI(offer)
+                    }
 
-                lifetimeProductId -> {
-                    lifetimeProduct = offer
+                    lifetimeProductId -> {
+                        lifetimeProduct = offer
+                    }
                 }
             }
-        }
 
-        // Sau khi có product details, kiểm tra lại UI dựa trên trạng thái free trial
-        updateUIForFreeTrialStatus()
-    }
-
-    private fun updateYearlyPlanUI(offer: ProductDetailsOffer) {
-        binding.txtPrice2.text = offer.formattedPrice
-
-        // Tính toán giá theo tuần
-        val weeklyPriceMicros = when (offer.typePeriod) {
-            ProductDetailsOffer.TypePeriod.YEAR -> offer.priceAmountMicros / 52
-            ProductDetailsOffer.TypePeriod.MONTH -> offer.priceAmountMicros / 4
-            else -> offer.priceAmountMicros
-        }
-        val weeklyPrice = weeklyPriceMicros / 1000000.0
-
-        binding.txtDesPrice1.text =
-            getString(R.string.only_price_per_week, "$${String.format("%.3f", weeklyPrice)}")
-
-        // Cập nhật free trial info
-        if (offer.typeOffer != ProductDetailsOffer.TypeOffer.NONE && !hasUsedFreeTrial) {
-            binding.txtAutoRenew.text = getString(
-                R.string.after_free_trial_ends_yearly_max,
-                offer.formattedPrice
-            )
-        } else {
-            binding.txtAutoRenew.text = getString(R.string.after_free_trial_ends_yearly_max,"22000000000")
-        }
-    }
-
-    private fun updateWeeklyPlanUI(offer: ProductDetailsOffer) {
-        binding.txtPrice.text = offer.formattedPrice
-        binding.txtAutoRenew.text=getString(R.string.after_free_trial_ends_weekly,offer.formattedPrice)
-    }
-
-    private fun checkPurchases(purchases: List<Purchase>) {
-        val hasActiveSubscription = checkIfUserHasActiveSubscription(purchases)
-        val hasUsedFreeTrialBefore = checkIfUserUsedFreeTrial(purchases)
-
-        hasUsedFreeTrial = hasActiveSubscription || hasUsedFreeTrialBefore
-
-        if (hasUsedFreeTrial) {
-            saveFreeTrialUsage()
+            // Sau khi có product details, kiểm tra lại UI dựa trên trạng thái free trial
             updateUIForFreeTrialStatus()
         }
-    }
 
-    private fun checkIfUserHasActiveSubscription(purchases: List<Purchase>): Boolean {
-        return purchases.any { purchase ->
-            purchase.products.any { productId ->
-                (productId == yearlyProductId || productId == weeklyProductId) &&
-                        purchase.isAcknowledged
+        private fun updateYearlyPlanUI(offer: ProductDetailsOffer) {
+            binding.txtPrice2.text = offer.formattedPrice
+
+            // Tính toán giá theo tuần
+            val weeklyPriceMicros = when (offer.typePeriod) {
+                ProductDetailsOffer.TypePeriod.YEAR -> offer.priceAmountMicros / 52
+                ProductDetailsOffer.TypePeriod.MONTH -> offer.priceAmountMicros / 4
+                else -> offer.priceAmountMicros
             }
-        }
-    }
+            val weeklyPrice = weeklyPriceMicros / 1000000.0
 
-    private fun checkIfUserUsedFreeTrial(purchases: List<Purchase>): Boolean {
-        // Kiểm tra purchase history từ SharedPreferences
-        if (sharedPreferences.getBoolean(KEY_HAS_USED_FREE_TRIAL, false)) {
-            return true
-        }
+            binding.txtDesPrice1.text =
+                getString(R.string.only_price_per_week, "$${String.format("%.3f", weeklyPrice)}")
 
-        // Kiểm tra các purchase cũ có product ID của free trial
-        return purchases.any { purchase ->
-            purchase.products.contains(yearlyProductId) && purchase.isAcknowledged && (purchase.purchaseState == Purchase.PurchaseState.PURCHASED)
-        }
-    }
-
-    private fun saveFreeTrialUsage() {
-        sharedPreferences.edit()
-            .putBoolean(KEY_HAS_USED_FREE_TRIAL, true)
-            .putString(KEY_FREE_TRIAL_PRODUCT_ID, yearlyProductId)
-            .apply()
-    }
-
-    private fun updateUIForFreeTrialStatus() {
-        if (hasUsedFreeTrial) {
-            // User đã dùng free trial, ẩn nút Try for Free
-            showContinueLayout()
-            updateUITextForUsedFreeTrial()
-        } else {
-            // User chưa dùng free trial, hiển thị bình thường
-            showTryForFreeLayout()
-        }
-    }
-
-    private fun updateUITextForUsedFreeTrial() {
-//        binding.txtAutoRenew.text = getString(R.string.auto_renew_description)
-        binding.txtNoPayment.visibility = View.GONE
-        binding.txtCancel.visibility = View.VISIBLE
-
-        binding.btnTryForFree.text = getString(R.string.continue1)
-    }
-
-    @SuppressLint("UseKtx")
-    private fun setupWindow() {
-        window?.apply {
-            setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            setBackgroundDrawable(ColorDrawable(Color.parseColor("#80000000")))
-            clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            statusBarColor = ContextCompat.getColor(this@DialogBottomSheet2, R.color.color_FFF6E7)
-            navigationBarColor = Color.TRANSPARENT
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                setDecorFitsSystemWindows(false)
-                val controller = decorView.windowInsetsController
-                controller?.setSystemBarsAppearance(
-                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            // Cập nhật free trial info
+            if (offer.typeOffer != ProductDetailsOffer.TypeOffer.NONE && !hasUsedFreeTrial) {
+                binding.txtAutoRenew.text = getString(
+                    R.string.after_free_trial_ends_yearly_max,
+                    offer.formattedPrice
                 )
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                decorView.systemUiVisibility = (
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                        )
             } else {
-                decorView.systemUiVisibility = (
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        )
+                binding.txtAutoRenew.text =
+                    getString(R.string.after_free_trial_ends_yearly_max, "22000000000")
             }
         }
-    }
 
-    private fun setupListeners() {
-        binding.icClose.setOnClickListener { finish() }
-        binding.btnIap1.setOnClickListener { selectPlan(1) }
-        binding.btnIap2.setOnClickListener { selectPlan(2) }
-
-        binding.btnTryForFree.setOnClickListener {
-            handleTryForFreeClick()
+        private fun updateWeeklyPlanUI(offer: ProductDetailsOffer) {
+            binding.txtPrice.text = offer.formattedPrice
+            binding.txtAutoRenew.text =
+                getString(R.string.after_free_trial_ends_weekly, offer.formattedPrice)
         }
-        binding.btnContinue.setOnClickListener {
-            handleContinueClick()
+
+        private fun checkPurchases(purchases: List<Purchase>) {
+            val hasActiveSubscription = checkIfUserHasActiveSubscription(purchases)
+            val hasUsedFreeTrialBefore = checkIfUserUsedFreeTrial(purchases)
+
+            hasUsedFreeTrial = hasActiveSubscription || hasUsedFreeTrialBefore
+
+            if (hasUsedFreeTrial) {
+                saveFreeTrialUsage()
+                updateUIForFreeTrialStatus()
+            }
         }
-    }
 
-    private fun selectPlan(plan: Int) {
-        selectedPlan = plan
-        when (plan) {
-            1 -> {
-                binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
-                binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
-                binding.tvMostPopular.backgroundTintList =
-                    ContextCompat.getColorStateList(this, R.color.color_8147FF)
+        private fun checkIfUserHasActiveSubscription(purchases: List<Purchase>): Boolean {
+            return purchases.any { purchase ->
+                purchase.products.any { productId ->
+                    (productId == yearlyProductId || productId == weeklyProductId) &&
+                            purchase.isAcknowledged
+                }
+            }
+        }
 
-                yearlyProduct?.let {
-                    if (!hasUsedFreeTrial) {
-                        binding.txtAutoRenew.text =
-                            getString(R.string.after_free_trial_ends_yearly_max, it.formattedPrice)
-                    } else {
+        private fun checkIfUserUsedFreeTrial(purchases: List<Purchase>): Boolean {
+            // Kiểm tra purchase history từ SharedPreferences
+            if (sharedPreferences.getBoolean(KEY_HAS_USED_FREE_TRIAL, false)) {
+                return true
+            }
+
+            // Kiểm tra các purchase cũ có product ID của free trial
+            return purchases.any { purchase ->
+                purchase.products.contains(yearlyProductId) && purchase.isAcknowledged && (purchase.purchaseState == Purchase.PurchaseState.PURCHASED)
+            }
+        }
+
+        private fun saveFreeTrialUsage() {
+            sharedPreferences.edit()
+                .putBoolean(KEY_HAS_USED_FREE_TRIAL, true)
+                .putString(KEY_FREE_TRIAL_PRODUCT_ID, yearlyProductId)
+                .apply()
+        }
+
+        private fun updateUIForFreeTrialStatus() {
+            if (hasUsedFreeTrial) {
+                // User đã dùng free trial, ẩn nút Try for Free
+                showContinueLayout()
+                updateUITextForUsedFreeTrial()
+            } else {
+                // User chưa dùng free trial, hiển thị bình thường
+                showTryForFreeLayout()
+            }
+        }
+
+        private fun updateUITextForUsedFreeTrial() {
+//        binding.txtAutoRenew.text = getString(R.string.auto_renew_description)
+            binding.txtNoPayment.visibility = View.GONE
+            binding.txtCancel.visibility = View.VISIBLE
+
+            binding.btnTryForFree.text = getString(R.string.continue1)
+        }
+
+        @SuppressLint("UseKtx")
+        private fun setupWindow() {
+            window?.apply {
+                setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                setBackgroundDrawable(ColorDrawable(Color.parseColor("#80000000")))
+                clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+
+                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                statusBarColor =
+                    ContextCompat.getColor(this@DialogBottomSheet2, R.color.color_FFF6E7)
+                navigationBarColor = Color.TRANSPARENT
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    setDecorFitsSystemWindows(false)
+                    val controller = decorView.windowInsetsController
+                    controller?.setSystemBarsAppearance(
+                        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                    )
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    decorView.systemUiVisibility = (
+                            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                            )
+                } else {
+                    decorView.systemUiVisibility = (
+                            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            )
+                }
+            }
+        }
+
+        private fun setupListeners() {
+            binding.icClose.setOnClickListener { finish() }
+            binding.btnIap1.setOnClickListener { selectPlan(1) }
+            binding.btnIap2.setOnClickListener { selectPlan(2) }
+
+            binding.btnTryForFree.setOnClickListener {
+                handleTryForFreeClick()
+            }
+            binding.btnContinue.setOnClickListener {
+                handleContinueClick()
+            }
+        }
+
+        private fun selectPlan(plan: Int) {
+            selectedPlan = plan
+            when (plan) {
+                1 -> {
+                    binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
+                    binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
+                    binding.tvMostPopular.backgroundTintList =
+                        ContextCompat.getColorStateList(this, R.color.color_8147FF)
+
+                    yearlyProduct?.let {
+                        if (!hasUsedFreeTrial) {
+                            binding.txtAutoRenew.text =
+                                getString(
+                                    R.string.after_free_trial_ends_yearly_max,
+                                    it.formattedPrice
+                                )
+                        } else {
 //                        binding.txtAutoRenew.text = getString(R.string.auto_renew_description)
+                        }
+                    }
+
+                    if (!hasUsedFreeTrial) {
+                        showTryForFreeLayout()
+                    } else {
+                        showContinueLayout()
                     }
                 }
 
-                if (!hasUsedFreeTrial) {
-                    showTryForFreeLayout()
-                } else {
+                2 -> {
+                    binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
+                    binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
+                    binding.tvMostPopular.backgroundTintList =
+                        ContextCompat.getColorStateList(this, R.color.color_908DAC)
+
+                    weeklyProduct?.let {
+//                    binding.txtAutoRenew.text = getString(R.string.auto_renew_description)
+                    }
                     showContinueLayout()
                 }
             }
+        }
 
-            2 -> {
-                binding.btnIap2.setBackgroundResource(R.drawable.bg_btn_pw_4_selected)
-                binding.btnIap1.setBackgroundResource(R.drawable.bg_btn_pw_4_unselected)
-                binding.tvMostPopular.backgroundTintList =
-                    ContextCompat.getColorStateList(this, R.color.color_908DAC)
+        private fun handleTryForFreeClick() {
+            if (selectedPlan == 1 && !hasUsedFreeTrial) {
+                showLoadingState(true)
+                handleButtonLoading(binding.btnTryForFree, binding.progress2, selectedPlan)
 
-                weeklyProduct?.let {
-//                    binding.txtAutoRenew.text = getString(R.string.auto_renew_description)
+                // Thực hiện purchase với free trial
+                yearlyProduct?.let { offer ->
+                    billingManager.buy(
+                        activity = this,
+                        productDetails = offer.productDetails,
+                        offerToken = offer.offerToken,
+                        onBillingPurchasesListener = { state ->
+                            handlePurchaseResult(state)
+                        }
+                    )
                 }
-                showContinueLayout()
+            } else {
+                handleContinueClick()
             }
         }
-    }
 
-    private fun handleTryForFreeClick() {
-        if (selectedPlan == 1 && !hasUsedFreeTrial) {
-            showLoadingState(true)
-            handleButtonLoading(binding.btnTryForFree, binding.progress2, selectedPlan)
+        private fun handleContinueClick() {
+            val product = when (selectedPlan) {
+                1 -> yearlyProduct
+                2 -> weeklyProduct
+                else -> null
+            }
 
-            // Thực hiện purchase với free trial
-            yearlyProduct?.let { offer ->
+            product?.let { offer ->
+                showLoadingState(true)
+                handleButtonLoading(
+                    if (selectedPlan == 1 && !hasUsedFreeTrial) binding.btnTryForFree else binding.btnContinue,
+                    if (selectedPlan == 1 && !hasUsedFreeTrial) binding.progress2 else binding.progress3,
+                    selectedPlan
+                )
+
                 billingManager.buy(
                     activity = this,
                     productDetails = offer.productDetails,
@@ -334,159 +394,130 @@ class DialogBottomSheet2 : AppCompatActivity() {
                     }
                 )
             }
-        } else {
-            handleContinueClick()
-        }
-    }
-
-    private fun handleContinueClick() {
-        val product = when (selectedPlan) {
-            1 -> yearlyProduct
-            2 -> weeklyProduct
-            else -> null
         }
 
-        product?.let { offer ->
-            showLoadingState(true)
-            handleButtonLoading(
-                if (selectedPlan == 1 && !hasUsedFreeTrial) binding.btnTryForFree else binding.btnContinue,
-                if (selectedPlan == 1 && !hasUsedFreeTrial) binding.progress2 else binding.progress3,
-                selectedPlan
-            )
-
-            billingManager.buy(
-                activity = this,
-                productDetails = offer.productDetails,
-                offerToken = offer.offerToken,
-                onBillingPurchasesListener = { state ->
-                    handlePurchaseResult(state)
+        private fun handlePurchaseResult(state: BillingPurchasesState) {
+            when (state) {
+                is BillingPurchasesState.PurchaseAcknowledged -> {
+                    // Purchase thành công - đánh dấu đã dùng free trial nếu là yearly plan
+                    if (selectedPlan == 1 && !hasUsedFreeTrial) {
+                        hasUsedFreeTrial = true
+                        saveFreeTrialUsage()
+                        updateUIForFreeTrialStatus()
+                    }
+                    showPurchaseSuccess()
                 }
-            )
-        }
-    }
 
-    private fun handlePurchaseResult(state: BillingPurchasesState) {
-        when (state) {
-            is BillingPurchasesState.PurchaseAcknowledged -> {
-                // Purchase thành công - đánh dấu đã dùng free trial nếu là yearly plan
-                if (selectedPlan == 1 && !hasUsedFreeTrial) {
-                    hasUsedFreeTrial = true
-                    saveFreeTrialUsage()
-                    updateUIForFreeTrialStatus()
+                is BillingPurchasesState.AcknowledgePurchaseLoading -> {
+                    showLoadingState(state.isLoading)
                 }
-                showPurchaseSuccess()
-            }
 
-            is BillingPurchasesState.AcknowledgePurchaseLoading -> {
-                showLoadingState(state.isLoading)
-            }
+                is BillingPurchasesState.UserCancelPurchase -> {
+                    showPurchaseCancelled()
+                }
 
-            is BillingPurchasesState.UserCancelPurchase -> {
-                showPurchaseCancelled()
-            }
-
-            is BillingPurchasesState.Error -> {
-                handleBillingError(state.exception)
+                is BillingPurchasesState.Error -> {
+                    handleBillingError(state.exception)
+                }
             }
         }
-    }
 
-    private fun handleBillingError(exception: Exception) {
-        showLoadingState(false)
-        // Có thể hiển thị dialog thông báo lỗi
-        // Toast.makeText(this, "Purchase failed: ${exception.message}", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun showPurchaseSuccess() {
-        showLoadingState(false)
-        // Có thể chuyển sang màn hình chính hoặc hiển thị thông báo thành công
-        finish()
-    }
-
-    private fun showPurchaseCancelled() {
-        showLoadingState(false)
-        // Có thể hiển thị thông báo user đã hủy
-    }
-
-    private fun showLoadingState(isLoading: Boolean) {
-        if (isLoading) {
-            binding.linearLayout.visibility = View.INVISIBLE
-            binding.linearLayout1.visibility = View.INVISIBLE
-            binding.progress.visibility = View.VISIBLE
-            binding.progress.indeterminateTintList =
-                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_0F1E47))
-            binding.progress1.visibility = View.VISIBLE
-            binding.progress1.indeterminateTintList =
-                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_0F1E47))
-        } else {
-            binding.linearLayout.visibility = View.VISIBLE
-            binding.linearLayout1.visibility = View.VISIBLE
-            binding.progress.visibility = View.GONE
-            binding.progress1.visibility = View.GONE
-        }
-    }
-
-    private fun handleButtonLoading(
-        button: AppCompatTextView,
-        progress: View,
-        plan: Int = -1
-    ) {
-        button.apply {
-            text = ""
-            isEnabled = false
-            backgroundTintList = ContextCompat.getColorStateList(context, R.color.color_5F5F5F)
+        private fun handleBillingError(exception: Exception) {
+            showLoadingState(false)
+            // Có thể hiển thị dialog thông báo lỗi
+            // Toast.makeText(this, "Purchase failed: ${exception.message}", Toast.LENGTH_SHORT).show()
         }
 
-        setInfoTextsVisibility(isVisible = false)
-        progress.visibility = View.VISIBLE
+        private fun showPurchaseSuccess() {
+            showLoadingState(false)
+            // Có thể chuyển sang màn hình chính hoặc hiển thị thông báo thành công
+            finish()
+        }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            progress.visibility = View.GONE
+        private fun showPurchaseCancelled() {
+            showLoadingState(false)
+            // Có thể hiển thị thông báo user đã hủy
+        }
 
-            if (plan == 1) showLoadingState(false)
+        private fun showLoadingState(isLoading: Boolean) {
+            if (isLoading) {
+                binding.linearLayout.visibility = View.INVISIBLE
+                binding.linearLayout1.visibility = View.INVISIBLE
+                binding.progress.visibility = View.VISIBLE
+                binding.progress.indeterminateTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_0F1E47))
+                binding.progress1.visibility = View.VISIBLE
+                binding.progress1.indeterminateTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_0F1E47))
+            } else {
+                binding.linearLayout.visibility = View.VISIBLE
+                binding.linearLayout1.visibility = View.VISIBLE
+                binding.progress.visibility = View.GONE
+                binding.progress1.visibility = View.GONE
+            }
+        }
 
+        private fun handleButtonLoading(
+            button: AppCompatTextView,
+            progress: View,
+            plan: Int = -1
+        ) {
             button.apply {
-                isEnabled = true
-                text = getString(
-                    if (button.id == R.id.btnTryForFree && !hasUsedFreeTrial) R.string.try_for_free else R.string.continue1
-                )
-                backgroundTintList =
-                    ContextCompat.getColorStateList(context, R.color.color_8147FF)
+                text = ""
+                isEnabled = false
+                backgroundTintList = ContextCompat.getColorStateList(context, R.color.color_5F5F5F)
             }
 
-            setInfoTextsVisibility(isVisible = true)
-        }, 2000)
-    }
+            setInfoTextsVisibility(isVisible = false)
+            progress.visibility = View.VISIBLE
 
-    private fun setInfoTextsVisibility(isVisible: Boolean) {
-        binding.txtAutoRenew.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
-        if (!hasUsedFreeTrial) {
-            binding.txtNoPayment.visibility = if (isVisible) View.VISIBLE else View.GONE
-            binding.txtCancel.visibility = if (isVisible) View.GONE else View.INVISIBLE
-        } else {
+            Handler(Looper.getMainLooper()).postDelayed({
+                progress.visibility = View.GONE
+
+                if (plan == 1) showLoadingState(false)
+
+                button.apply {
+                    isEnabled = true
+                    text = getString(
+                        if (button.id == R.id.btnTryForFree && !hasUsedFreeTrial) R.string.try_for_free else R.string.continue1
+                    )
+                    backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.color_8147FF)
+                }
+
+                setInfoTextsVisibility(isVisible = true)
+            }, 2000)
+        }
+
+        private fun setInfoTextsVisibility(isVisible: Boolean) {
+            binding.txtAutoRenew.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
+            if (!hasUsedFreeTrial) {
+                binding.txtNoPayment.visibility = if (isVisible) View.VISIBLE else View.GONE
+                binding.txtCancel.visibility = if (isVisible) View.GONE else View.INVISIBLE
+            } else {
+                binding.txtNoPayment.visibility = View.GONE
+                binding.txtCancel.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
+            }
+        }
+
+        private fun showTryForFreeLayout() {
+            binding.frameLayout.visibility = View.VISIBLE
+            binding.frameLayout2.visibility = View.GONE
+            if (!hasUsedFreeTrial) {
+                binding.txtNoPayment.visibility = View.VISIBLE
+                binding.txtCancel.visibility = View.GONE
+            }
+        }
+
+        private fun showContinueLayout() {
+            binding.frameLayout.visibility = View.GONE
+            binding.frameLayout2.visibility = View.VISIBLE
             binding.txtNoPayment.visibility = View.GONE
-            binding.txtCancel.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
+            binding.txtCancel.visibility = View.VISIBLE
+        }
+
+        override fun onDestroy() {
+            super.onDestroy()
+            billingManager.detachListeners(this::class.java.simpleName)
         }
     }
-
-    private fun showTryForFreeLayout() {
-        binding.frameLayout.visibility = View.VISIBLE
-        binding.frameLayout2.visibility = View.GONE
-        if (!hasUsedFreeTrial) {
-            binding.txtNoPayment.visibility = View.VISIBLE
-            binding.txtCancel.visibility = View.GONE
-        }
-    }
-
-    private fun showContinueLayout() {
-        binding.frameLayout.visibility = View.GONE
-        binding.frameLayout2.visibility = View.VISIBLE
-        binding.txtNoPayment.visibility = View.GONE
-        binding.txtCancel.visibility = View.VISIBLE
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        billingManager.detachListeners(this::class.java.simpleName)
-    }
-}

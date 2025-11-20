@@ -6,7 +6,7 @@ import android.content.Intent
 import android.widget.Toast
 //BroadcastReceiver chỉ sống tạm thời, không nên thực hiện công việc nặng
 // (như tải dữ liệu, truy cập mạng) bên trong nó.
-// có 2 loại : Static Receiver Hoạt động ngay cả khi app chưa chạy Khai báo trong AndroidManifest.xml
+// có 2 loại : Static Receiver Hoạt động ngay cả khi app chưa chạy: Khai báo trong AndroidManifest.xml
 //Dynamic Receiver Chỉ hoạt động khi app đang chạy Đăng ký trong code
 class Broadcast : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {

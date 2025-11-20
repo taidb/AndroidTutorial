@@ -11,6 +11,8 @@ class ItemViewModel : ViewModel() {
     private val _selectedItem = MutableLiveData<Item>()
     val selectedItem: LiveData<Item> get() = _selectedItem
 
+
+
     // LiveData cho filters
     private val _filters = MutableLiveData<Set<Filter>>(emptySet())
     val filters: LiveData<Set<Filter>> get() = _filters
@@ -25,6 +27,8 @@ class ItemViewModel : ViewModel() {
         Item("Item 2", 2),
         Item("Item 3", 3)
     )
+    private val _allItems = MutableLiveData<List<Item>>(originalList)
+    val allItems: LiveData<List<Item>> get() = _allItems
 
     init {
         // Khởi tạo danh sách
@@ -35,27 +39,33 @@ class ItemViewModel : ViewModel() {
         _selectedItem.value = item
     }
 
+//    fun addItem(item: Item) {
+//        _allItems.value = (_allItems.value ?: emptyList()) + item
+//       // applyFilters()
+//    }
+
+
     fun addFilter(filter: Filter) {
         val currentFilters = _filters.value ?: emptySet()
         _filters.value = currentFilters + filter
-        applyFilters()
+     //   applyFilters()
     }
 
     fun removeFilter(filter: Filter) {
         val currentFilters = _filters.value ?: emptySet()
         _filters.value = currentFilters - filter
-        applyFilters()
+      //  applyFilters()
     }
 
-    private fun applyFilters() {
-        val currentFilters = _filters.value ?: emptySet()
-        var result = originalList
+ //   private fun applyFilters() {
+//        val currentFilters = _filters.value ?: emptySet()
+//        var result = _allItems.value ?: emptyList()
+//
+//        currentFilters.forEach { filter ->
+//            result = result.filter { it.name.contains(filter.value, ignoreCase = true) }
+//        }
+//
+//        _filteredList.value = result
+    //}
 
-        // Áp dụng các filter (ví dụ đơn giản)
-        currentFilters.forEach { filter ->
-            result = result.filter { it.name.contains(filter.value, ignoreCase = true) }
-        }
-
-        _filteredList.value = result
-    }
 }

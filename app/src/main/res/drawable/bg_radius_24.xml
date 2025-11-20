@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="@dimen/_12sdp" android:topRightRadius="@dimen/_12sdp"/>
-/>
+    <corners android:radius="@dimen/radius_md"
+       />
+    <gradient android:startColor="@color/surface_gradients_base_top_stop_1"
+        android:endColor="@color/surface_gradients_base_top_stop_2"/>
 </shape>

@@ -8,8 +8,7 @@ import com.eco.ads.EcoFullScreenCallback
 import com.eco.ads.EcoInfoAdsCallback
 import com.eco.ads.interstitial.EcoInterstitialAd
 import com.eco.ads.interstitial.EcoInterstitialAdListener
-import com.eco.musicplayer.audioplayer.music.activity.CompressVideoApplication
-import com.eco.musicplayer.audioplayer.music.activity.ads.PREFS_PURCHASED
+import com.eco.musicplayer.audioplayer.music.activity.AdsApplication
 import com.eco.musicplayer.audioplayer.music.activity.ads.time_min_show_ads
 import com.eco.musicplayer.audioplayer.music.activity.getApplication
 import com.eco.musicplayer.audioplayer.music.activity.util.getSharedInt
@@ -78,7 +77,7 @@ class InterstitialUtil {
         }
     }
 
-    fun isInCoolOffTime(application: CompressVideoApplication) :Boolean{
+    fun isInCoolOffTime(application: AdsApplication) :Boolean{
         val interCoolOffTime =application.getSharedInt(time_min_show_ads,35)
         val currentTime =System.currentTimeMillis()
         return currentTime -application.lastTimeForShowInterAds <=interCoolOffTime

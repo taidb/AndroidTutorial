@@ -47,7 +47,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/bottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -273,7 +273,7 @@
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

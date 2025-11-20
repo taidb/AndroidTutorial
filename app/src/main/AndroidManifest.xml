@@ -36,8 +36,9 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+
     <application
-        android:name=".activity.CompressVideoApplication"
+        android:name=".activity.AdsApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -47,6 +48,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.contentprovider.ContentProviderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.activity.TestUi"
+            android:exported="false" />
         <activity
             android:name=".activity.activity.permission.Api34PlusActivity"
             android:exported="false" />
@@ -147,7 +154,7 @@
             android:name=".activity.activity.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.activity.MainActivity4"
+            android:name=".activity.ads.FullAdsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -172,6 +179,10 @@
                 <action android:name="test.Broadcast" />
             </intent-filter>
         </receiver>
+        <provider
+            android:name=".activity.contentprovider.UserProvider"
+            android:authorities="com.eco.musicplayer.audioplayer.music.activity.contentprovider.User"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -179,6 +190,12 @@
         <meta-data
             android:name="com.eco.musicplayer.audioplayer.music.activity.ads.AdsInitializer"
             android:value="androidx.startup" />
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
+            android:value="true" />
     </application>
 
 </manifest>

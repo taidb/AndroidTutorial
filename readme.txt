@@ -17,7 +17,7 @@ Product (ProductDetails) ( thông tin sản phẩm)
     ├─ offerToken : String (dùng khi launchBillingFlow để Play biết mình đang mua đúng biến thể)
     ├─ offerTags : List<String>
     │
-    ├─ pricingPhases[] ( danh sách cacs giai đoạn)
+    ├─ pricingPhases[] ( danh sách các giai đoạn)
     │   ├─ pricingPhase #1
     │   │   ├─ priceAmountMicros : Long
     │   │   ├─ priceCurrencyCode : String

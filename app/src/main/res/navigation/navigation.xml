@@ -18,20 +18,20 @@
         android:label="Fragment2">
 
         <action
-            android:id="@+id/action_fragment1_to_fragment3"
-            app:destination="@id/fragment3"
+            android:id="@+id/action_fragment1_to_fragment2"
+            app:destination="@id/fragment2"
             app:enterAnim="@anim/frombottom"
             />
 
 
     </fragment>
     <fragment
-        android:id="@+id/fragment3"
+        android:id="@+id/fragment2"
         android:name="com.eco.musicplayer.audioplayer.music.activity.fragment.Fragment3"
         android:label="fragment_3"
         tools:layout="@layout/fragment_3">
         <action
-            android:id="@+id/action_fragment3_to_fragment1"
+            android:id="@+id/action_fragment2_to_fragment1"
             app:destination="@id/fragment1"
             app:enterAnim="@anim/fromright"
             app:exitAnim="@anim/toleft"

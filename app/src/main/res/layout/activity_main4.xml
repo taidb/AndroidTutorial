@@ -2,170 +2,186 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.designlayout.StudyLayoutPaywallActivity"
-        android:padding="@dimen/_16sdp"
-        android:background="@color/white">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnParcelable"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/Parcelable"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:padding="@dimen/_16sdp"
+            tools:context=".activity.designlayout.StudyLayoutPaywallActivity">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSerializable"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/Serializable"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnParcelable"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnParcelable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/Parcelable"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTransferJson"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/transferJson"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnSerializable"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSerializable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/Serializable"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnParcelable" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnViewmodel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/trang4"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnTransferJson"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTransferJson"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/transferJson"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnSerializable" />
 
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/checkNetwork"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/checkNetwork"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnViewmodel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnService"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/service"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/checkNetwork"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnViewmodel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/trang4"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnTransferJson" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBroadcastReceiver"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/customBroadcastReceiver"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnService"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFragment"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/fragment"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnBroadcastReceiver"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFragment1"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/fragment1"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnFragment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnEventBus"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/btnEventBus"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnFragment1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVersionSdk1"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/btnVersionSdk1"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnEventBus"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVersionSdk2"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/btnVersionSdk2"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnVersionSdk1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVersionSdk3"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/btnVersionSdk3"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnVersionSdk2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVersionSdk4"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:text="@string/btnVersionSdk4"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnVersionSdk2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_8sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/checkNetwork"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/checkNetwork"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnViewmodel" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnService"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/service"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkNetwork" />
 
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBroadcastReceiver"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/customBroadcastReceiver"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnService" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFragment"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/fragment"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnBroadcastReceiver" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFragment1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/fragment1"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnFragment" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEventBus"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/btnEventBus"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnFragment1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVersionSdk1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/btnVersionSdk1"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnEventBus" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVersionSdk2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:text="@string/btnVersionSdk2"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnVersionSdk1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVersionSdk3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/btnVersionSdk3"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnVersionSdk2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVersionSdk4"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/btnVersionSdk4"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnVersionSdk3" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnContentProvide"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/contentprovider"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnVersionSdk3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

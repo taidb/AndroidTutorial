@@ -28,15 +28,16 @@
     <string name="fragment">Fragment</string>
     <string name="fragment1">Fragment1</string>
     <string name="btnEventBus">EventBus</string>
-    <string name="btnVersionSdk1">Version SDK dưới 11</string>
-    <string name="btnVersionSdk2">Version SDK trên 11</string>
-    <string name="btnVersionSdk3">Version SDK trên 13</string>
-    <string name="btnVersionSdk4">Version SDK trên 14</string>
+    <string name="btnVersionSdk1">Version SDK dưới 11(dưới APi 30)</string>
+    <string name="btnVersionSdk2">Version SDK trên 11 dưới 13(trên 30 dưới 32)</string>
+    <string name="btnVersionSdk3">Version SDK 13(Api 33)</string>
+    <string name="btnVersionSdk4">Version SDK trên 14(Api trên 34)</string>
     <string name="editText1">Nhập thông tin tên </string>
     <string name="editText2">Nhập thông tin tuổi </string>
     <string name="editText3">Nhập thông tin địa chỉ </string>
     <string name="takephoto">Hình ảnh</string>
     <string name="transfer">Web</string>
+    <string name="contentprovider">Content Provider</string>
     <string name="memory">Bộ nhớ</string>
     <string name="video">Video</string>
     <string name="audio">Audio</string>
@@ -146,6 +147,7 @@
     <string name="email_address">Email address</string>
     <string name="forgot_passcode">Forgot passcode?</string>
     <string name="category_chart">Category Chart</string>
+    <string name="crop_main"> Crop Video</string>
 
-
+    <string name="context_thank">Hi there!\n\nThanks for reporting this issue. We’re always improving the app based on user feedback. Could you share more details so our team can help fix it for you and others?\n\nContact us anytime at cropvideo@ecomobile.vn — we’re happy to help!</string>
 </resources>

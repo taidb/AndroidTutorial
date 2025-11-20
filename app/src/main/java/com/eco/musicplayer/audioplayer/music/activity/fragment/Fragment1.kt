@@ -37,13 +37,13 @@ class Fragment1 : Fragment() {
         }
 
         // Observer cho filteredList
-        viewModel.filteredList.observe(viewLifecycleOwner) { items ->
-            binding.tvItemCount.text = "Số lượng items: ${items.size}"
+        viewModel.allItems.observe(viewLifecycleOwner) { items ->
+            binding.tvItemCount.text = "items: ${items.toString()}"
         }
 
         // Observer cho filters
         viewModel.filters.observe(viewLifecycleOwner) { filters ->
-            binding.tvFilterCount.text = "Số lượng filters: ${filters.size}"
+            binding.tvFilterCount.text = "filters: ${filters.toString()}"
         }
     }
 

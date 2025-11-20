@@ -25,12 +25,12 @@ import com.eco.musicplayer.audioplayer.music.databinding.ActivityServiceBinding
 class ServiceActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityServiceBinding
-   private val loctationPermission =registerForActivityResult(
-       ActivityResultContracts.RequestPermission()
-   ){ granted ->
-       if (granted) startLocationService()
-       else Toast.makeText(this, "Quyền bị từ chối", Toast.LENGTH_SHORT).show()
-   }
+    private val loctationPermission = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) startLocationService()
+        else Toast.makeText(this, "Quyền bị từ chối", Toast.LENGTH_SHORT).show()
+    }
     private var boundService: MyBoundService? = null
     private var isBound = false
     private val connection = object : ServiceConnection {
@@ -60,28 +60,31 @@ class ServiceActivity : AppCompatActivity() {
         Log.d("ServiceActivity", "Activity created")
     }
 
-     fun checkPermissionAndStart() {
+    fun checkPermissionAndStart() {
         if (ContextCompat.checkSelfPermission(
-            this,Manifest.permission.ACCESS_FINE_LOCATION
-        )==PackageManager.PERMISSION_GRANTED){
+                this, Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             startLocationService()
-        }else{
+        } else {
             loctationPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
 
     private fun startLocationService() {
-        val intent =Intent(this,LocationForegroundService::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            ContextCompat.startForegroundService(this,intent)
-        }else{
+        val intent = Intent(this, LocationForegroundService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ContextCompat.startForegroundService(this, intent)
+            binding.txtBoundData.text = "Location Foreground Service Start"
+        } else {
             startService(intent)
         }
     }
 
     @SuppressLint("ImplicitSamInstance")
-     fun stopLocationService(){
-        stopService(Intent(this,LocationForegroundService::class.java))
+    fun stopLocationService() {
+        stopService(Intent(this, LocationForegroundService::class.java))
+        binding.txtBoundData.text = "Location Foreground Service stopped"
     }
 
     fun startForegroundService() {
@@ -95,7 +98,7 @@ class ServiceActivity : AppCompatActivity() {
                 requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
                 return
             }
-
+            binding.txtBoundData.text = "Foreground Service Start"
             // Bắt buộc dùng startForegroundService
             ContextCompat.startForegroundService(this, intent)
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -116,7 +119,7 @@ class ServiceActivity : AppCompatActivity() {
     fun startBackgroundService() {
         Log.d("ServiceActivity", "Starting Background Service")
         startService(Intent(this, MyBackgroundService::class.java))
-        binding.txtBoundData.text = "Background Service started - Check logcat in 5 seconds"
+        binding.txtBoundData.text = "Background Service started"
     }
 
     fun stopBackgroundService() {

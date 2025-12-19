@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.activity.AdsActivity">
+    tools:context=".activity.ads.AdsActivity">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layoutAdsCross"
         android:layout_width="0dp"

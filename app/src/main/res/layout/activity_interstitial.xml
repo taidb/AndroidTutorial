@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="@dimen/_16sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Interstitial Ad"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_24sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_show_interstitial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/button_corners_16"
+        android:text="Xem Quảng Cáo Interstitial"
+        android:layout_marginBottom="@dimen/_16sdp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trạng thái: Sẵn sàng"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/grey"
+        android:layout_marginBottom="@dimen/_20sdp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/comeBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/button_corners_16"
+        android:text="Quay lại"
+        android:layout_marginBottom="@dimen/_16sdp" />
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

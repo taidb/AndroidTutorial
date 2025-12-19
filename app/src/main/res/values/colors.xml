@@ -299,6 +299,7 @@
     <color name="icon_warning_on_color">#fcfbb6</color>
     <color name="icon_disabled_default">#b3b3b3</color>
     <color name="icon_disabled_on_color">#b3b3b3</color>
+    <color name="NATIVE_AD_BORDER_COLOR">#FF4081</color>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.eco.musicplayer.audioplayer.music.activity.activity
+package com.eco.musicplayer.audioplayer.music.activity.ads
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,11 +8,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.activity.AdsApplication
-import com.eco.musicplayer.audioplayer.music.activity.ads.BANNER_MAIN
-import com.eco.musicplayer.audioplayer.music.activity.ads.BannerAdUtil
-import com.eco.musicplayer.audioplayer.music.activity.ads.GG_MAIN_INTERSTITIAL
-import com.eco.musicplayer.audioplayer.music.activity.ads.ID_CROSS_BANNER_MAIN
-import com.eco.musicplayer.audioplayer.music.activity.ads.ID_CROSS_INTER_MAIN
 import com.eco.musicplayer.audioplayer.music.activity.ads.inter.InterstitialListener
 import com.eco.musicplayer.audioplayer.music.activity.ads.inter.InterstitialUtil
 import com.eco.musicplayer.audioplayer.music.activity.network.isNetworkAvailable
@@ -132,26 +127,47 @@ class AdsActivity : AppCompatActivity() {
 
     private fun showInterAds() {
         jobLoadAds?.cancel()
-        Handler(Looper.getMainLooper()).postDelayed({
-            hideLoadingAndShowBanners()
-        }, 3000)
-        showMainInter(object : InterstitialListener() {
+
+        mainInterstitiaUtil.listener = object : InterstitialListener() {
             override fun onAdDismissedFullScreen() {
                 super.onAdDismissedFullScreen()
-                // Khi tắt quảng cáo fullscreen, ẩn loading và hiển thị banner
                 hideLoadingAndShowBanners()
                 mainInterstitiaUtil.clear()
             }
 
             override fun onAdFailToShow(error: String) {
                 super.onAdFailToShow(error)
-                // Nếu không hiển thị được quảng cáo, vẫn ẩn loading và hiển thị banner
                 hideLoadingAndShowBanners()
             }
-        })
+        }
+
+        mainInterstitiaUtil.setAdsId(GG_MAIN_INTERSTITIAL, ID_CROSS_INTER_MAIN)
+
+        fun tryShowInterstitial(attempt: Int = 0) {
+            if (mainInterstitiaUtil.isLoaded()) {
+                mainInterstitiaUtil.showAd(this)
+            } else if (attempt < 5) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    tryShowInterstitial(attempt + 1)
+                }, 500)
+            } else {
+                hideLoadingAndShowBanners()
+            }
+        }
+
+        if (!mainInterstitiaUtil.isLoaded() &&
+            !mainInterstitiaUtil.isLoading() &&
+            !mainInterstitiaUtil.isInCoolOffTime(application as AdsApplication)
+        ) {
+            mainInterstitiaUtil.loadAds(this)
+        }
+
+        tryShowInterstitial()
 
         (application as AdsApplication).isShowAdsWhenOpen = true
     }
+
+
 
     private fun hideLoadingAndShowBanners() {
         // Tìm lại các view để tránh lỗi

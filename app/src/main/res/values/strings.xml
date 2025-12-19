@@ -148,6 +148,6 @@
     <string name="forgot_passcode">Forgot passcode?</string>
     <string name="category_chart">Category Chart</string>
     <string name="crop_main"> Crop Video</string>
-
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="context_thank">Hi there!\n\nThanks for reporting this issue. We’re always improving the app based on user feedback. Could you share more details so our team can help fix it for you and others?\n\nContact us anytime at cropvideo@ecomobile.vn — we’re happy to help!</string>
 </resources>

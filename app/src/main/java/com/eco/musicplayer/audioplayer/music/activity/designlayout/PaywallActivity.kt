@@ -50,7 +50,6 @@ class PaywallActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLayoutPaywallBinding.inflate(layoutInflater)
-        binding = ActivityLayoutPaywallBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupWindow()
         initUI()
@@ -254,19 +253,19 @@ class PaywallActivity : AppCompatActivity() {
         } ?: offerDetails.firstOrNull()
     }
 
-    private fun setDefaultPrices() {
-        val defaultOldPrice = getString(R.string.price_week)
-        val defaultNewPrice = getString(R.string.price_year)
-        binding.txtPriceOff.text = defaultOldPrice
-        //  binding.idDiscount.text = percent.toString()
-        binding.txtPrice.text = defaultNewPrice
-
-        binding.txtDescription.text =
-            getString(R.string.billed_weekly_cancel_anytime, defaultNewPrice, defaultOldPrice)
-    }
+//    private fun setDefaultPrices() {
+//        val defaultOldPrice = getString(R.string.price_week)
+//        val defaultNewPrice = getString(R.string.price_year)
+//        binding.txtPriceOff.text = defaultOldPrice
+//        //  binding.idDiscount.text = percent.toString()
+//        binding.txtPrice.text = defaultNewPrice
+//
+//        binding.txtDescription.text =
+//            getString(R.string.billed_weekly_cancel_anytime, defaultNewPrice, defaultOldPrice)
+//    }
 
     private fun initUI() {
-        binding.txtPriceOff.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            binding.txtPriceOff.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         binding.txtTryAgain.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         //binding.idDiscount.text = getString(R.string.discount, percent)
 

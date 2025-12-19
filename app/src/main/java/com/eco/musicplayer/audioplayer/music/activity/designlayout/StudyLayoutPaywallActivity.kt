@@ -72,7 +72,7 @@ class StudyLayoutPaywallActivity : AppCompatActivity() {
         binding.btnPage4.setOnClickListener {
             it.isEnabled = false
             runCatching { it.postDelayed({ it.isEnabled = true }, 1000) }
-            startActivity(Intent(this, PaywallActivity3::class.java))
+                startActivity(Intent(this, PaywallActivity3::class.java))
         }
 
         binding.btnPage5.setOnClickListener {
